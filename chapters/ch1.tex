@@ -1,0 +1,943 @@
+\section{Diagrams}
+
+\bx
+Show that $\mathcal{D}$ is commutative if, and only if, $\overline{\mathcal{D}}$ is commutative.
+\ex
+
+\bs
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Take some time to convince yourself that the given definition of algebraic closure actually does define what you think of as algebraic closure.
+\item The isomorphism theorems of elementary group theory can be written down in terms of diagrams. Do it!
+\item Rewrite the statement that the cube-shaped diagram above is commutative without using any diagrams at all.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\section{Categories}
+
+\bx
+\ben[label=(\alph*)]
+\item Give five examples of categories besides the ones already mentioned.
+\item Find a way to interpret a group $G$ as a category with a single object.
+\item Let $X$ be a topological space. Show how to make a category whose objects are the points of $X$ and such that the set of morphisms from $a$ to $b$ is the set of all paths $\omega \cl [0, d] \to X$ (where $d \geq 0$) such that $\omega(0) = a$ and $\omega(d) = b$.
+\item Suppose $\mathcal{D}$ is a diagram in the sense of Section 1.1. Show that $\overline{\mathcal{D}}$ is a category.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\ben[label=(\roman*)]
+\item The category $\mathbf{Sets}$ of sets and functions between them.
+\item Given a unital ring $R$, we have the category $R$-$\mathbf{Mod}$ of left $R$-modules and $R$-module homomorphisms. Similarly, we also have the categories of right $R$-modules $\mathbf{Mod}$-$R$ and $R$-$S$-bimodules $R$-$\mathbf{Mod}$-$S$, for some other unital ring $S$.
+
+As a special case, if $\F$ is a field, then $\F$-$\mathbf{Mod}$ is the category of vector spaces over $\F$ and $\F$-linear maps, sometimes denoted as $\mathbf{Vect}_{\F}$. 
+\item Given a class $S$, we can form a category with objects the elements of $S$ and only identity morphisms. It is called the \emph{discrete category} with object class $S$. This includes the finite categories $\mathbf{1}, \mathbf{2},\ldots, \mathbf{n},\ldots,$ with objects the natural numbers up to $n$. Of course, we also have the empty category $\vn$ with no objects and no morphisms.  
+\item Given a unital ring $R$, the category $\mathbf{Mat}(R)$ of matrices with entries in $R$ has the natural numbers $\N$ as objects, and for $n,m\in \mathbf{Mat}(R)$, the set of morphisms $\mor_{\mathbf{Mat}(R)}(n,m)$ is the set $\Mat_{m\times n}(R)$ of $m\times n$ matrices with entries in $R$.
+
+The composite $B\circ A\cl n\to p$ of $A\cl n\to m$ and $B\cl m\to p$ is the product matrix $BA\in\Mat_{p\times n}(R)$ and the identity $\id_n\cl n\to n$ is just $I_n\in \Mat_{n\times n}(R)$. That these make $\mathbf{Mat}(R)$ into a category follows at once from the properties of matrix multiplication.
+
+This is one of few examples in which a category is named after its morphisms rather than its objects.
+\item The category $\mathbf{hTop}$, whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. This is an example of a \emph{quotient category}.
+
+In general, given a category $\mathcal{C}$, an \emph{equivalence relation} $\sim$ on $\mathcal{C}$ consists in an equivalence relation $\sim_{X,Y}$ on $\mor_{\mathcal{C}}(X,Y)$ for each pair of objects $X$ and $Y$ which respects composition. That is, given $f_1,f_2\in\mor_{\mathcal{C}}(X,Y)$ and $g_1,g_2\in\mor_{\mathcal{C}}(Y,Z)$ such that $f_1\sim_{X,Y}f_2$ and $g_1\sim_{Y,Z}g_2$, we require that $g_1\circ f_1\sim_{X,Z}g_2\circ f_2$. We can then define $\mathcal{C}/{\sim}$ by setting $\ob(\mathcal{C}/{\sim})=\ob(\mathcal{C})$ and $\mor_{\mathcal{C}/{\sim}}(X,Y)=\mor_{\mathcal{C}}(X,Y)/{\sim_{X,Y}}$. 
+\een
+\item Given a group $G$, define a category $\mathcal{G}$ by setting $\ob(\mathcal{G})=\{*\}$. Then $\mathcal{G}$ has a single morphism set and we can declare $\mor_{\mathcal{G}}(*,*)=G$ and define composition of morphisms in $\mor_{\mathcal{G}}(*,*)$ to be the binary operation of $G$. The associativity and identity axioms of $G$ imply that $\mathcal{G}$ is a category. 
+
+The same construction works just as well even if $G$ is just a monoid. The existence of inverses in the group $G$ implies that every morphism in $\mor_{\mathcal{G}}(*,*)$ is an equivalence.
+
+Vice versa, given a category $\mathcal{C}$ with only one object $*$, the axioms in the definition of a category imply that $\mor_{\mathcal{C}}(*,*)$ is a monoid under composition of morphisms. If, in addition, every morphism in $\mor_{\mathcal{C}}(*,*)$ is an equivalence, then $\mor_{\mathcal{C}}(*,*)$ is a group under $\circ$.
+
+So monoids and groups are exactly the same as categories with one object and categories with one object in which every morphism is an equivalence, respectively.
+\item Let $a,b,c\in X$ and let $\omega\cl a\to b$ and $\gamma\cl b\to c$ be paths in $X$ with $\omega\cl[0,d_1]\to X$ and $\gamma\cl[0,d_2]\to X$, respectively. We define the composite $\gamma\circ \omega\cl a\to c$ to be $\omega * \gamma  \cl [0,d_1+d_2] \to  X$, where 
+\bse
+(\omega*\gamma) (t) = \begin{cases}\omega(t), &0\leq t\leq d_1\\ \gamma(t-d_1), & d_1\leq t \leq d_1+d_2 .\end{cases}
+\ese
+For any $a\in X$, we define $\id_a\cl a \to a$ by $\id_a\cl [0,0]\to X$, with $\id_a(0)=a$. Then $\omega\circ \id_a=\omega=\id_b\circ\omega$ for any $\omega\cl a\to b$.
+
+Finally, given $\omega\cl a\to b$, $\gamma\cl b\to c$ and $\eta\cl c\to d$, we have
+\bi{rCl}
+\eta\circ(\gamma\circ \omega) & = & (\omega * \gamma)*\eta\\
+& = & \left( t\mapsto \begin{cases}\omega(t), & 0\leq t \leq d_1\\ \gamma(t-d_1), & d_1\leq t\leq d_1+d_2\end{cases} \right)\! * \eta\\
+& = & t\mapsto \begin{cases}\omega(t), & 0\leq t \leq d_1\\ \gamma(t-d_1), & d_1\leq t\leq d_1+d_2\\ \eta(t-d_1-d_2),&d_1+d_2\leq t\leq d_1+d_2+d_3\end{cases}
+\ei
+and
+\bi{rCl}
+(\eta\circ\gamma)\circ \omega & = & \omega * (\gamma*\eta)\\
+& = & \omega * \! \left( t\mapsto \begin{cases}\gamma(t), & 0\leq t \leq d_2\\ \eta(t-d_2), & d_2\leq t\leq d_2+d_3\end{cases} \right)\\
+& = & t\mapsto \begin{cases}\omega(t), & 0\leq t \leq d_1\\ \gamma(t-d_1), & d_1\leq t\leq d_2+d_1\\ \eta(t-d_2-d_1),&d_2+d_1\leq t\leq d_2+d_3+d_1,\end{cases}
+\ei
+so $\eta\circ(\gamma\circ \omega) =(\eta\circ\gamma)\circ \omega$.
+\item
+\een
+\es
+
+\bx
+Show that if such a $g$ exists, it is unique.
+\ex
+
+\bs
+Suppose that we also have $h\cl Y \to X$ such that $h\circ f=\id_X$ and $f\circ h=\id_Y$. Then
+\bse
+h = h \circ \id_Y=h\circ (f\circ g) = (h\circ f)\circ g =\id_X \circ g = g.
+\ese
+\es
+
+\bp
+Let’s say $X \sim Y$ if there is an equivalence $f \cl X \to Y$.
+\ben[label=(\alph*)]
+\item Show that $\sim$ is an equivalence relation.
+\item Interpret `equivalence' in each of the categories that have been discussed in the text so far, including the ones you found in Exercise 1.3.
+\een 
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item The identity $\id_X$ is an equivalence, so $X\sim X$. If $f \cl X \to Y$ is an equivalence with inverse $f^{-1}$, then $f^{-1}\cl Y \to X$ is an equivalence with inverse $f$. So $X\sim Y$ implies $Y\sim X$. Finally, given equivalences $f \cl X \to Y$ and $g \cl Y \to Z$, we have
+\bse
+(g\circ f)\circ (f^{-1}\circ g^{-1})=g\circ (f\circ f^{-1})\circ g^{-1}=g\circ g^{-1}=\id_Z
+\ese
+and
+\bse
+(f^{-1}\circ g^{-1})\circ (g\circ f)= f^{-1} \circ (g^{-1}\circ g) \circ f=f^{-1} \circ f=\id_X.
+\ese
+So $g\circ f\cl X\to Z$ is an equivalence with inverse $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$. Thus $X\sim Y$ and $Y\sim Z$ imply $X\sim Z$.
+\item
+\ben[label=(\roman*)]
+\item 
+\item
+\item
+\item
+\item
+\een
+\een
+\es
+
+\bp
+Let $\mathcal{C}$ be a category and let $f \cl X \to Y$ be a map which has a left inverse $g \cl Y \to X$, and suppose $g$ also has a left inverse. Show that $f$ and $g$ are two-sided inverses of each other.
+\ep
+
+\bs
+Let $h\cl X\to Y$ be a left inverse to $g$. Then $g\circ f=\id_X$ and $h\circ g=\id_Y$. We have
+\bse
+f = \id_Y\circ f=(h\circ g)\circ f=h\circ (g\circ f)=h\circ \id_X=h,
+\ese
+so $g\circ f=\id_X$ and $f\circ g=\id_Y$.
+\es
+
+
+\bx
+Whenever we use the term `retract', we should be referring to the definition above, where an object $A$ was a retract of another object $X$ in some category. By setting up an appropriate category, show that our definition of $f$ being a retract of $g$ can be thought of as an instance of that general categorical definition. What is does it mean, in terms of the category $\mathcal{C}$, for two objects to be equivalent in your new category?
+
+{\scshape Hint}. Obviously, $f$ and $g$ must be among the objects in your category!
+\ex
+
+\bs
+Fix a category $\mathcal{C}$ and let $\mathcal{M}$ be the category with objects the morphisms of $\mathcal{C}$, so $f\in \ob(\mathcal{M})$ if $f\in \mor_{\mathcal{C}}(A,B)$ for some $A,B\in \ob(\mathcal{C})$.
+
+A morphism from $A\xrightarrow{f}B$ to $X\xrightarrow{g}Y$ is a pair of morphisms $(A\xrightarrow{i}X,B\xrightarrow{j}Y)$ in $\mathcal{C}$ such that the square
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[d,"f"]\ar[r,"i"]& X\ar[d,"g"]\\
+B\ar[r,"j"] & Y
+\end{tikzcd}
+\ese
+commutes, i.e.\ $j\circ f=g\circ i$.
+
+If $f\cl A\to B$, the identity $\id_f\cl f\to f$ is given by $\id_f=(\id_A,\id_B)$ and if $(i,j)\cl f\to g$ and $(k,l)\cl g\to h$ are morphisms in $\mathcal{M}$, their composite is defined by
+\bse
+(k,l)\circ (i,j)=(k\circ i,l\circ j) \cl f\to h.
+\ese
+With these definitions, the associativity and identity laws in $\mathcal{M}$ follow directly from those of $\mathcal{C}$.
+
+The categorical definition of a retract in $\mathcal{M}$ reads as: `$f$ is a retract of $g$ if there is a commutative diagram'
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+f \ar[rr,bend left=45,"\id_f"]\ar[r,"{(i,j)}"'] & g \ar[r,"{(r,s)}"'] & f 
+\end{tikzcd}
+\ese
+Writing all morphisms explicitly, if $f\cl A\to B$ and $g\cl X\to Y$, we have
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[d,"f"]\ar[rr,bend left=45,"\id_A"]\ar[r,"i"] & X \ar[r,"r"] \ar[d,"g"]& A\ar[d,"f"]\\
+B \ar[r,"j"] \ar[rr,bend right=45,"\id_B"] & Y\ar[r,"s"] & B
+\end{tikzcd}
+\ese
+So the second definition given in the text is, in fact, an instance of the general categorical definition of a retract.
+\es
+
+\bx
+Find examples of retracts in algebra, topology, and other contexts.
+\ex
+
+\bs
+\es
+
+\bp
+Let $f \cl A \to B$ and $g \cl X \to Y$ be morphisms in a category $\mathcal{C}$. Assume that $f$ is a retract of $g$.
+\ben[label=(\alph*)]
+\item Show that if $g$ is an equivalence, then $f$ is also an equivalence.
+\item Show by example that $f$ can be an equivalence even if $g$ is not an equivalence.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Referring to the diagram in the solution to Exercise 1.7, consider the morphism $r\circ g^{-1}\circ j\cl B\to A$. We have
+\bse
+f\circ (r\circ g^{-1}\circ j) = (f\circ r)\circ g^{-1}\circ j= s\circ g\circ g^{-1}\circ j =s\circ j=\id_B
+\ese
+and
+\bse
+(r\circ g^{-1}\circ j)\circ f = r\circ g^{-1}\circ (j\circ f) = r\circ g^{-1}\circ g\circ i = r\circ i=\id_A.
+\ese
+So $f$ is an equivalence with inverse $f^{-1}=r\circ g^{-1}\circ j$.
+\item
+\een
+\es
+
+\section{Functors}
+
+\bx
+\ben[label=(\alph*)]
+\item  Let $\mathcal{D}$ be a diagram in a category $\mathcal{A}$, and let $\overline{\mathcal{C}}$ be the category obtained
+from it as in Exercise 1.3(d). Show that $\mathcal{D}$ is commutative if, and only if, for any two objects $X, Y \in \mathcal{D}$, $\mor_{\overline{\mathcal{D}}}(X, Y )$ has at most one element.
+\item Show that if you apply a covariant functor $F \cl \mathcal{A} \to \mathcal{B}$ to a commutative diagram in $\mathcal{A}$, the result is a commutative diagram in $\mathcal{B}$.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bp
+Let $F \cl \mathcal{C} \to \mathcal{D}$ be a functor. Show that if $f \cl X \to Y$ is an equivalence in $\mathcal{C}$, then $F(f)$ is an equivalence in $\mathcal{D}$. Is it possible for $F(f)$ to be an equivalence without $f$ being an equivalence?
+\ep
+
+\bs
+Let $f^{-1}\cl Y\to X$ be the inverse to $f$. Then $F(f^{-1})\cl FY\to FX$, so we can compose it with $F(f)\cl FX\to FY$. By the definition of functor, we have
+\bse
+F(f^{-1})\circ F(f)=F(f^{-1}\circ f)=F(\id_X)=\id_{FX}
+\ese
+and
+\bse
+F(f)\circ F(f^{-1})=F(f\circ f^{-1})=F(\id_Y)=\id_{FY}.
+\ese
+So $F(f)$ is an equivalence in $\mathcal{D}$ and, moreover, $F(f^{-1})=F(f)^{-1}$.
+
+Consider the finite category with two objects $a,b$ and only one non-identity morphism $f\cl a\to b$. Since there are no morphisms $b\to a$, $f$ is not an equivalence. The (unique) functor into the category $\mathbf{1}$ with a single object and a single morphism (namely, the identity on that object) maps $f$ to an equivalence.
+\es
+
+\bx
+Let $G$ be a group, and think of it as a category with one object, as in Exercise 1.3. Interpret functors $F \cl G \to \mathbf{Sets}$ in terms of familiar concepts in algebra.
+\ex
+
+\bs
+A functor $F \cl G \to \mathbf{Sets}$ consists of a map $\{*\}\to \ob(\mathbf{Sets})$, i.e.\ a choice of a set $F(*)=X$, together with a map $F(g)\cl X\to X$ for each $g\in G$ such that $F(e)=\id_X$ (where $e$ is the identity of $G$) and $F(g\cdot h)=F(g)\circ F(h)$ for all $g,h\in G$. In other words, $F$ is the same as a $G$-set.
+
+Explicitly, we get an action of $G$ on $X$ by defining 
+\bi{rCl}
+G\times X & \to & X\\
+(g,x) & \mapsto & F(g)(x).
+\ei
+\es
+
+\bp
+Let $\mathcal{C}$ be a category, and let $A,B\in \ob(\mathcal{C})$. Prove the following statements.
+\ben[label=(\alph*)]
+\item For $f\cl X\to Y$, write $f^*\cl\mor_{\mathcal{C}}(Y,B)\to\mor_{\mathcal{C}}(X,B)$ for the function $f^*\cl g\mapsto g\circ f$. Then the rules
+\bse
+F(X)=\mor_{\mathcal{C}}(X,B) \qquad \text{and} \qquad F(f)=f^*\cl F(Y)\to F(X)
+\ese
+define a contravariant functor from $\mathcal{C}$ to $\mathbf{Sets}$.
+\item For $f\cl X\to Y$, write $f_*\cl\mor_{\mathcal{C}}(A,X)\to\mor_{\mathcal{C}}(A,Y)$ for the function $f_*\cl g\mapsto f\circ g$. Then the rules
+\bse
+G(X)=\mor_{\mathcal{C}}(A,X) \qquad \text{and} \qquad G(f)=f_*\cl G(X)\to G(Y)
+\ese
+define a covariant functor from $\mathcal{C}$ to $\mathbf{Sets}$.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item First note that $F(\id_X)\cl F(X)\to F(X)$ is given by $g\mapsto g\circ \id_X=g$, so $F(\id_X)=\id_{F(X)}$. Now let $f\cl X\to Y$ and $g\cl Y\to Z$ be morphisms in $\mathcal{C}$ and let $h\in F(Z)$. Then
+\bse
+[F(f)\circ F(g)] (h)=F(f)(h\circ g)=(h\circ g)\circ f
+\ese
+and
+\bse
+F(g\circ f) (h)=h\circ (g\circ f),
+\ese
+which are equal by associativity. So $F(g\circ f) =F(f)\circ F(g)$.
+\item As above, note that $G(\id_X)\cl F(X)\to F(X)$ is given by $g\mapsto \id_X\circ g=g$, so $G(\id_X)=\id_{G(X)}$. Now let $f\cl X\to Y$ and $g\cl Y\to Z$ be morphisms in $\mathcal{C}$ and let $h\in G(X)$. Then
+\bse
+[G(g)\circ G(f)] (h)=G(g)(f\circ h)=g\circ (f\circ h)
+\ese
+and
+\bse
+G(g\circ f) (h)=(g\circ f)\circ h,
+\ese
+which are equal by associativity. So $G(g\circ f) =G(g)\circ G(f)$.
+\een
+\es
+
+
+\bp
+Let $f\cl A \to B$ and $g\cl X\to Y$ in a category $\mathcal{C}$. Show that
+\bse
+f^*\circ g_* = g_*\circ f^* \cl \mor_{\mathcal{C}}(B,X)\to \mor_{\mathcal{C}}(A,Y).
+\ese
+\ep
+
+\bs
+This is a consequence of associativity. Let $h\in \mor_{\mathcal{C}}(B,X)$. Then
+\bi{rCl}
+(f^*\circ g_*)(h)=(g\circ h)\circ f = g\circ (h\circ f)=(g_*\circ f^*)(h).
+\ei
+\es
+
+\bp
+Let $f\cl A \to B$ be a morphism in a category $\mathcal{C}$.
+\ben[label=(\alph*)]
+\item Suppose that the induced map $f_* \cl \mor_{\mathcal{C}}(X,A)\to \mor_{\mathcal{C}}(X,B)$ is a bijection for every $X$. Show that $f$ is an equivalence.
+\item Suppose that the induced map $f^* \cl \mor_{\mathcal{C}}(B,X)\to \mor_{\mathcal{C}}(A,X)$ is a bijection for every $X$. Show that $f$ is an equivalence.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Take $X=B$. As $f_*\cl \mor_{\mathcal{C}}(B,A)\to \mor_{\mathcal{C}}(B,B)$ is a bijection, we can define $g\cl B\to A$ by $g:=f_*^{-1}(\id_B)$. Then we immediately have
+\bse
+f\circ g = f_*(g)=f_*(f_*^{-1}(\id_B))=\id_B.
+\ese
+Furthermore, note that we have
+\bi{rCl}
+f_*(g\circ f)& = &f\circ g \circ f=\id_B\circ f =f\\
+f_*(\id_A) & = & f\circ \id_A = f.
+\ei
+As $f_*\cl \mor_{\mathcal{C}}(A,A)\to \mor_{\mathcal{C}}(A,B)$ is a bijection, we must have $g\circ f=\id_A$. So $f$ is an equivalence.
+\item Similarly, take $X=A$ and define $g\cl B\to A$ by $g:=(f^*)^{-1}(\id_A)$. Then we have $g\circ f=f^*(g)=\id_A$ and, as $f^*(f\circ g)=f=f^*(\id_B)$, we also have $f\circ g=\id_B$.
+\een
+\es
+
+
+\section{Natural Transformations}
+
+\bx
+Show that an equivalence of categories need be neither injective nor surjective on objects.
+\ex
+
+\bs
+\es
+
+\section{Duality}
+
+\bx
+\ben[label=(\alph*)]
+\item The notation $f \cl X \to Y$ is shorthand for the sentence: `$f$ is a morphism with domain $X$ and target $Y$.' What is the dual of this statement?
+\item Find instances of duality in the previous sections.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item The dual of the given statement is `$f^\op$ is a morphism with domain $Y$ and target $X$', denoted $f^\op\cl Y\to X$
+\item
+\een
+\es
+
+\section{Products and Sums}
+
+\bp
+Suppose $X,Y\in \mathcal{C}$ and the objects $P$ and $Q$ are both products for $X$ and $Y$. Show that $P\cong Q$.
+\ep
+
+\bs
+Since $P$ and $Q$ are products of $X$ and $Y$, there are two pairs of morphisms $X\xleftarrow{\ p_X}P\xrightarrow{\ p_Y}Y$ and $X\xleftarrow{\ q_X}Q\xrightarrow{\ q_Y}Y$ satisfying the universal property of a product. Then, by the universal properties of $P$ and $Q$, there are (unique) morphisms $f\cl P\to Q$ and $g\cl Q\to P$ making the diagrams
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+& P \ar[dl,"p_X"']\ar[d,dashed,"f"]\ar[dr,"p_Y"]&\\
+X & Q\ar[l,"q_X"] \ar[r,"q_Y"'] & Y
+\end{tikzcd}
+\qquad \quad
+\begin{tikzcd}[column sep=large,row sep=large]
+& Q \ar[dl,"q_X"']\ar[d,dashed,"g"]\ar[dr,"q_Y"]&\\
+X & P\ar[l,"p_X"] \ar[r,"p_Y"'] & Y
+\end{tikzcd}
+\ese
+commute. This implies that the diagrams
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+& P \ar[dl,"p_X"']\ar[d,"f"]\ar[dr,"p_Y"]&\\
+X & Q\ar[l,"q_X"] \ar[r,"q_Y"'] \ar[d,"g"]& Y\\
+& \ar[ul,"p_X"]P\ar[ur,"p_Y"'] &
+\end{tikzcd}
+\qquad \quad
+\begin{tikzcd}[column sep=large,row sep=large]
+& Q \ar[dl,"q_X"']\ar[d,"g"]\ar[dr,"q_Y"]&\\
+X & P\ar[l,"p_X"] \ar[r,"p_Y"'] \ar[d,"f"]& Y\\
+& \ar[ul,"q_X"]Q\ar[ur,"q_Y"'] &
+\end{tikzcd}
+\ese
+also commute. In particular, we have
+\bi{rClcrCl}
+p_X\circ(g\circ f)&=&p_X &\qquad & q_X\circ(f\circ g)&=&q_X \\
+p_Y\circ(g\circ f)&=&p_Y && q_Y\circ(f\circ g)&=&q_Y.
+\ei
+But by the universal properties of $P$ and $Q$, the unique morphisms $P\to P$ and $Q\to Q$ satisfying the above equations are $\id_P$ and $\id_Q$, respectively. Hence, $f$ and $g$ are equivalences.
+\es
+
+\bx
+Let $X,Y\in\mathcal{C}$, and suppose $X\times Y$ exists. Explicitly define a bijection
+\bse
+\mor_{\mathcal{C}}(Z,X\times Y) \xrightarrow{\ \cong\ }\mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y) .
+\ese
+\ex
+
+\bs
+Let $\pr_X$ and $\pr_Y$ be the projections. Define
+\bi{rrCl}
+\phi\cl & \mor_{\mathcal{C}}(Z,X\times Y) & \to & \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y) \\
+& f & \mapsto & (\pr_X\circ f,\pr_Y\circ f).
+\ei
+By the universal property of the product, for each $(f,g)\in \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y)$, there is a unique $h\in\mor_{\mathcal{C}}(Z,X\times Y)$ such that $f=\pr_X\circ h$ and $g=\pr_Y\circ h$, i.e.\ $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity.
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Show that if one of the products $X\times(Y\times Z)$ and $(X\times Y)\times Z$ exists in $\mathcal{C}$, then so does the other, and they are isomorphic.
+\item Let $f\cl A\to X$ and $g\cl B\to Y$, and suppose that the products $A\times B$ and $X\times Y$ can be formed in $\mathcal{C}$. Give an explicit definition for the product map
+\bse
+f\times g \cl A\times B \to X\times Y.
+\ese
+\een
+\ex
+
+\bs
+{\scshape Note}: Even if this is not stated explicitly in the exercise, one should assume that both of the binary products $X\times Y$ and $Y\times Z$ exist. 
+\ben[label=(\alph*)]
+\item Suppose that $X\times(Y\times Z)$ exists. Then there are pairs of morphisms
+\bi{c}
+Y \xleftarrow{\ \pr_Y\ } Y\times Z \xrightarrow{\ \pr_Z\ } Z\\
+X \xleftarrow{\ \pr_X\ } X\times (Y\times Z) \xrightarrow{\ \pr_{Y\times Z}\ } Y\times Z\\
+X \xleftarrow{\ \pr_X'\ } X\times Y \xrightarrow{\ \pr_Y'\ } Y
+\ei
+satisfying the respective universal properties. We seek to show that the object $X\times(Y\times Z)$ together with projection morphisms
+\bi{rCl}
+(\pr_X,\pr_Y\circ\pr_{Y\times Z})\cl && X\times(Y\times Z) \longrightarrow X\times Y\\ 
+\pr_Z\circ\pr_{Y\times Z} \cl &&  X\times(Y\times Z) \longrightarrow Z
+\ei
+is a product of $X\times Y$ and $Z$. Then it will follow that $(X\times Y)\times Z$ exists and, by the universal property, $X\times (Y\times Z)\cong (X\times Y)\times Z$.
+
+Let $f\cl A\to X\times Y$ and $g\cl A\to Z$ be two morphisms. Then we have morphisms
+\bi{rCl}
+\pr_X'\circ f \cl && A \longrightarrow X\\
+(\pr_Y'\circ f,g)\cl && A \longrightarrow Y\times Z
+\ei
+and hence there is a unique morphism $h\cl A \to X\times (Y\times Z)$ making the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+& A \ar[dl,"\pr_X'\circ f"']\ar[d,dashed,"h"]\ar[dr,"{(\pr_Y'\circ f,g)}"]&\\
+X & X\times (Y\times Z) \ar[l,"\pr_X"] \ar[r,"\pr_{Y\times Z}"'] & Y\times Z
+\end{tikzcd}
+\ese
+commute. Observe that
+\bi{rCl}
+(\pr_X,\pr_Y\circ\pr_{Y\times Z})\circ h & = & (\pr_X\circ h,\pr_Y\circ\pr_{Y\times Z}\circ h)\\
+& = & (\pr_X'\circ f,\pr_Y\circ(\pr_Y'\circ f,g))\\
+& = & (\pr_X'\circ f,\pr_Y'\circ f)\\
+& = & f
+\ei
+and 
+\bi{rCl}
+(\pr_Z\circ\pr_{Y\times Z})\circ h & = & \pr_Z\circ(\pr_{Y\times Z}\circ h)\\
+& = & \pr_Z\circ(\pr_Y'\circ f,g)\\
+& = & g.
+\ei
+That is, $h$ makes the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+&& A \ar[dll,"f"']\ar[d,"h"]\ar[drr,"g"]&&\\
+X\times Y && X\times (Y\times Z) \ar[ll,"{(\pr_X,\pr_Y\circ\pr_{Y\times Z})}"] \ar[rr,"\pr_Z\circ\pr_{Y\times Z}"'] && Z
+\end{tikzcd}
+\ese
+commute. We need to show that it is the unique such morphism. Let $\widetilde h\cl A \to X\times (Y\times Z)$ be another morphism making the above diagram commute, i.e.\
+\bi{rCl}
+(\pr_X,\pr_Y\circ\pr_{Y\times Z})\circ\widetilde h&=&f\\
+(\pr_Z\circ\pr_{Y\times Z})\circ\widetilde h&=&g.
+\ei
+Then, as $f=(\pr_X'\circ f,\pr_Y'\circ f)$, we have $\pr_X\circ \widetilde h=\pr_X'\circ f$. Furthermore, $\pr_Y\circ\pr_{Y\times Z}\circ \widetilde h=\pr_Y'\circ f$ together with the second equation above, imply that $\pr_{Y\times Z}\circ \widetilde h=(\pr_Y'\circ f,g)$. Hence $\widetilde h$ also makes the earlier diagram commute. But $h$ is the unique morphism making that diagram commute and thus $\widetilde h=h$.
+
+An entirely analogous argument shows that if $(X\times Y)\times Z$ exists, then so does $X\times (Y\times Z)$, and $(X\times Y)\times Z\cong X\times (Y\times Z)$.
+
+\item Given $f\cl A\to X$ and $g\cl B\to Y$, we can form the morphisms
+\bse
+f\circ\pr_A\cl A\times B\to X\qquad \text{and}\qquad g\circ \pr_B\cl A\times B\to Y.
+\ese
+Then we can define $f\times g:=(f\circ\pr_A,g\circ\pr_B)$. Explicitly, $f\times g$ is the unique morphism making the following diagram commute.
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+A \ar[d,"f"] & \ar[l,"\pr_A"'] A\times B \ar[d,dashed,"f\times g"] \ar[r,"\pr_B"]& B\ar[d,"g"]\\
+X & \ar[l,"\pr_X"]X\times Y \ar[r,"\pr_Y"']& Y
+\end{tikzcd}
+\ese
+\een
+\es
+
+\bx
+Formulate precise definitions of the product $\mathcal{C}\times \mathcal{D}$ of two categories and of a functor of two variables.
+\ex
+
+\bs
+\es
+
+\bp
+Let $X$ and $Y$ be objects in a category $\mathcal{C}$.
+\ben[label=(\alph*)]
+\item Show that, for any map $f\cl X \to Y$, the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X\ar[d,"f"] \ar[r,"\Delta"]& X\times X\ar[d,"f\times f"]\\
+Y\ar[r,"\Delta"] & Y\times Y
+\end{tikzcd}
+\ese
+commutes.
+\item Show that the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X\times Y \ar[dr,bend right=10,"\id"']\ar[r,"\Delta"] & \ar[d,"\pr_X\times\pr_Y"](X\times Y)\times(X\times Y)\\
+& X\times Y
+\end{tikzcd}
+\ese
+is commutative.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item First, observe that there is a unique morphism $h\cl X\to Y\times Y$ making the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+&X\ar[dl,"f"']\ar[d,dashed,"h"]\ar[dr,"f"]&\\
+Y & Y\times Y \ar[l,"\pr_Y^1"]\ar[r,"\pr_Y^2"']& Y
+\end{tikzcd}
+\ese
+commute. Now consider the following diagram.
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X\ar[rr,bend left=40,"\id_X"]\ar[d,"f"] \ar[r,"\Delta"]& X\times X\ar[d,"f\times f"]\ar[r,"\pr_X^1"]& X\ar[d,"f"]\\
+Y\ar[r,"\Delta"] \ar[rr,bend right=40,"\id_Y"] & Y\times Y\ar[r,"\pr_Y^1"]&Y
+\end{tikzcd}
+\ese
+By definition of the diagonal map, the top and bottom sections commute and, by definition of $f\times f$, so does the right square. We thus have
+\bi{rCl}
+\pr_Y^1\circ (f\times f)\circ \Delta & = & f\circ \pr_X^1\circ \Delta=f\circ \id_X=f\\
+\pr_Y^1\circ\Delta\circ f & = & \id_Y\circ f = f.
+\ei
+By replacing $\pr_X^1$ and $\pr_Y^1$ with $\pr_X^2$ and $\pr_Y^2$, respectively, in the above diagram, we also obtain $\pr_Y^2\circ (f\times f)\circ \Delta =f$ and $\pr_Y^2\circ\Delta\circ f = f$. So both $(f\times f)\circ \Delta$ and $\Delta\circ f$ make the first diagram commute, and thus
+\bse
+(f\times f)\circ \Delta = h = \Delta\circ f.
+\ese
+\item For clarity, let us state the domains and targets of the projection maps explicitly:
+\bi{rClcrCl}
+\pr_X\cl && X\times Y \to X &\qquad \quad& \pr_{X\times Y}^1 \cl && (X\times Y)\times (X\times Y)\to X\times Y\\
+\pr_Y\cl && X\times Y \to Y &\qquad \quad& \pr_{X\times Y}^2 \cl && (X\times Y)\times (X\times Y)\to X\times Y
+\ei
+Consider the following diagram.
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X\times Y \ar[rr,bend left=30,"\id"] \ar[r,"\Delta"] & \ar[d,"\pr_X\times\pr_Y"](X\times Y)\times(X\times Y)\ar[r,"\pr_{X\times Y}^1"]&X\times Y\ar[d,"\pr_X"]\\
+& X\times Y\ar[r,"\pr_X"] & X
+\end{tikzcd}
+\ese
+The top section commutes by definition of $\Delta$, and the square commutes by definition of $\pr_X\times\pr_Y$. We thus have
+\bse
+\pr_X\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_X\circ\pr_{X\times Y}^1\circ\Delta=\pr_X\circ\id=\pr_X.
+\ese
+By replacing $\pr_X$ and $\pr_{X\times Y}^1$ in the above diagram with $\pr_Y$ and $\pr_{X\times Y}^2$, respectively, we also obtain
+\bse
+\pr_Y\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_Y.
+\ese
+Thus both $(\pr_X\times\pr_Y)\circ \Delta$ and (trivially) $\id$ make the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+&X\times Y\ar[dl,"\pr_X"']\ar[d,dashed]\ar[dr,"\pr_Y"]&\\
+X & X\times Y \ar[l,"\pr_X"]\ar[r,"\pr_Y"']& Y
+\end{tikzcd}
+\ese
+commute. But there is only one such map and hence
+\bse
+(\pr_X\times\pr_Y)\circ \Delta=\id.
+\ese
+\een
+\es
+
+\bx
+Explain how to view the diagonal map as a natural transformation.
+\ex
+
+\bs
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Show that the product of two sets $X$ and $Y$ is simply the ordinary cartesian product
+\bse
+X \times Y = \{(x, y) \mid x \in X, y \in Y \}.
+\ese
+\item What is the product of two abelian groups $G$ and $H$?
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Formulate the (dual) definition of a \textbf{coproduct}, which is denoted $X\sqcup Y$. Coproducts are also known as (categorical) \textbf{sums}.
+\item Prove that if $X, Y \in \ob(\mathcal{C})$, then
+\bse
+\mor_{\mathcal{C}}(X \sqcup Y,B) \cong \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y,B).
+\ese
+Write down the isomorphism explicitly. Thus we can (and will) describe maps $F \cl X\sqcup Y \to B$ with the notation $(f, g)$, where $f \cl X \to B$ and $g \cl Y \to B$.
+
+{\scshape Hint}. This is formally dual to Exercise 1.34, so you should be able to prove this by simply inverting all the arrows in your previous proof.
+\item Write down the definition of $f \sqcup g \cl A \sqcup B \to X \sqcup Y$.
+\item Explain how to view $\sqcup$ as a functor.
+\item The dual of the diagonal map is called the \textbf{folding map}, and we will denote it by the symbol $\nabla$. Define it explicitly in category-theoretical language, and explain how to view it as a natural transformation.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Given $X,Y\in\mathcal{C}$, their coproduct or sum is an object of $\mathcal{C}$, denoted $X \sqcup Y$, together with two morphisms $\inj_X\cl X\to X\sqcup Y$ and $\inj_Y\cl Y\to X\sqcup Y$ such that, given any other two morphisms $f\cl X\to Z$ and $g\cl Y\to Z$, there is a unique morphism $t\cl X\sqcup Y\to Z$ making the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+X \ar[dr,"f"']\ar[r,"\inj_X"]& X\sqcup Y \ar[d,dashed,"t"]&\ar[l,"\inj_Y"'] Y\ar[dl,"g"]\\
+& Z &
+\end{tikzcd}
+\ese
+commute, i.e.\ such that $t\circ \inj_X=f$ and $t\circ \inj_Y=g$. 
+
+\item Define
+\bi{rrCl}
+\phi\cl & \mor_{\mathcal{C}}(X\sqcup Y,B) & \to & \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B) \\
+& f & \mapsto & ( f\circ \inj_X,f\circ \inj_Y).
+\ei
+By the universal property of the coproduct, for each $(f,g)\in \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B)$, there is a unique $h\in\mor_{\mathcal{C}}(X\sqcup Y,B)$ such that $f= h\circ \inj_X$ and $g=h\circ \inj_Y$, i.e.\ such that $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity.
+\item Given $f\cl A\to X$ and $g\cl B\to Y$, we can form the morphisms
+\bse
+\inj_X\circ f\cl A\to X\sqcup Y\qquad \text{and}\qquad \inj_Y\circ g\cl B\to X\sqcup Y.
+\ese
+Then we can define $f\sqcup g:=(\inj_X\circ f,\inj_Y\circ g)$. Explicitly, $f\sqcup g$ is the unique morphism making the following diagram commute.
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+A  \ar[r,"\inj_A"]\ar[d,"f"] &  A\sqcup B \ar[d,dashed,"f\sqcup g"] & \ar[l,"\inj_B"'] B\ar[d,"g"]\\
+X \ar[r,"\inj_X"] & X\sqcup Y & Y\ar[l,"\inj_Y"']
+\end{tikzcd}
+\ese
+\item
+\item
+\een
+\es
+
+
+\bx
+\ben[label=(\alph*)]
+\item Show that the sum of two sets $X$ and $Y$ is simply the disjoint union of $X$ and $Y$. Conclude that $X\sqcup Y$ and $X\times Y$ are not generally equivalent.
+\item What is the folding map in the case $X = \{a, b, c\}$?
+\item What is the sum of abelian groups $G$ and $H$? Construct a nice map $w \cl G \sqcup H \to G \times H$; what can you say about it?
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Give number-theoretical interpretations of products and sums in the category of positive integers $1,2,3,\ldots$ with morphisms corresponding to divisibility.
+\item Repeat (a) with the category of real numbers with morphisms corresponding to inequalities $x \leq y$.
+\item Is there a category structure on the set $\N$ so that the categorical product is the same as the numerical product?
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+
+\section{Initial and Terminal Objects}
+
+\bx
+Find initial and terminal objects in the following contexts.
+\ben[label=(\alph*)]
+\item The category $\mathbf{Sets}$ of sets and functions.
+\item The category $\mathbf{Top}$ of topological spaces and continuous functions.
+\item The category $\mathbf{Grp}$ of groups and group homomorphisms.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item Given any set $X$, there is a unique map $\vn \to X$. 
+
+Indeed, if a function $f\cl A\to B$ is defined to be a subset $f\subseteq A\times B$ such that for all $a\in A$ there is a unique $b\in B$ such that $(a,b)\in f$, then clearly $\vn \subseteq \vn \times X=\vn$ satisfies this condition vacuously for any $X$ (including the case $\vn\to\vn$) and it is the unique subset of $\vn$.
+
+So $\vn$ is an initial object of $\mathbf{Sets}$ and, in fact, the unique such.
+Note, however, that there is no function $Y\to \vn$ for non-empty $Y$ since the above existence condition fails. Hence $\vn$ cannot be a terminal object.
+
+Instead, a terminal object of $\mathbf{Sets}$ is any singleton $\{x\}$ as, given any other set $Y$, there is a unique map $Y\to \{x\}$, namely, the constant map with value $x$. Of course, there are infinitely many terminal objects in $\mathbf{Sets}$, but since there is a unique map between any two singletons which is, obviously, a bijection, the terminal object of $\mathbf{Sets}$ is unique up to unique isomorphism.
+\item The empty space $\vn$ with its unique topology $\{\vn\}$ is such that the unique map $\vn\to X$ to any topological space $X$ is continuous. So $(\vn,\{\vn\})$ is the (unique) initial object in $\mathbf{Top}$.
+
+Similarly, any one-point space $P$ with its unique topology $\{\vn,P\}$ is such that the unique map $Y\to P$ for any topological space $Y$ is continuous. So $(P,\{\vn,P\})$ is a terminal object of $\mathbf{Top}$.
+
+\item The trivial group $\{e\}$ in $\mathbf{Grp}$, which is unique up to unique group isomorphism, is the zero object of $\mathbf{Grp}$, i.e.\ it is both initial and terminal.    
+Indeed, given any other group $G$, there is a unique homomorphism $G\to \{e\}$ (the unique set function $G\to \{e\}$) and a unique homomorphism $\{e\} \to G$, i.e.\ the function mapping $e$ to the identity element of $G$.
+\een
+\es
+
+\bx
+Verify that $\mathbf{Sets_*}$ is a pointed category. What is a sum in $\mathbf{Sets_*}$? What is a product?
+\ex
+
+\bs
+Any pointed singleton $(\{x\},x)$ is a zero object of $\mathbf{Sets_*}$. Indeed, given any other pointed set $(Y,y)$, there is a unique pointed map $(Y,y)\to(\{x\},x)$ (the unique map $Y\to \{x\}$) and a unique pointed map $(\{x\},x)\to (Y,y)$ sending $x\mapsto y$.
+
+The sum of $(X,x_0)$ and $(Y,y_0)$ in $\mathbf{Sets _*}$ is $(X\sqcup Y/\{x_0,y_0\},[x_0]=[y_0])$ with the usual injections, while their product is $(X\times Y,(x_0,y_0))$ with the usual projections. Indeed, given any pointed maps $f\cl(X,x_0)\to(Z,z_0)$ and $g\cl(Y,y_0)\to(Z,z_0)$, there is a unique map $h\cl X\sqcup Y\to Z$ such that $h\circ\inj_X=f$ and $h\circ\inj_Y=g$. Then, in particular, 
+\bse
+h(x_0)=h(\inj_X(x_0))=f(x_0)=z_0=g(y_0)=h(\inj_Y(y_0))=h(y_0).
+\ese
+So $h$ is, in fact, a well-defined pointed map $(X\sqcup Y/\{x_0,y_0\},[x_0])\to(Z,z_0)$, and the unique such making the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+(X,x_0) \ar[dr,"f"']\ar[r,"\inj_X"] & \bigl(\frac{X\sqcup Y}{\{x_0,y_0\}},[x_0]\bigr) \ar[d,dashed,"h"] & \ar[l,"\inj_Y"'](Y,y_0)\ar[dl,"g"]\\
+&(Z,z_0)&
+\end{tikzcd}
+\ese
+commute. Dually, given any pointed maps $f\cl(Z,z_0)\to(X,x_0)$ and $g\cl(Z,z_0)\to(Y,y_0)$, there is a unique map $h\cl Z\to X\times Y$ such that $\pr_X\circ h=f$ and $\pr_Y\circ h=g$. Then, in particular, 
+\bse
+\pr_X(h(z_0))=f(z_0)=x_0 \qquad \text{ and } \qquad \pr_Y(h(z_0))=g(z_0)=y_0,
+\ese
+so $h(z_0)=(x_0,y_0)$. Thus $h$ is indeed the unique pointed map making the following diagram commute.
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&(Z,z_0)\ar[dl,"f"']\ar[d,dashed,"h"] \ar[dr,"g"] &\\
+(X,x_0) & (X\times Y,(x_0,y_0)) \ar[l,"\pr_X"]\ar[r,"\pr_Y"'] & (Y,y_0)
+\end{tikzcd}
+\ese
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Suppose $\mathcal{C}$ is a category with a terminal object $\tau$, and let $X,Y\in\mathcal{C}$, and suppose that a product $P$ for $X$ and $Y$ exists in $\mathcal{C}$. Show that $P$ solves the problem expressed in the diagram
+\bse
+\begin{tikzcd}%[column sep=large,row sep=large]
+Z\ar[dr,dashed,"\exists!\,t"]\ar[rrrd,bend left=30,"f"] \ar[dddr,bend right=30,"g"'] &&\\
+&P \ar[dd,"\pr_Y"']\ar[rr,"\pr_X"] && X\ar[dd]\\
+&&&\\
+&Y\ar[rr]&&\tau\end{tikzcd}
+\ese
+(There is never any need to label a map into a terminal object!)
+\item Formulate and prove the dual to part (a).
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item First note that, since there is a unique morphism $P\to \tau$, the two composites $P\xrightarrow{\, \pr_X\, } X \to \tau$ and $P\xrightarrow{\, \pr_Y\, } Y \to \tau$ are equal, and hence the inner square commutes. Similarly, the outer square also commutes.
+Finally, the universal property of the product $P$ implies that there exists a unique morphism $t\cl Z \to P$ making the two triangles commute.
+\item Dually, let $\iota$ be an initial object of $\mathcal{C}$ and let $C$ be a coproduct of $X$ and $Y$. Then $C$ solves the problem expressed in the diagram
+\bse
+\begin{tikzcd}%[column sep=large,row sep=large]
+\iota \ar[dd]\ar[rr] && X\ar[dd,"\inj_X"] \ar[dddr,bend left=30,"f"]&\\
+&&&\\
+Y\ar[rr,"\inj_Y"] \ar[rrrd,bend right=30,"g"]  
+ && C \ar[dr,dashed,"\exists!\,t"]&\\
+&&& Z
+\end{tikzcd}
+\ese
+Similarly to part (a), the two squares commute because $\iota$ is initial and the existence and uniqueness of $t\cl C\to Z$ follow from the universal property of the coproduct.
+\een
+\es
+
+
+\bp
+Let $\mathcal{C}$ be a pointed category in which products and coproducts exist for all pairs of objects.
+\ben[label=(\alph*)]
+\item Give categorical definitions for the `axis' maps $\ax_X\cl X\to X\times Y$ and $\ax_Y\cl Y\to X\times Y$.
+
+{\scshape Note}. The change of notation is due to $\inj_X$ and $\inj_Y$ already being used for the canonical morphisms into the coproduct.
+\item In a pointed category, there is a particularly nice morphism $w\cl X_1\lor X_2\to X_1\times X_2$. Define it in terms of category theory, and check that the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X_1\lor X_2 \ar[r,"f\lor g"] \ar[d,"w"']& Y_1 \lor Y_2 \ar[d,"w"]\\
+X_1\times X_2 \ar[r,"f\times g"]& Y_1\times Y_2
+\end{tikzcd}
+\ese
+is commutative for any $f\cl X_1\to Y_1$ and $g\cl X_2\to Y_2$. Why is it necessary for the category to be pointed before you can define $w$?
+\item State (and prove?) the dual statements.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Recall from Exercise 1.34 that there is a bijection
+\bse
+\mor_{\mathcal{C}}(X,X\times Y)  \cong \mor_{\mathcal{C}}(X,X) \times \mor_{\mathcal{C}}(X, Y) .
+\ese
+Since $\mathcal{C}$ is pointed, $\mor_{\mathcal{C}}(X, Y)$ is non-empty for all $X,Y\in\mathcal{C}$ as any two objects are connected by the zero map $*$. We can thus define $\ax_X\cl X\to X\times Y$ to be the morphism corresponding to $(\id_X,*)$ under the bijection. Similarly, we define $\ax_Y=(*,\id_Y)$.
+\item By the bijection $\mor_{\mathcal{C}}(X_1\lor X_2,X_1\times X_2) \cong\mor_{\mathcal{C}}(X_1,X_1\times X_2) \times \mor_{\mathcal{C}}(X_2,X_1\times X_2)$, there is a unique $w\cl X_1\lor X_2\to X_1\times X_2$ corresponding to the pair $(\ax_{X_1}.\ax_{X_2})$.
+\item Under the bijection $\mor_{\mathcal{C}}(X\lor Y,Z) \cong\mor_{\mathcal{C}}(X,Z) \times \mor_{\mathcal{C}}(Y, Z)$, setting $Z=X$ and $Z=Y$, we define the `collapse' maps $\co_X\cl X\lor Y\to X$ and $\co_Y\cl X\lor Y\to Y$ by $\co_X=(\id_X,*)$ and $\co_Y=(*,\id_Y)$, respectively.
+\een
+\es
+
+\bx
+In what sense do the maps $w$ constitute a natural transformation?
+\ex
+
+\bs
+\es
+
+\bp
+Show that for any $f\cl X \to Y$ in a pointed category $\mathcal{C}$ and $*\cl W\to X$, then $f\circ * = *\cl W\to Y$. Also show that if $*\cl Y\to Z$, then $*\circ f=*\cl X\to Z$. Conclude that the functors $\mor_{\mathcal{C}}(-,Y)$ and $\mor_{\mathcal{C}}(A,-)$ take their values in the category of pointed sets and pointed maps.
+\ep
+
+\bs
+
+\es
+
+
+
+\section{Adjoint Functors}
+
+\begin{extra}
+Show that if $F, F' \cl \mathcal{C} \to \mathcal{D}$ are both left adjoints to $G \cl \mathcal{D}\to\mathcal{C}$, then there is a natural isomorphism $F \cong F'$. So adjoints are unique up to isomorphism.
+\end{extra}
+
+\bs
+For $A\in \mathcal{C}$ and $B\in\mathcal{D}$, denote by $\Phi_{A,B}\cl\mor_{\mathcal{D}}(FA,B)\to\mor_{\mathcal{C}}(A,GB)$ and $\Psi_{A,B}\cl\mor_{\mathcal{D}}(F'A,B)\to\mor_{\mathcal{C}}(A,GB)$ the natural bijections corresponding to the adjunctions $F\dashv G$ and $F'\dashv G$, respectively.
+
+For each $A\in \mathcal{C}$, define $\xi_A=(\Psi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA}))$, i.e.\ $\xi_A$ is the image of $\id_{FA}$ under the composite
+\bse
+\mor_{\mathcal{D}}(FA,FA)\xrightarrow{\ \Phi_{A,FA} \ }\mor_{\mathcal{C}}(A,GFA)\xrightarrow{\ (\Psi_{A,FA})^{-1}\ }\mor_{\mathcal{D}}(F'A,FA).
+\ese
+Then $\xi\cl F'\to F$ is a natural isomorphism. To see this, let $f\cl A\to B$ be a morphism in $\mathcal{C}$. We seek to show that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+F'A \ar[r,"\xi_A"]\ar[d,"F'f"] & FA\ar[d,"Ff"]\\
+F'B\ar[r,"\xi_B"]&FB
+\end{tikzcd}
+\ese
+commutes. Consider the following diagram:
+\bse
+\begin{tikzcd}[row sep=huge,column sep=4.5em]
+\mor_{\mathcal{D}}(FA,FA) \ar[r,"\Phi_{A,FA}"]\ar[d,"Ff\circ-"]& \mor_{\mathcal{C}}(A,GFA)\ar[r,"(\Psi_{A,FA})^{-1}"] \ar[d,"GFf\circ-"]& \mor_{\mathcal{D}}(F'A,FA)\ar[d,"Ff\circ-"]\\
+\mor_{\mathcal{D}}(FA,FB) \ar[r,"\Phi_{A,FB}"]& \mor_{\mathcal{C}}(A,GFB)\ar[r,"(\Psi_{A,FB})^{-1}"] & \mor_{\mathcal{D}}(F'A,FB)
+\end{tikzcd}
+\ese
+The internal squares commute by the assumption that we have adjunctions $F\dashv G$ and $F'\dashv G$. Hence, so does the outer rectangle. Following $\id_{FA}$ around the diagram, we obtain
+\bi{rCl}
+Ff\circ\xi_A & = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff\circ\id_{FA}))\\
+& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff\circ F(\id_{A})))\\
+& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(F(f\circ\id_{A})))\\
+& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(F(f))).
+\ei
+Similarly, by considering the diagram
+\bse
+\begin{tikzcd}[row sep=huge,column sep=4.5em]
+\mor_{\mathcal{D}}(FB,FB) \ar[r,"\Phi_{B,FB}"]\ar[d,"-\circ Ff"]& \mor_{\mathcal{C}}(B,GFB)\ar[r,"(\Psi_{B,FB})^{-1}"] \ar[d,"-\circ f"]& \mor_{\mathcal{D}}(F'B,FB)\ar[d,"-\circ F'f"]\\
+\mor_{\mathcal{D}}(FA,FB) \ar[r,"\Phi_{A,FB}"]& \mor_{\mathcal{C}}(A,GFB)\ar[r,"(\Psi_{A,FB})^{-1}"] & \mor_{\mathcal{D}}(F'A,FB)
+\end{tikzcd}
+\ese
+we find
+\bi{rCl}
+\xi_B\circ F'f & = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(\id_{FB}\circ Ff))\\
+& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff)).
+\ei
+So $Ff\circ\xi_A=\xi_B\circ F'f$, i.e.\ $\xi$ is a natural transformation.
+
+Finally, for each $A\in \mathcal{C}$, define $\lambda_A=(\Phi_{A,F'A})^{-1}(\Psi_{A,F'A}(\id_{F'A}))$, i.e.\ $\lambda_A$ is the image of $\id_{F'A}$ under the composite
+\bse
+\mor_{\mathcal{D}}(F'A,F'A)\xrightarrow{\ \Psi_{A,F'A} \ }\mor_{\mathcal{C}}(A,GF'A)\xrightarrow{\ (\Phi_{A,F'A})^{-1}\ }\mor_{\mathcal{D}}(FA,F'A).
+\ese
+By the naturality of the bijections $\Phi$ and $\Psi$, the diagram
+\bse
+\begin{tikzcd}[row sep=huge,column sep=4.5em]
+\mor_{\mathcal{D}}(F'A,F'A) \ar[r,"\Psi_{A,F'A}"]\ar[d,"\xi_A\circ-"]& \mor_{\mathcal{C}}(A,GF'A)\ar[r,"(\Phi_{A,F'A})^{-1}"] \ar[d," G\xi_A\circ-"]& \mor_{\mathcal{D}}(FA,F'A)\ar[d,"\xi_A\circ-"]\\
+\mor_{\mathcal{D}}(F'A,FA) \ar[r,"\Psi_{A,FA}"]& \mor_{\mathcal{C}}(A,GFA)\ar[r,"(\Phi_{A,FA})^{-1}"] & \mor_{\mathcal{D}}(FA,FA)
+\end{tikzcd}
+\ese
+
+commutes. Chasing $\id_{F'A}$ around the diagram, we obtain
+\bi{rCl}
+\xi_A\circ\lambda_A & = & (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\xi_A\circ \id_{F'A}))\\
+& = & (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\xi_A))\\
+& = &  (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\Psi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA})))\\
+& = &  (\Phi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA}))\\
+& = &\id_{FA}
+\ei
+and, similarly, $\lambda_A\circ\xi_A=\id_{F'A}$ for each $A\in \mathcal{C}$. So $\xi_A$ is an isomorphism for each $A\in\mathcal{C}$, and thus $\xi\cl F'\to F$ is a natural isomorphism with inverse $\lambda$.
+\es
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

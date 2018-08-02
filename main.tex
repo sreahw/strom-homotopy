@@ -1,5 +1,109 @@
-\documentclass{article}
+\documentclass[12pt,twoside]{book}
+
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,xfrac,pifont}
+
+\usepackage{array,tabularx}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{emerald,xcolor,tikz,tikz-cd}
+\definecolor{lightergray}{rgb}{0.9,0.9,0.9}
+
+\usepackage{enumitem}
+
+\usepackage[
+  top=1.25in,
+  bottom=1.25in,
+  left=1.25in,
+  right=1.25in,
+  bindingoffset=0in,
+  heightrounded,
+]{geometry}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE]{\nouppercase{{\slshape\leftmark}}}
+\fancyhead[RE]{\thepage}
+\fancyhead[RO]{\nouppercase{{\slshape\rightmark}}}
+\fancyhead[LO]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\setlength{\headheight}{15pt}
+\fancyfoot{}
+%\cfoot{\nouppercase{\textbf{\textsc{\textsf{\thepage}}}}}
+
+
+\usepackage{hyperref}
+
+
+%\theoremstyle{definition}
+\newtheoremstyle{dotless}{}{}{}{}{\bfseries}{}{ }{}
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\newtheorem{problem}[exercise]{Problem}
+\def\bx{\begin{exercise}}
+\def\ex{\end{exercise}}
+\def\bp{\begin{problem}}
+\def\ep{\end{problem}}
+
+\newtheorem{extra}{Extra Problem}
+
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solution}
+
+\input{shortcuts}
+
+
+\title{Solutions to Strom's\\\textit{Modern Classical Homotopy Theory}}
+\author{Simon Rea}
+\date{Last updated: \today}
+
+
+
+
+
 \begin{document}
-(Type your content here.)
+
+\maketitle
+\tableofcontents
+
+\chapter{Categories and Functors}
+\input{chapters/ch1}
+
+\chapter{Limits and Colimits}
+\input{chapters/ch2}
+
+\appendix
+\chapter{Some Algebra}
+\input{chapters/apx}
+
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

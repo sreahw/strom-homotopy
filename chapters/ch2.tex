@@ -1,0 +1,376 @@
+
+\section{Diagrams and Their Shapes}
+
+
+\section{Limits and Colimits}
+
+\bx
+Suppose that the empty diagram $\vn$ has a limit. Show that it is a terminal object in $\mathcal{C}$. Find a way to view a product as the limit of a diagram.
+\ex
+
+\bs
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Construct an example of a category and a diagram which has no limit.
+\item A discrete category is one in which the only morphisms are identities. What is the limit of a diagram whose shape is discrete?
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item  
+\item 
+\een
+\es
+
+\bp
+Show that any two limits of a given diagram $F \cl \mathcal{I} \to \mathcal{C}$ are equivalent in $\mathcal{C}$. Also prove the dual statement about the uniqueness of colimits.
+
+{\scshape Hint.} Let $P$ and $Q$ be two limits of $F$; use the universal property of the limit to find maps $P \to Q$ and $Q \to P$. Alternatively, construct a natural isomorphism between the functors $\mor_{\mathcal{C}}( - , P)$ and $\mor_{\mathcal{C}}( -,Q)$.
+\ep
+
+\bs
+\es
+
+\bx
+Define the opposite $F^\op \cl \mathcal{I}^\op \to \mathcal{C}^\op$ of a diagram $F \cl\mathcal{I} \to\mathcal{C}$. Compare the limit and colimit of $F^\op$ to the limit and colimit of $F$.
+\ex
+
+\bs
+\es
+
+\bx
+Show that the colimit of the empty diagram $\vn \to \mathcal{C}$ is an initial object in $\mathcal{C}$. Show that the limit of the identity $\id_\mathcal{C}$ is an initial object in $\mathcal{C}$.
+\ex
+
+\bs
+\es
+
+\bx
+Suppose $\mathcal{I}$ has an initial object, $\vn$, and let $F \cl \mathcal{I} \to \mathcal{C}$. Show that $F$ has a limit. State and prove the dual result.
+\ex
+
+\bs
+\es
+
+\bx
+What is the colimit of a diagram whose shape is discrete?
+\ex
+
+\bs
+\es
+
+
+
+\section{Naturality of Limits and Colimits}
+
+\section{Special Kinds of Limits and Colimits}
+
+\bp
+Suppose that
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+P \ar[d,"i"']\ar[r,"p"] & X\ar[d,"j"]\\
+Z\ar[r,"z"]&Y\end{tikzcd}
+\ese
+is a pullback square. Show that if $j$ is an equivalence, then so is $i$.
+
+{\scshape Hint}. Use the map $j^{-1}\circ z$ to find a map $K\cl Z\to P$.
+\ep
+
+\bs
+Consider the diagram
+\bse
+\begin{tikzcd}%[column sep=large,row sep=large]
+Z\ar[dr,dashed,"K"]\ar[rrrd,bend left=30,"j^{-1}\circ z"] \ar[dddr,bend right=30,"\id_Z"'] &&\\
+&P \ar[dd,"i"']\ar[rr,"p"] && X\ar[dd,"j"]\\
+&&&\\
+&Z\ar[rr,"z"]&&Y\end{tikzcd}
+\ese
+and note that, since $j\circ(j^{-1}\circ z)=z\circ \id_Z$, there exists a unique $K\cl Z\to P$ such that the two triangles commute, i.e. $p\circ K=j^{-1}\circ z$ and $i\circ K=\id_Z$. Now consider the diagram
+\bse
+\begin{tikzcd}%[column sep=large,row sep=large]
+P\ar[dr,dashed]\ar[rrrd,bend left=30,"p"] \ar[dddr,bend right=30,"i"'] &&\\
+&P \ar[dd,"i"']\ar[rr,"p"] && X\ar[dd,"j"]\\
+&&&\\
+&Z\ar[rr,"z"]&&Y\end{tikzcd}
+\ese
+The outer square commutes since it is the same as the inner square. Hence there is a unique morphism $P\to P$ making the two triangles commute. We obviously have $p\circ \id_P=p$ and $i\circ \id_P=i$, but also
+\bse
+p\circ(K\circ i)=(p\circ K)\circ i=j^{-1}\circ z \circ i=j^{-1}\circ j \circ p=p
+\ese
+and $i\circ(K\circ i)=(i\circ K)\circ i=i$. Thus $K\circ i=\id_P$.
+\es
+
+\bx
+Suppose that $\mathcal{C}$ has a terminal object $\tau$. Show that products of $X$ and $Y$ are the same as pullbacks for the diagram $X\to \tau \leftarrow Y$.
+\ex
+
+\bs
+\begin{itemize}
+\item[$(\Rightarrow)$]
+This is done in Problem 1.45 (a).
+\item[$(\Leftarrow)$]
+Let $(Z,p,q)$ be the pullback of the diagram $X\to\tau\leftarrow Y$. Consider arbitrary morphisms $f\cl W\to X$ and $g\cl W\to Y$. Since $\tau$ is terminal, there is a unique morphism $W\to \tau$. Therefore, the two composites $W\xrightarrow{\,f\,}X\to \tau$ and $W\xrightarrow{\,g\,}Y\to \tau$ are equal. By the universal property of pullbacks, there is a unique morphism $W\to Z$ making the diagram 
+\bse
+\begin{tikzcd}
+W \ar[dddr,bend right=30,"g"]\ar[drrr,bend left=30,"f"]\ar[dr,dashed]&&&\\
+& Z \ar[rr,"p"]\ar[dd,"q"]&& X\ar[dd]\\
+&&&\\
+&Y \ar[rr]&& \tau
+\end{tikzcd}
+\ese
+commute. Thus, $(Z,p,q)$ is a product of $X$ and $Y$. 
+\end{itemize}
+\es
+
+\bx
+Determine the pullback of the diagram
+\bse
+\begin{tikzcd}
+\{1\}\ar[r] & B & \ar[l,"f"'] A
+\end{tikzcd}
+\ese
+in the category of groups and homomorphisms.
+\ex
+
+\bs
+\es
+
+\bp
+State and prove the dual of Problem 2.21.
+\ep
+
+\bs
+Suppose that
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[r,"i"] \ar[d,"f"]& B\ar[d,"g"]\\
+C \ar[r,"j"] & D
+\end{tikzcd}
+\ese
+is a pushout square. Then, if $f$ is an equivalence, so is $g$. Indeed, we have a diagram
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+A \ar[rr,"i"] \ar[dd,"f"]&& B\ar[dd,"g"]\ar[dddr,bend left=30,"\id_B"]&\\
+&&&\\
+C \ar[rrrd,bend right=30,"i\circ f^{-1}"']\ar[rr,"j"] && D\ar[dr,dashed,"k"]&\\
+&&&B
+\end{tikzcd}
+\ese
+Since $(i\circ f^{-1})\circ f=i=\id_B\circ i$, by the universal property of pushouts, there is a unique morphism $k\cl D\to B$ such that $k\circ g=\id_B$ and $k\circ j=i\circ f^{-1}$. Now consider
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+A \ar[rr,"i"] \ar[dd,"f"]&& B\ar[dd,"g"]\ar[dddr,bend left=30,"g"]&\\
+&&&\\
+C \ar[rrrd,bend right=30,"j"']\ar[rr,"j"] && D\ar[dr,dashed]&\\
+&&&D
+\end{tikzcd}
+\ese
+The outer square commutes (as it is the same as the inner square) and hence there exists a unique morphism $D\to D$ making the two triangles commute. We obviously have $\id_D\circ g= g$ and $\id_D\circ j= j$, but also
+\bse
+(g\circ k)\circ j=g\circ (k\circ j)=g\circ i\circ f^{-1}=j\circ f\circ f^{-1}=j
+\ese
+and $(g\circ k)\circ g=g\circ(k\circ g)=g\circ \id_B=g$, so $g\circ k=\id_D$.  
+
+\es
+
+\section{Formal Properties of Pushout and Pullback Squares}
+
+\bp
+Consider the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[r,"i"] \ar[d,"f"]& B\ar[d,"g"]\\
+C \ar[r,"j"] & D
+\end{tikzcd}
+\ese
+\ben[label=(\alph*)]
+\item Suppose the diagram is a pushout and that $f$ is an equivalence. Show that $g$ is also an equivalence.
+\item Suppose $f$ and $g$ are both equivalences. Show that the square is a pushout.
+\item State and prove the duals of (a) and (b).
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item This is done in Problem 2.27.
+\item {\scshape Note}. The statement in (b) is not true without also assuming that the square is commutative. Indeed, consider the following square in, say, $\mathbf{Sets}$.
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\{a\} \ar[r] \ar[d]& \{b,c\}\ar[d]\\
+\{d\} \ar[r] & \{e,f\}
+\end{tikzcd}
+\ese
+The vertical arrows can be taken to be equivalences (bijections): there is a unique map $\{a\}\to\{d\}$ and we can define $\{b,c\}\to\{e,f\}$ by $b\mapsto e$, $c\mapsto f$. Then, choosing the horizontal maps to be $a\mapsto b$ and $d\mapsto f$ shows that the square need not be commutative.
+
+Hence, let us assume that the square is commutative. Since $f$ is an equivalence, we have
+\bse
+j=j\circ \id_C=j\circ f\circ f^{-1}=g\circ i\circ f^{-1}.
+\ese
+Let $h\cl B\to Z$ and $k\cl C\to Z$ be morphisms such that $h\circ i=k\circ f$. Consider the morphism $h\circ g^{-1}\cl D\to Z$.
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+A \ar[rr,"i"] \ar[dd,"f"]&& B\ar[dd,"g"]\ar[dddr,bend left=30,"h"]&\\
+&&&\\
+C \ar[rrrd,bend right=30,"k"']\ar[rr,"j"] && D\ar[dr,"h\circ g^{-1}"']&\\
+&&&Z
+\end{tikzcd}
+\ese
+We clearly have $(h\circ g^{-1})\circ g=h$ and
+\bse
+(h\circ g^{-1})\circ j=h\circ g^{-1}\circ (g\circ i\circ f^{-1})= h\circ i\circ f^{-1} =k \circ f \circ f^{-1}=k.
+\ese
+So $h\circ g^{-1}\cl D\to Z$ makes the two triangles in the diagram commute.
+
+To see that it is the unique such, let $l\cl D\to Z$ be such that $l\circ j=k$ and $l\circ g=h$. Then
+\bse
+l=l\circ \id_D=l\circ (g\circ g^{-1})=(l\circ g)\circ g^{-1}=h\circ g^{-1}.
+\ese
+\item The dual of (a) is stated and proved in Problem 2.21. The dual of (b) reads: A commutative square
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[r,"i"] \ar[d,"f"]& B\ar[d,"g"]\\
+C \ar[r,"j"] & D
+\end{tikzcd}
+\ese
+in which both $f$ and $g$ are equivalences, is a pullback square.
+
+Indeed, let $h\cl X\to B$ and $k\cl X\to C$ be morphisms such that $g\circ h=j\circ k$. Consider the morphism $f^{-1}\circ k\cl X\to A$.
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+X \ar[dr,"f^{-1}\circ k"] \ar[rrrd,bend left=30,"h"]\ar[dddr,bend right=30,"k"']&&&\\
+&A \ar[rr,"i"] \ar[dd,"f"]&& B\ar[dd,"g"]\\
+&&&\\
+&C \ar[rr,"j"] && D
+\end{tikzcd}
+\ese
+We clearly have $f\circ (f^{-1}\circ k)$ and, noting that $i=g^{-1}\circ j\circ f$,
+\bse
+i\circ(f^{-1}\circ k)=(g^{-1}\circ j\circ f)\circ(f^{-1}\circ k)= g^{-1}\circ j\circ k =g^{-1}\circ g\circ h=h.
+\ese
+For uniqueness, let $l\cl X\to A$ be such that $f\circ l=k$ and $i\circ l=h$. Then
+\bse
+l=\id_A\circ l=(f^{-1}\circ f) \circ l=f^{-1}\circ (f \circ l)=f^{-1}\circ k.
+\ese
+\een
+\es
+
+\bp
+Prove Theorem 2.40: Consider the diagram
+\bse
+\begin{tikzcd}[row sep=small]
+A_1 \ar[rr,"f_1"] \ar[dd,"h_1"]&& A_2 \ar[dd,"h_2"]\ar[rr,"f_2"]&& A_3\ar[dd,"h_3"]\\
+ &(I)& &(II)&\\
+B_1 \ar[rr,"g_1"]&& B_2\ar[rr,"g_2"] && B_3
+\end{tikzcd}
+\ese
+and denote the outside square by $(T)$.
+\ben[label=(\alph*)]
+\item If $(I)$ and $(II)$ are pushouts, then $(T)$ is also a pushout.
+\item If $(I)$ and $(T)$ are pushouts, then $(II)$ is also a pushout.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Since $(I)$ and $(II)$ are pushouts, they are commutative squares. We have
+\bse
+h_3\circ (f_2\circ f_1) =(g_2\circ h_2)\circ f_1=g_2\circ (g_1\circ h_1)
+\ese
+and hence $(T)$ is also a commutative square. Let $f\cl A_3\to C$ and $g\cl B_1\to C$ be morphisms such that $f\circ(f_2\circ f_1)=g\circ h_1$.
+\bse
+\begin{tikzcd}[row sep=small]
+A_1 \ar[rr,"f_1"] \ar[dd,"h_1"]&& A_2 \ar[dd,"h_2"]\ar[rr,"f_2"]&& A_3\ar[dd,"h_3"] \ar[rddd,bend left=30,"f"]&\\
+ &(I)& &(II)&&\\
+B_1 \ar[rrrrrd,bend right=25,"g"]\ar[rr,"g_1"]&& B_2\ar[drrr,bend right=10,dashed,"h"]\ar[rr,"g_2"] && B_3\ar[dr,dashed,"k"]&\\
+&&&&& C
+\end{tikzcd}
+\ese
+Since $(f\circ f_2)\circ f_1=g\circ h_1$, by the pushout property of $(I)$, there exists a unique $h\cl B_2\to C$ such that $h\circ g_1=g$ and $h\circ h_2=f\circ f_2$. The latter implies that there exists a unique $k\cl B_3\to C$ such that $k\circ g_2 = h$ and $k\circ h_3=f$ by the pushout property of $(II)$. Then $k\circ(g_2\circ g_1)=h\circ g_1=g$.
+
+For uniqueness, let $k'\cl B_3\to C$ is such that $k'\circ h_3=f$ and $k'\circ (g_2\circ g_1)=g$. Consider the composite $k'\circ g_2\cl B_2\to C$. We have $(k'\circ g_2)\circ g_1=g$ and 
+\bse
+(k'\circ g_2)\circ h_2=k'\circ (h_3\circ f_2)=f\circ f_2,
+\ese
+but $h\cl B_2\to C$ is the unique morphism satisfying these equations and hence $k'\circ g_2 =h$. Since we also have $k'\circ h_3=f$ and $k$ is the unique morphism satisfying these equations, we must have $k=k'$. 
+\item {\scshape Note}. The statement in (b) is not true without assuming that $(I)$ and $(II)$ are both commutative. Indeed, the commutativity of $(I)$ and $(T)$ does not imply that of $(II)$, as is shown, for instance, by the following diagram in $\mathbf{Sets}$. 
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\{a\}\ar[r,"a\,\mapsto\,b"]\ar[d] & \{b,c\} \ar[d] \ar[r,"b\,\mapsto\, d","c\,\mapsto\, e"'] & \{d,e\} \ar[d,"e\,\mapsto\,i","d\,\mapsto\, h"']\\
+\{f\} \ar[r] & \{g\} \ar[r,"g\,\mapsto \, h"] & \{h,i\}
+\end{tikzcd}
+\ese
+
+Hence, assuming that $(I)$ and $(II)$ are both commutative, let $f\cl A_3\to C$ and $g\cl B_2\to C$ be morphisms such that $f\circ f_2=g\circ h_2$.
+\bse
+\begin{tikzcd}[row sep=small]
+A_1 \ar[rr,"f_1"] \ar[dd,"h_1"]&& A_2 \ar[dd,"h_2"]\ar[rr,"f_2"]&& A_3\ar[dd,"h_3"] \ar[rddd,bend left=30,"f"]&\\
+ &(I)& &(II)&&\\
+B_1 \ar[rrrrrd,bend right=25,"g\circ g_1"']\ar[rr,"g_1"]&& B_2\ar[drrr,bend right=22,"g"'] \ar[drrr,dashed,bend right=5,"u"] \ar[rr,"g_2"] && B_3\ar[dr,dashed,"k"]&\\
+&&&&& C
+\end{tikzcd}
+\ese
+Since 
+\bse
+f\circ (f_2\circ f_1)=(g\circ h_2)\circ f_1=(g\circ g_1)\circ h_1,
+\ese
+by the pushout property of $(T)$, there is a unique morphism $k\cl B_3\to C$ such that $k\circ h_3=f$ and $k\circ(g_2\circ g_1)=g \circ g_1$.
+
+Now consider the composites $g\circ h_2$ and $g\circ g_1$. By the commutativity of $(I)$, we have $(g\circ h_2)\circ f_1=(g\circ g_1)\circ h_1$. Hence, by the pushout property of $(I)$, there is a unique $u\cl B_2\to C$ such that
+\bse
+u\circ h_2=g\circ h_2 \qquad \text{ and }\qquad u\circ g_1=g\circ g_1.
+\ese
+Obviously, $g$ satisfies these equations, but we also have
+\bse
+(k\circ g_2)\circ g_1=k\circ(g_2\circ g_1)=g\circ g_1
+\ese
+and
+\bse
+(k\circ g_2)\circ h_2=k\circ(h_3\circ f_2)=f\circ f_2=g\circ h_2.
+\ese
+Therefore $k\circ g_2=u=g$. 
+
+For uniqueness, let $k'\cl B_3\to C$ be such that $k'\circ h_3=f$ and $k'\circ g_2=g$. Then
+\bse
+k'\circ(g_2\circ g_1)=(k'\circ g_2)\circ g_1=g\circ g_1
+\ese
+and $k'\circ h_3=f$, but, by the pushout property of $(T)$, $k$ is the unique morphism satisfying these equations. Thus $k'=k$.
+\een
+\es
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
