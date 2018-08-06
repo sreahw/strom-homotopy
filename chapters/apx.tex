@@ -1,16 +1,309 @@
 \section{Modules, Algebras and Tensor Products}
 
 
+\bx
+Show that every abelian group is a $\Z$-module and that every group homomorphism is a $\Z$-module homomorphism.
+\ex
 
+\bs
+Let $A$ be an abelian group and define $\Z\times A\to A$ by
+\bse
+n\cdot a =
+\begin{cases}
+\underbrace{a+a+\cdots+a}_{n \text{ times}} & \text{ if }n>0\\
+0 & \text{ if } n=0\\
+-(-n\cdot a) & \text{ if }n<0.
+\end{cases}
+\ese
+Then, for all $m,n\in \Z$ and $a,b\in A$, we have
+\begin{itemize}
+\item whenever $n>0$,
+\bi{rCl}
+n\cdot(a+b)&=&\underbrace{(a+b)+(a+b)+\cdots+(a+b)}_{n \text{ times}}\\
+&=&\underbrace{a+a+\cdots+a}_{n \text{ times}}+\underbrace{b+b+\cdots+b}_{n \text{ times}}\\
+&=&n\cdot a+n\cdot b.
+\ei
+Clearly, $0\cdot(a+b)=0=0\cdot a+0\cdot b$, and finally, for $n<0$,
+\bse
+n\cdot(a+b)=-(-n\cdot(a+b))=-(-n\cdot a)-(-n\cdot b)=n\cdot a+n\cdot b.
+\ese
+\item whenever $n>0$, 
+\bi{rCl}
+(n+m)\cdot a&=&\underbrace{a+a+\cdots+a}_{n+m \text{ times}}\\
+&=&\underbrace{a+a+\cdots+a}_{n \text{ times}}+\underbrace{a+a+\cdots+a}_{m \text{ times}}\\
+&=&n\cdot a+m\cdot a.
+\ei
+Also, if $n+m=0$, then $m=-n$, so
+\bse
+(m+n)\cdot a=0=n\cdot a-n\cdot a=n\cdot a+m\cdot a,
+\ese
+and finally, if $n+m<0$,
+\bse
+(n+m)\cdot a=-(-(n+m)\cdot a)=-(-n\cdot a)-(-m\cdot a)=n\cdot a+m\cdot a.
+\ese
+\item 
+\item by definition, $1\cdot a=a$.
+\end{itemize}
+Let $f\cl A\to B$ be a group homomorphism. Then, for all $a\in A$ and $n\in \Z$, we have
+\bse
+f(n\cdot a)=f\bigl(\underbrace{a+a+\cdots+a}_{n \text{ times}}\bigr)=\underbrace{f(a)+f(a)+\cdots+f(a)}_{n \text{ times}}=n\cdot f(a)
+\ese
+whenever $n>0$. Clearly, $f(0\cdot a)=f(0)=0=0\cdot a$ and finally, if $n<0$,
+\bse
+f(n\cdot a)=f(-(-n\cdot a))=-f(-n\cdot a)=-(-n\cdot f(a))=n\cdot f(a),
+\ese
+since homomorphisms preserve inverses.
+\es
 
+\bp
+Show that if $f \cl M \to N$ is an $R$-module homomorphism, then $\ker(f)$, $\im(f)$ and $\coker(f)$ are all $R$-modules.
+\ep
 
+\bs
+Define $R\times \ker(f)\to\ker(f)$ to be the restriction of $R\times M\to M$. Then, for all $m_1,m_2\in\ker(f)$ and $r\in R$, we have
+\bse
+f(r\cdot m_1+m_2)=r\cdot f(m_1)+f(m_2)=r\cdot 0+0=0.
+\ese
+So $r\cdot m_1+m_2\in \ker(f)$ and thus $\ker(f)$ is an $R$-submodule of $M$.
 
+Similarly, define $R\times \im(f)\to\im(f)$ to be the restriction of $R\times N\to N$. Then, for all $n_1,n_2\in\im(f)$ and $r\in R$, we have $n_1=f(m_1)$ and $n_2=f(m_2)$ for some $m_1,m_2\in M$, respectively. As $M$ is a module, $r\cdot m_1+m_2\in M$, and $f(r\cdot m_1+m_2)=r\cdot n_1+n_2$, so $r\cdot n_1+n_2 \in \im(f)$. Thus $\im(f)$ is an $R$-submodule of $N$.
+
+Finally, for $n+\im(f)\in\coker(f)=N/\im(f)$ and $r\in R$, we define
+\bse
+r\cdot(n+\im(f))=r\cdot n+\im(f).
+\ese
+This is the unique map making the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+R\times N \ar[dr,"\id_R\times q"'] \ar[r] & N \ar[r,"q"] & N/\im(f)\\
+& R\times N/\im(f)\ar[ur,dashed]&
+\end{tikzcd}
+\ese
+commute. That is, $\coker(f)$ inherits the multiplication from $N$ as an $R$-module quotient of $N$.
+
+In particular, $\ker(f)$,$\im(f)$ and $\coker(f)$ are all $R$-modules in their own right.
+\es
+
+\bp
+Give explicit constructions for $\prod_{\mathcal{I}} M_i$ and $\bigoplus_{\mathcal{I}} M_i$.
+\ep
+
+\bs
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that the map $R\otimes_R M \to M$ given by $r\otimes m \mapsto rm$ is an $R$-module isomorphism, and likewise $M\cong
+M \otimes_R M$.
+\item Show that $-\otimes_R N$ and $M \otimes_R -$ are functors.
+\item Show that there are natural isomorphisms
+\bse
+\Hom_R(A \otimes_R B,C)\cong \Hom_R(A,\Hom_R(B,C)),
+\ese
+an algebraic exponential law.
+\item Show that there are natural distributivity isomorphisms
+\bse
+A \otimes_R (B \oplus C) \cong (A \otimes_R B) \oplus (A \otimes_R C).
+\ese
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\item 
+\item 
+\een
+\es
 
 \section{Exact Sequences}
 
+\bp
+What can you say about $f \cl A \to B$ in the following situations?
+\ben[label=(\alph*)]
+\item $A \to B \to 0$ is exact.
+\item $0\to A \to B$ is exact.
+\item $0\to A \to B \to 0$ is exact.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item By exactness at $B$, we have $\im(A\to B)=\ker(B\to 0)=B$, so $A\to B$ is surjective. 
+\item By exactness at $A$, we have $\ker(A\to B)=\im(0\to A)=0$, so $A\to B$ is injective. 
+\item By parts (a) and (b), $A \to B$ is an isomorphism.
+\een
+\es
+
+\bp
+Prove Lemma A.16:
+\ben[label=(\alph*)]
+\item If the sequences $A \to B\xrightarrow{f\ } C \to 0$ and $0 \to C\xrightarrow{g\ } D \to E$ are exact, then the sequence
+\bse
+A \longrightarrow B \xrightarrow{g\circ f\ } D \longrightarrow E
+\ese
+is also exact.
+\item If $A \xrightarrow{f\ }B\to C\to D \xrightarrow{g\ }E$ is exact, then there is a short exact sequence
+\bse
+0 \longrightarrow \coker(f) \longrightarrow  C \longrightarrow\ker(g) \longrightarrow 0.
+\ese
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item From the exactness of the given sequences, we deduce that $\ker(f)=\im(A\to B)$, $\im(f)=C$, $\ker(g)=0$ and $\im(g)=\ker(D\to E)$.
+
+Let $b\in B$. Then
+\bi{rCl}
+b\in \ker(g\circ f) & \ \Leftrightarrow\ & g(f(b))=0 \\
+& \Leftrightarrow & f(b)\in\ker(g)=0 \\
+& \Leftrightarrow & f(b)=0 \\
+& \Leftrightarrow & b\in\ker(f)=\im(A\to B),
+\ei
+so we have exactness at $B$.
+
+Now let $d\in D$ and suppose that $d\in\ker(D\to E)=\im(g)$. Then there exists $c\in C$ such that $g(c)=d$. Since $C=\im(f)$, there exists $b\in B$ such that $f(b)=c$. Thus $d=g(f(b))$, so $d\in \im(g\circ f)$. Conversely, if $d\in\im(g\circ f)$, then $d\in\im(g)=\ker(D\to E)$. Therefore, $A \to B \xrightarrow{g\circ f\ } D \to E$ is exact.
+\item Let us denote the maps in the two sequences as $i\cl B\to C$, $j\cl C\to D$, $k\cl \coker(f)\to C$ and $l\cl C\to \ker(g)$, with $k$ and $l$ induced by $i$ and $j$, respectively. That is, $k(b+\im(f))=i(b)$ for all $b\in B$ and, as $\ker(g)=\im(j)$, we in fact have $j(c)=l(c)$ for all $c\in C$.
+
+Let $b\in B$. Then
+\bi{rCl}
+b+\im(f)\in \ker(k) & \ \Leftrightarrow\ & k(b+\im(f))=0 \\
+& \Leftrightarrow & i(b)=0 \\
+& \Leftrightarrow & b\in\ker(i)=\im(f) \\
+& \Leftrightarrow & b+\im(f)=0,
+\ei
+so $\ker(k)=0$, i.e.\ the sequence is exact at $\coker(f)$.
+
+Now let $c\in \ker(l)=\ker(j)=\im(i)$, so there exists $b\in B$ such that $i(b)=c$. Then $b+\im(f)\in\coker(f)$ is such that $k(b+\im(f))=i(b)=c$, so $c\in \im(k)$. Conversely, if $c\in\im(k)$, then $c\in\im(i)=\ker(j)=\ker(l)$. So $\ker(l)=\im(k)$, i.e.\ we have exactness at $C$.
+
+Finally, we have $\im(l)=\im(j)=\ker(g)$, so the sequence is exact at $\ker(g)$.
+\een
+\es
+
+\bp
+Let $F \cl R\text{-}\mathbf{Mod} \to R\text{-}\mathbf{Mod}$. Show that $F$ is exact if, and only if, $F$ carries every short exact sequence to a short exact sequence.
+\ep
+
+\bs
+\es
+
+\bp
+Let $0\to A \to B \to C\to 0$ be a short exact sequence. Show that the following are equivalent:
+\ben[label=(\arabic*)]
+\item the map $A \to B$ has a left inverse,
+\item the map $B \to C$ has a right inverse,
+\item the sequence is pointwise isomorphic to the standard trivial extension
+\bse
+0\to A \to A\oplus C \to C\to 0
+\ese
+given by projection and inclusion.
+\een
+\ep
+
+\bs
+\ben[label=(\arabic*)]
+\item 
+\item 
+\item 
+\een
+\es
+
+\bp
+Prove Theorem A.20 (Five Lemma): In the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A_1 \ar[r,"i_1"]\ar[d,"f_1"] & A_2 \ar[d,"f_2"]\ar[r,"i_2"] & A_3 \ar[r,"i_3"] \ar[d,"\phi"] & A_4 \ar[d,"f_4"]\ar[r,"i_4"] & A_5\ar[d,"f_5"]\\
+B_1 \ar[r,"j_1"] & B_2\ar[r,"j_2"] & B_3\ar[r,"j_3"] & B_4\ar[r,"j_4"] & B_5
+\end{tikzcd}
+\ese
+if the rows are exact and $f_1$, $f_2$, $f_4$ and $f_5$ are isomorphisms, then $\phi$ is also an isomorphism.
+
+Examine your proof carefully: what is the bare minimum you need to know to conclude $\phi$ is injective? What do you need to know to conclude $\phi$ is surjective?
+\ep
+
+\bs
+First, we show that $\phi$ is injective, i.e.\ $\ker(\phi)=0$. Let $a\in A_3$ be such that $\phi(a)=0$. Then $j_3(\phi(a))=0$ and thus, by the commutativity of the third square, $f_4(i_3(a))=0$. Since $f_4$ is an isomorphism, $i_3(a)=0$, so $a\in \ker(i_3)$. Thus, by exactness at $A_3$, there exists $a'\in A_2$ such that $i_2(a')=a$. By the commutativity of the second square, we have 
+\bse
+j_2(f_2(a'))=\phi(i_2(a'))=\phi(a)=0.
+\ese
+By exactness at $B_2$, there exists $b\in B_1$ such that $j_1(b)=f_2(a')$. Since $f_1$ is an isomorphism, there exists $a''\in A_1$ such that $f_1(a'')=b$. By the commutativity of the first square, we have
+\bse
+f_2(i_1(a''))=j_1(f_1(a''))=j_1(b)=f_2(a').
+\ese
+Since $f_2$ is an isomorphism, we must have $i_1(a'')=a'$, i.e.\ $a'\in\im(i_1)$. By exactness at $A_2$, $\im(i_1)=\ker(a_2)$, and therefore $a=i_2(a')=0$.
+
+For surjectivity, let $b\in B_3$. Then, $j_3(b)\in B_4$ and, since $f_4$ is an isomorphism, there exists $a\in A_4$ such that $f_4(a)=j_3(b)$. By exactness at $B_4$, we have $j_4(j_3(b))=0$. Thus, by the commutativity of the fourth square,
+\bse
+f_5(i_4(a))=j_4(f_4(a))=j_4(j_3(b))=0.
+\ese
+Since $f_5$ is an isomorphism, we must have $i_4(a)=0$. by exactness at $A_4$, there exists $a'\in A_3$ such that $i_3(a')=a$. By the commutativity of the third square, we have 
+\bse
+j_3(\phi(a'))=f_4(i_3(a'))=f_4(a)=j_3(b).
+\ese
+So $j_3(\phi(a')-b)=0$. By exactness at $B_3$, there exists $b'\in B_2$ such that $j_2(b')=\phi(a')-b$. Since $f_2$ is an isomorphism, there exists $a''\in A_2$ such that $f_2(a'')=b'$. Then, the element $a'-i_2(a'')\in A_3$ is such that
+\bi{rCl}
+\phi(a'-i_2(a'')) & = &\phi(a')-\phi(i_2(a''))\\
+&=&\phi(a')-j_2(f_2(a''))\\
+&=&\phi(a')-j_2(b')\\
+&=&\phi(a')-\phi(a')+b\\
+&=&b,
+\ei
+by the commutativity of the second square. Thus, $\phi$ is an isomorphism.
+
+Note that, in order to show that $\phi$ is injective, we merely need that $f_2$ and $f_4$ be injective, $f_1$ be surjective, the sequences be exact at $A_2$, $A_3$ and $B_2$, and the first three squares commute. Dually, to show that $\phi$ is surjective, it suffices that $f_2$ and $f_4$ be surjective, $f_1$ be injective, the sequences be exact at $A_4$, $B_3$ and $B_4$, and the last three squares commute.
+\es
 
 
 
+\section{Graded Algebra}
+
+
+
+\section{Chain Complexes and Algebraic Homology}
+
+\bp
+Show that $\im(d) \subseteq \ker(d)$.
+\ep
+
+\bs
+Let $a\in \im(d)$. Then $a=db$ for some $b$, so $da=d(db)=0$, i.e.\ $a\in \ker(d)$.
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that there is a category whose objects are chain complexes and whose morphisms are chain maps.
+\item Show that homology is a functor from the category of chain complexes to the category of graded $R$-modules.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\addtocounter{exercise}{1}
+
+\bp
+Theorem A.27: If $0 \to A \xrightarrow{ i\ }B\xrightarrow{ j\ } C \to 0$ is a short exact sequence of chain complexes, then there is a long exact sequence
+\bse
+\cdots \to H^n(A)  \xrightarrow{ \ i^*\ }H^n(B)  \xrightarrow{ \ j^*\ } H^n(C)  \xrightarrow{ \ \partial\ } H^{n+1}(A) \to \cdots .
+\ese
+\ben[label=(\alph*)]
+\item Show that the rule $\partial([c]) = [(i^{-1}\circ d_B\circ j^{-1})(c)]$ (brackets denote homology classes) is a well-defined homomorphism $H^n(C) \to H^{n+1}(A)$.
+\item Prove Theorem A.27.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
 
 
 

@@ -1,6 +1,51 @@
 
 \section{Diagrams and Their Shapes}
 
+\bx
+Determine the shape of the diagram1
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[r]\ar[dr] & B\ar[d]\\
+& C
+\end{tikzcd}
+\ese
+if the diagram is
+\ben[label=(\alph*)]
+\item \textbf{guaranteed} to be commutative;
+\item \textbf{not necessarily} noncommutative.
+\een 
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item  
+\item 
+\een
+\es
+
+\bx
+Let $G$ be a group, and consider it as a category with one object, as in Exercise 1.3. Interpret `diagram with shape $G$' in the following categories.
+\ben[label=(\alph*)]
+\item  The category of sets and maps.
+\item The category of groups and homomorphisms.
+\item The category of topological spaces and continuous maps.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item  
+\item
+\item 
+\een
+\es
+
+\bx
+Consider the group $G = \Z/2$ as a category with one object and two morphisms. Is $G$ a finite shape category?
+\ex
+
+\bs
+\es
 
 \section{Limits and Colimits}
 
@@ -113,7 +158,7 @@ Suppose that $\mathcal{C}$ has a terminal object $\tau$. Show that products of $
 \item[$(\Rightarrow)$]
 This is done in Problem 1.45 (a).
 \item[$(\Leftarrow)$]
-Let $(Z,p,q)$ be the pullback of the diagram $X\to\tau\leftarrow Y$. Consider arbitrary morphisms $f\cl W\to X$ and $g\cl W\to Y$. Since $\tau$ is terminal, there is a unique morphism $W\to \tau$. Therefore, the two composites $W\xrightarrow{\,f\,}X\to \tau$ and $W\xrightarrow{\,g\,}Y\to \tau$ are equal. By the universal property of pullbacks, there is a unique morphism $W\to Z$ making the diagram 
+Let $(Z,p,q)$ be a pullback of the diagram $X\to\tau\leftarrow Y$. Consider arbitrary morphisms $f\cl W\to X$ and $g\cl W\to Y$. Since $\tau$ is terminal, there is a unique morphism $W\to \tau$. Therefore, the two composites $W\xrightarrow{\,f\,}X\to \tau$ and $W\xrightarrow{\,g\,}Y\to \tau$ are equal. By the universal property of pullbacks, there is a unique morphism $W\to Z$ making the diagram 
 \bse
 \begin{tikzcd}
 W \ar[dddr,bend right=30,"g"]\ar[drrr,bend left=30,"f"]\ar[dr,dashed]&&&\\
@@ -137,6 +182,22 @@ in the category of groups and homomorphisms.
 \ex
 
 \bs
+Consider the subgroup $\ker (f)$ of $A$ and let $i\cl \ker (f)\hookrightarrow A$ be the inclusion. Then, denoting all identities as $1$, we have $f(i(a))=1$ for all $a\in \ker(f)$. So the inner square commutes. (Note that the homomorphisms into and out of $\{1\}$ are all uniquely determined as $\{1\}$ is a zero object.)
+\bse
+\begin{tikzcd}
+Q \ar[rrrd,bend left=30,"h"] \ar[dddr,bend right=30] \ar[dr,shift left,"j"]\ar[dr,shift right,"j'"']&&&\\
+& \ker (f) \ar[rr,hook,"i"]\ar[dd] && A\ar[dd,"f"]\\
+&&&\\
+& \{1\} \ar[rr] && B
+\end{tikzcd}
+\ese
+Let $h\cl Q\to A$ be such that the outer diagram commutes, i.e.\ $f(h(q))=1$ for all $q\in Q$. Then $h(q)\in\ker(f)$ for all $q\in Q$, so $h$ factors through the inclusion of the kernel, i.e.\ $h=ij$, with $j\cl Q\to \ker (f)$. 
+
+Finally, suppose that $j'\cl Q\to \ker(f)$ is another homomorphism making the triangles commute. Then
+\bse
+j'(q)=i(j'(q))=h(q)=i(j(q))=j(q)
+\ese
+for all $q\in Q$, so $j=j'$. Thus $\ker(f)$ is the pullback of $\{1\}\to B \xleftarrow{\ f}A$.
 \es
 
 \bp
@@ -174,7 +235,110 @@ The outer square commutes (as it is the same as the inner square) and hence ther
 (g\circ k)\circ j=g\circ (k\circ j)=g\circ i\circ f^{-1}=j\circ f\circ f^{-1}=j
 \ese
 and $(g\circ k)\circ g=g\circ(k\circ g)=g\circ \id_B=g$, so $g\circ k=\id_D$.  
+\es
 
+\bx
+Work in the category $\mathbf{Sets}$ of all sets and all functions between sets. Suppose that $A \subseteq B$ and $A\subseteq C$ and that $i \cl A \to C$ and $p \cl A \to B$ are inclusion functions.
+\ben[label=(\alph*)]
+\item Determine the pushout of the diagram $B\xleftarrow{\ p} A\xrightarrow{i\ } C$.
+\item Let $*$ denote a one-point set. Determine the pushout of $B\xleftarrow{\ p} A\xrightarrow{*\ }*$.
+\een
+\ex
+
+\bs
+\es
+
+\bp
+Let $X$ be a topological space, and suppose $X = A \cup B$, where $A,B \subseteq X$ are closed subspaces. Show that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \cap B \ar[r]\ar[d] & A\ar[d]\\
+B\ar[r]& X
+\end{tikzcd}
+\ese
+is a pushout square.
+\ep
+
+\bs
+\es
+
+\bx
+Suppose $\mathcal{C}$ has an initial object $\iota$, and let $X, Y \in \mathcal{C}$. Show that pushouts of diagrams of the form $X \leftarrow \iota \to Y$ are the same as coproducts $X \sqcup Y$.
+\ex
+
+\bs
+\begin{itemize}
+\item[$(\Rightarrow)$]
+This is done in Problem 1.45 (b).
+\item[$(\Leftarrow)$]
+Let $(Z,i,j)$ be a pushout of the diagram $X \leftarrow \iota \to Y$. Consider arbitrary morphisms $f\cl X\to W$ and $g\cl Y\to W$. Since $\iota$ is initial, there is a unique morphism $\iota\to W$. Therefore, the two composites $\iota \to X\xrightarrow{\,f\,}W$ and $\iota \to Y\xrightarrow{\,g\,}W$ are equal. By the universal property of pushouts, there is a unique morphism $Z\to W$ making the diagram 
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+\iota \ar[rr] \ar[dd]&& X\ar[dd,"i"]\ar[dddr,bend left=30,"f"]&\\
+&&&\\
+Y \ar[rrrd,bend right=30,"g"']\ar[rr,"j"] && Z\ar[dr,dashed]&\\
+&&&W
+\end{tikzcd}
+\ese
+commute. Thus, $(Z,i,j)$ is a coproduct of $X$ and $Y$. 
+\end{itemize}
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Consider the category whose objects are the integers $1, 2, 3, \ldots$ and with arrows given by divisibility. Give number-theoretical descriptions of pushouts in this category.
+\item Repeat (a) but using the category whose objects are real numbers and whose morphisms correspond to inequalities $x \leq y$.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bx
+Determine the pushout of the diagram $A\xleftarrow{\ f} B\to\{1\}$ in the category of groups and homomorphisms. Compare with Exercise 2.25; what should the object you constructed here be called?
+\ex
+
+\bs
+Given a subgroup $S$ of a group $G$, denote by $N(S)$ the \emph{normal closure} of $S$ in $G$, i.e.\ the intersection of all normal subgroups of $G$ which contain $S$. So $N(S)$ is the smallest normal subgroup of $G$ which contains $S$. Explicitly,
+\bse
+N(S)=\{g^{-1}sg \mid g \in G \text{ and } s \in S\}.
+\ese
+Consider the subgroup $\im (f)$ of $B$, take the quotient $B/N(\im(f))$ and let $q\cl B \to B/N(\im(f))$ be the quotient homomorphism. Then, for all $a\in A$, we have $f(a)\in \im(f)$, so $q(f(a))=N(\im(f))$ and thus, the inner square commutes. (Note that the homomorphisms into and out of $\{1\}$ are all uniquely determined as $\{1\}$ is a zero object.)
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+A \ar[rr,"f"] \ar[dd]&& B\ar[dd,"q"]\ar[dddr,bend left=30,"h"]&\\
+&&&\\
+\{1\} \ar[rrrd,bend right=30]\ar[rr] && {\displaystyle \frac{B}{N(\im(f))} } \ar[dr,shift left,"j"]\ar[dr,shift right,"j'"']&\\
+&&&Z
+\end{tikzcd}
+\ese
+Let $h\cl B\to Z$ be such that the outer diagram commutes, i.e., denoting all identities as $1$, $h(f(a))=1$ for all $a\in A$. Then $h(b)=1$ for all $b\in \im(f)$. Moreover, if $b\notin \im(f)$ but $b\in N(\im(f))$, then $b=g^{-1}b_0 g$ for some $g\in B$ and $b_0\in \im(f)$. Therefore
+\bse
+h(b)=h(g^{-1}b_0 g)=h(g^{-1})h(b_0)h( g)=h(g)^{-1}h(g)=1,
+\ese
+so $h$ factors through $q$ as $h=jq$, with $j\cl B/N(\im(f))\to Z$ defined by
+\bse
+j(bN(\im(f)))=h(b).
+\ese
+
+Finally, suppose that $j'\cl B/N(\im(f))\to Z$ is another homomorphism making the triangles commute. Then
+\bse
+j'(bN(\im(f)))=j'(q(b))=h(b)=j(bN(\im(f)))
+\ese
+for all $b\in B$, so $j=j'$. Thus $B/N(\im(f))$ is the pushout of $A\xleftarrow{\ f} B\to\{1\}$. 
+
+The object $B/N(\im(f))$ is called the \emph{cokernel} of $f\cl A\to B$, and is denoted by $\coker(f)$, as it satisfies the dual of the universal property defining $\ker(f)$. In $\mathbf{AbGrp}$, we have $\coker(f)=B/\im(f)$ for any $f\cl A\to B$, as every subgroup of an abelian group is normal (so $N(\im(f))=\im(f)$).
+\es
+
+\bp
+Define the dual notion of \textbf{coequalizer}, and compare coequalizers with pushouts.
+\ep
+
+\bs
 \es
 
 \section{Formal Properties of Pushout and Pullback Squares}

@@ -5,13 +5,23 @@ Show that $\mathcal{D}$ is commutative if, and only if, $\overline{\mathcal{D}}$
 \ex
 
 \bs
+The commutativity of $\mathcal{D}$ amounts to the equality between one or more composites $f_n\circ\cdots \circ f_1=g_m\circ \cdots\circ g_1$. The diagram $\overline{\mathcal{D}}$ is formed by adding all the identity morphisms, which obviously do not change the composites, as well as all compositions of morphisms  already present in $\mathcal{D}$. These will be of the form $\widetilde f=f_{i+1}\circ f_i$ and thus, by associativity, also leave the above composites unchanged.
 \es
 
 \bx
 \ben[label=(\alph*)]
 \item Take some time to convince yourself that the given definition of algebraic closure actually does define what you think of as algebraic closure.
 \item The isomorphism theorems of elementary group theory can be written down in terms of diagrams. Do it!
-\item Rewrite the statement that the cube-shaped diagram above is commutative without using any diagrams at all.
+\item Rewrite the statement that the cube-shaped diagram 
+\bse
+\begin{tikzcd}
+X_1 \ar[rr,"f_{12}"] \ar[dr,"f_{13}"] \ar[dd,"h_1"'] && X_2 \ar[dr,"f_{24}"] \ar[d,shorten >= 1ex,dash]&\\
+& X_3\ar[rr,"f_{34}" near start] \ar[dd,"h_3"' near start] & \ar[d,"h_2"] & X_4 \ar[dd,"h_4"]\\
+Y_1 \ar[dr,"g_{13}"] \ar[r,dash] & \ar[r,"g_{12}"] & Y_2 \ar[dr,"g_{24}"] &\\
+& Y_3 \ar[rr,"g_{34}"] && Y_4
+\end{tikzcd}
+\ese
+is commutative without using any diagrams at all.
 \een
 \ex
 
@@ -42,7 +52,7 @@ Show that $\mathcal{D}$ is commutative if, and only if, $\overline{\mathcal{D}}$
 \item Given a unital ring $R$, we have the category $R$-$\mathbf{Mod}$ of left $R$-modules and $R$-module homomorphisms. Similarly, we also have the categories of right $R$-modules $\mathbf{Mod}$-$R$ and $R$-$S$-bimodules $R$-$\mathbf{Mod}$-$S$, for some other unital ring $S$.
 
 As a special case, if $\F$ is a field, then $\F$-$\mathbf{Mod}$ is the category of vector spaces over $\F$ and $\F$-linear maps, sometimes denoted as $\mathbf{Vect}_{\F}$. 
-\item Given a class $S$, we can form a category with objects the elements of $S$ and only identity morphisms. It is called the \emph{discrete category} with object class $S$. This includes the finite categories $\mathbf{1}, \mathbf{2},\ldots, \mathbf{n},\ldots,$ with objects the natural numbers up to $n$. Of course, we also have the empty category $\vn$ with no objects and no morphisms.  
+\item Given a class $S$, we can form a category with objects the elements of $S$ and only identity morphisms. It is called the \emph{discrete category} with object class $S$. This includes the finite categories $\mathbf{1}, \mathbf{2},\ldots, \mathbf{n},\ldots,$ with objects the positive integers up to $1,2,\ldots,n,\ldots,$ respectively. Of course, we also have the empty category $\vn$ with no objects and no morphisms.  
 \item Given a unital ring $R$, the category $\mathbf{Mat}(R)$ of matrices with entries in $R$ has the natural numbers $\N$ as objects, and for $n,m\in \mathbf{Mat}(R)$, the set of morphisms $\mor_{\mathbf{Mat}(R)}(n,m)$ is the set $\Mat_{m\times n}(R)$ of $m\times n$ matrices with entries in $R$.
 
 The composite $B\circ A\cl n\to p$ of $A\cl n\to m$ and $B\cl m\to p$ is the product matrix $BA\in\Mat_{p\times n}(R)$ and the identity $\id_n\cl n\to n$ is just $I_n\in \Mat_{n\times n}(R)$. That these make $\mathbf{Mat}(R)$ into a category follows at once from the properties of matrix multiplication.
@@ -78,7 +88,7 @@ and
 & = & t\mapsto \begin{cases}\omega(t), & 0\leq t \leq d_1\\ \gamma(t-d_1), & d_1\leq t\leq d_2+d_1\\ \eta(t-d_2-d_1),&d_2+d_1\leq t\leq d_2+d_3+d_1,\end{cases}
 \ei
 so $\eta\circ(\gamma\circ \omega) =(\eta\circ\gamma)\circ \omega$.
-\item
+\item By construction, $\overline{\mathcal{D}}$ contains the identity morphism of each of its objects, as well as the composite of every pair of morphisms. The associativity axiom follows from the fact that $\overline{\mathcal{D}}$ is commutative.
 \een
 \es
 
@@ -112,14 +122,45 @@ and
 (f^{-1}\circ g^{-1})\circ (g\circ f)= f^{-1} \circ (g^{-1}\circ g) \circ f=f^{-1} \circ f=\id_X.
 \ese
 So $g\circ f\cl X\to Z$ is an equivalence with inverse $(g\circ f)^{-1}=f^{-1}\circ g^{-1}$. Thus $X\sim Y$ and $Y\sim Z$ imply $X\sim Z$.
-\item
-\ben[label=(\roman*)]
 \item 
-\item
-\item
-\item
-\item
+\ben[label=(\roman*)]
+\item In $\mathbf{Sets}$, the equivalences are precisely the bijections of sets. To see this, first note that the unique morphism $\vn \to \vn$ is an equivalence and that, if $A$ is non-empty, then there is no morphism $A\to\vn$, so the unique morphism $\vn \to A$ cannot be an equivalence (see Exercise 1.43 for more details). Thus, $\vn$ is equivalent only to itself.
+
+Hence, suppose that $A$ and $X$ are non-empty. Then, if $f\cl A \to X$ is a bijection, its inverse $f^{-1}\cl X \to A$ is such that $f^{-1}\circ f=\id_A$ and $f\circ f^{-1}=\id_X$. Conversely, let $f\cl A \to X$ and suppose that there exists $g\cl X \to A$ such that $g\circ f=\id_A$ and $f\circ g=\id_X$. Let $a,b\in A$ be such that $f(a)=f(b)$. Since $g\circ f=\id_A$, we have $g(f(a))=g(f(b))$, hence $\id_A(a)=\id_A(b)$, so $a=b$ and $f$ is injective. Since $f\circ g=\id_X$, for every $x\in X$, we have $x=f(g(x))$. Thus, for all $x\in X$, there exists $a\in A$, namely $a=g(x)$, such that $f(a)=x$. So $f$ is surjective. Hence $f$ is a bijection.
+
+In fact, more is true. A morphism $f\cl A \to X$ is injective if, and only if, there exists a $g\cl X \to A$ such that $g\circ f=\id_A$. Indeed, if $f$ is injective, then for all $x\in X$, the preimage $f^{-1}(\{x\})$ contains at most one element. We define $g\cl X\to A$ by
+\bse
+g(x)=\begin{cases}a & \text{ if }a\in f^{-1}(\{x\})\\ a_0 & \text{ if }f^{-1}(\{x\})=\vn,\end{cases}
+\ese
+where $a_0$ is any fixed element of $A$. Then, for each $a\in A$, we have $f^{-1}(\{f(a)\})=\{a\}$, so $(g\circ f)(a)=a$ for all $a\in A$, and thus $g\circ f=\id_A$.
+
+Similarly, $f\cl A \to X$ is surjective if, and only if, there exists a $g\cl X \to A$ such that $f\circ g=\id_X$. Indeed, if $f$ is surjective, for each $x\in X$, the preimage $f^{-1}(\{x\})$ is non-empty. Thus (invoking the axiom of choice) we can define $g\cl X\to A$ by mapping each $x$ to any one element of $f^{-1}(\{x\})$ (i.e.\ we let $g$ be a choice function for the family $\{f^{-1}(\{x\})\mid x\in X\}$). Then, for each $x\in X$, we have $g(x)\in f^{-1}(\{x\})$ and hence $f(g(x))=x$ for all $x\in X$. Thus, $f\circ g=\id_X$.
+
+%Therefore, a morphism in $\mathbf{Sets}$ is an equivalence in the sense of category theory if, and only if, it is a bijection. 
+\item The $R$-module isomorphisms clearly satisfy the definition of equivalence in $R$-$\mathbf{Mod}$. Recall that, if $f\cl M\to N$ is a bijective $R$-module homomorphism, then its inverse $f^{-1}$ (as a map of sets) is also an $R$-module homomorphism. Indeed, given $r\in R$ and $m_1,m_2\in M$, we have
+\bi{rCl}
+f(r\cdot f^{-1}(m_1)+f^{-1}(m_2)) & = & r\cdot f( f^{-1}(m_1))+f(f^{-1}(m_2))\\
+& = & r \cdot m_1 + m_2\\
+& = & f( f^{-1}(r \cdot m_1 + m_2))
+\ei
+and thus, since $f$ is injective, $f^{-1}(r \cdot m_1 + m_2)=r\cdot f^{-1}(m_1)+f^{-1}(m_2)$.
+This, together with part (i), implies that the equivalences in $R$-$\mathbf{Mod}$ are precisely the $R$-module isomorphisms.
+
+The situation is completely analogous with $\mathbf{Mod}$-$R$, $R$-$\mathbf{Mod}$-$S$ and $\mathbf{Vect}_{\F}$, as well as $\mathbf{Grp}$ and $\mathbf{AbGrp}=\Z$-$\mathbf{Mod}$ (see Exercise A.1 for this equality).
+
+\item In a discrete category, the only morphisms are the identity morphisms, and they are all equivalences. The converse is not true, however. That is, a category whose morphisms are all equivalences need not be a discrete category. Such categories are called \emph{groupoids}, and a groupoid with only a single object is a group in the sense of Exercise 1.3 (b).
+\item A morphism $A\cl n\to m$ in $\mathbf{Mat}(R)$ is an equivalence if there exists $B\cl m\to n$ such that $BA=I_n$ and $AB=I_m$. If $R$ is commutative, then the trace operator (the sum of the diagonal entries) satisfies $\tr(XY)=\tr(YX)$ for any $X,Y\in \mathbf{Mat}(R)$ for which both $XY$ and $YX$ exist. Then, we have
+\bse
+m=\tr(I_m)=\tr(AB)=\tr(BA)=\tr(I_n)=n,
+\ese
+so every equivalence in $\mathbf{Mat}(R)$ with $R$ commutative must be an \emph{automorphism}, i.e.\ an invertible morphism with the same domain and target.
+\item The equivalences in $\mathbf{Top}$ are continuous bijections whose inverses are also continuous, i.e.\ homeomorphisms. Note that, unlike the algebraic categories considered above, a continuous bijection in not necessarily a homeomorphism.
+
+The equivalences in $\mathbf{hTop}$ are (homotopy classes of) homotopy equivalences, i.e.\ $[f]\cl X\to Y$ is an equivalence in $\mathbf{hTop}$ if there exists $g\cl Y \to X$ in $\mathbf{Top}$ such that $g\circ f$ is homotopic to $\id_X$ and $f\circ g$ is homotopic to $\id_Y$.
 \een
+The equivalences in a monoid $M$ seen as a category (Exercise 1.3 (b)) are simply the invertible elements of $M$, while in a groupoid every morphism is (by definition) an equivalence.
+
+Finally, the category described in Exercise 1.3 (c) is an example of a \emph{skeletal category}, i.e.\ a category in which the only equivalences are the identity morphisms. Indeed, if $\omega\cl [0,d]\to X$ with $d>0$, it is clear that there exists no path $\gamma\cl [0,d']$ such that $\omega * \gamma$ or $\gamma * \omega$ is the identity, as this would require $d+d'=0$.
 \een
 \es
 
@@ -174,6 +215,8 @@ B \ar[r,"j"] \ar[rr,bend right=45,"\id_B"] & Y\ar[r,"s"] & B
 \end{tikzcd}
 \ese
 So the second definition given in the text is, in fact, an instance of the general categorical definition of a retract.
+
+Finally, note that for $f\cl A\to B$ and $g\cl X\to Y$ to be equivalent in $\mathcal{M}$ it means that $A$ and $B$ are equivalent to $X$ and $Y$ via equivalences $i$ and $j$, respectively, which commute with $f$ and $g$.
 \es
 
 \bx
@@ -181,6 +224,9 @@ Find examples of retracts in algebra, topology, and other contexts.
 \ex
 
 \bs
+retract normal complement
+top and htop
+smooth bundle
 \es
 
 \bp
@@ -210,7 +256,7 @@ So $f$ is an equivalence with inverse $f^{-1}=r\circ g^{-1}\circ j$.
 
 \bx
 \ben[label=(\alph*)]
-\item  Let $\mathcal{D}$ be a diagram in a category $\mathcal{A}$, and let $\overline{\mathcal{C}}$ be the category obtained
+\item  Let $\mathcal{D}$ be a diagram in a category $\mathcal{A}$, and let $\overline{\mathcal{D}}$ be the category obtained
 from it as in Exercise 1.3(d). Show that $\mathcal{D}$ is commutative if, and only if, for any two objects $X, Y \in \mathcal{D}$, $\mor_{\overline{\mathcal{D}}}(X, Y )$ has at most one element.
 \item Show that if you apply a covariant functor $F \cl \mathcal{A} \to \mathcal{B}$ to a commutative diagram in $\mathcal{A}$, the result is a commutative diagram in $\mathcal{B}$.
 \een
@@ -218,8 +264,18 @@ from it as in Exercise 1.3(d). Show that $\mathcal{D}$ is commutative if, and on
 
 \bs
 \ben[label=(\alph*)]
-\item
-\item
+\item Assuming that there is at most one morphism between any two objects in $\mathcal{D}$ to begin with, the diagram $\overline{\mathcal{D}}$ is formed by adding any identity morphisms not already present in $\mathcal{D}$, so $|\mor_{\overline{\mathcal{D}}}(X,X)|=1$ for each $X$ in $\overline{\mathcal{D}}$, and adding a morphism $X\to Y$ if there is no morphism $X\to Y$ in $\mathcal{D}$ but there are morphisms $f_1,\ldots,f_n$ in $\mathcal{D}$ such that $f_n\circ\cdots\circ f_1\cl X\to Y$. Since $\mathcal{D}$ is commutative, all compositions resulting in a morphism $X\to Y$ are equal, so $|\mor_{\overline{\mathcal{D}}}(X,Y)|\leq 1$.
+
+Conversely, suppose that $|\mor_{\overline{\mathcal{D}}}(X,Y)|\leq 1$ for all $X$ and $Y$ in $\mathcal{D}$. If there are morphisms $f_1,\ldots,f_n$ in $\mathcal{D}$ such that $f_n\circ\cdots\circ f_1\cl X\to Y$, then $f_n\circ\cdots\circ f_1\in\mor_{\overline{\mathcal{D}}}(X,Y)$, so $|\mor_{\overline{\mathcal{D}}}(X,Y)|=1$. Given any other composite $g_m\circ\cdots\circ g_1\cl X\to Y$ of morphisms in $\mathcal{D}$, the fact that $|\mor_{\overline{\mathcal{D}}}(X,Y)|=1$ implies that $f_n\circ\cdots\circ f_1=g_m\circ\cdots\circ g_1$, so $\mathcal{D}$ is commutative.
+\item Given a diagram in $\mathcal{A}$, the corresponding diagram in $\mathcal{B}$ has (not necessarily all distinct) objects $FX$ and morphisms $F(f)\cl FX\to FY$, with $X$, $Y$ and $f$ from the diagram in $\mathcal{A}$.
+
+The commutativity of the diagram in $\mathcal{A}$ amounts to the equality of one or more composites $f_n\circ \cdots \circ f_1=g_m\circ \cdots \circ g_1\cl X\to Y$ between two objects $X,Y$ of the diagram. By functoriality, we have
+\bse
+F(f_n)\circ \cdots \circ F(f_1)=F(g_m)\circ \cdots \circ F(g_1)\cl FX\to FY,
+\ese
+so the corresponding diagram in $\mathcal{B}$ is also commutative.
+
+Using the definition of an $\mathcal{I}$-shaped diagram in $\mathcal{A}$, given in Section 2.1, as simply a covariant functor $D\cl\mathcal{I}\to\mathcal{A}$, the statement of the exercise is implied by the fact that the composite $F\circ D\cl\mathcal{I}\to\mathcal{B}$ is again a covariant functor. This is shown in Exercise 1.15. 
 \een
 \es
 
@@ -256,7 +312,200 @@ G\times X & \to & X\\
 \es
 
 \bp
-Let $\mathcal{C}$ be a category, and let $A,B\in \ob(\mathcal{C})$. Prove the following statements.
+Let $i \cl S^1 \hookrightarrow D^2$ be the inclusion of the circle into the disk. An early success of algebraic topology concerned the existence of a continuous function $r \cl D^2 \to S^1$ such that the composite $r \circ i \cl S^1 \to S^1$ is the identity (in other words: is $S^1$ a retract of $D^2$?). The fundamental group is a covariant functor
+\bse
+\pi_1 \cl \mathbf{Top} \longrightarrow \mathbf{Grp}
+\ese
+from the category $\mathbf{Top}$ of topological spaces and continuous functions to the category $\mathbf{Grp}$ of groups and homomorphisms. You may have seen, and we will show later, that $\pi_1(S^1) = \Z$ and $\pi_1(D^2) = 0$. Using this functor, show that there can be no such function $r$.
+\ep
+
+\bs
+Suppose, for the sake of contradiction, that such an $r\cl D^2\to S^1$ exists. Then $r\circ i=\id_{S^1}$, so $F(r)\circ F(i)=F(r\circ i)=F(\id_{S^1})=\id_{\Z}$. Thus we have the following commutative diagram in $\mathbf{Grp}$.
+\bse
+\begin{tikzcd}[column sep=large]
+\Z \ar[rr,bend left=40,"\id_{Z}"]\ar[r,"F(i)"']&0\ar[r,"F(r)"']&\Z
+\end{tikzcd}
+\ese
+However, since $0$ is a zero object (see Exercise 1.43) in $\mathbf{Grp}$, the homomorphisms $F(i)$ and $F(r)$ are both trivial and hence $F(r)\circ F(i)$ cannot be the identity.
+\es
+
+\bx
+Let $F \cl \mathcal{C} \to \mathcal{D}$ be a contravariant functor.
+\ben[label=(\alph*)]
+\item Show that if you apply $F$ to a commutative diagram in $\mathcal{C}$, the result is a commutative diagram in $\mathcal{D}$.
+\item Show that if $f \cl X \to Y$ is an equivalence in $\mathcal{C}$, then $F(f)$ is an equivalence in $\mathcal{D}$.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item Given a diagram in $\mathcal{C}$, the corresponding diagram in $\mathcal{D}$ has (not necessarily all distinct) objects $FX$ and morphisms $F(f)\cl FY\to FX$, with $X$, $Y$ and $f$ from the diagram in $\mathcal{C}$.
+
+The commutativity of the diagram in $\mathcal{C}$ amounts to the equality of one or more composites $f_n\circ \cdots \circ f_1=g_m\circ \cdots \circ g_1\cl X\to Y$ between two objects $X,Y$ of the diagram. By functoriality, we have
+\bse
+F(f_1)\circ \cdots \circ F(f_n)=F(g_1)\circ \cdots \circ F(g_m)\cl FY\to FX,
+\ese
+so the corresponding diagram in $\mathcal{D}$ is also commutative.
+\item Let $f^{-1}\cl Y\to X$ be the inverse to $f$. Then $F(f^{-1})\cl FX\to FY$, so we can compose it with $F(f)\cl FY\to FX$. By the definition of functor, we have
+\bse
+F(f^{-1})\circ F(f)=F(f\circ f^{-1})=F(\id_Y)=\id_{FY}
+\ese
+and
+\bse
+F(f)\circ F(f^{-1})=F(f^{-1}\circ f)=F(\id_X)=\id_{FX}.
+\ese
+So $F(f)$ is an equivalence in $\mathcal{D}$ and, moreover, $F(f^{-1})=F(f)^{-1}$
+\een
+\es
+
+\bx
+Show that the composite of two functors is a functor. What happens if one or both of the functors is contravariant?
+\ex
+
+\bs
+Suppose first that $F\cl\mathcal{A}\to\mathcal{B}$ and $G\cl\mathcal{B}\to\mathcal{C}$ are both covariant. Define $G\circ F\cl\mathcal{A}\to \mathcal{C}$ by setting $(G\circ F)A=G(FA)$ on objects and 
+\bse
+(G\circ F)(f\cl A \to B)=G(F(f)\cl FA\to FB)=GF(f)\cl GFA\to GFB
+\ese
+on morphisms. As $F$ and $G$ are functors, we have
+\bse
+(G\circ F)(\id_A)=G(F(\id_A))=G(\id_{FA})=\id_{GFA}
+\ese
+for all $A\in\mathcal{A}$ and, since they are both covariant,
+\bse
+(G\circ F)(g\circ f)=G(F(g\circ f))=G(F(g)\circ F(f))=G(F(g))\circ G(F(f))
+\ese
+for all morphisms $f,g$ in $\mathcal{A}$. So $G\circ F$ is again a covariant functor.
+
+If $F$ is covariant and $G$ is contravariant, we have
+\bse
+(G\circ F)(f\cl A \to B)=G(F(f)\cl FA\to FB)=GF(f)\cl GFB\to GFA
+\ese
+and
+\bse
+(G\circ F)(g\circ f)=G(F(g\circ f))=G(F(g)\circ F(f))=G(F(f))\circ G(F(g))
+\ese
+while, if $F$ is contravariant and $G$ is covariant, we have
+\bse
+(G\circ F)(f\cl A \to B)=G(F(f)\cl FB\to FA)=GF(f)\cl GFB\to GFA
+\ese
+and
+\bse
+(G\circ F)(g\circ f)=G(F(g\circ f))=G(F(f)\circ F(g))=G(F(f))\circ G(F(g)).
+\ese
+Finally, if $F$ and $G$ are both contravariant, we have
+\bse
+(G\circ F)(f\cl A \to B)=G(F(f)\cl FB\to FA)=GF(f)\cl GFA\to GFB
+\ese
+and
+\bse
+(G\circ F)(g\circ f)=G(F(g\circ f))=G(F(f)\circ F(g))=G(F(g))\circ G(F(f)).
+\ese
+Thus, we see that $G\circ F$ is covariant if $F$ and $G$ have the same variance, and contravariant otherwise.
+\es
+
+\bx
+Can there be a functor $F \cl \mathcal{C} \to \mathcal{D}$ that is both covariant and contravariant? What special properties must such a functor have?
+\ex
+
+\bs
+Given $f\cl X\to Y$ in $\mathcal{C}$, we require that $F(f)$ be both a morphism $FX\to FY$ and $FY\to FX$. This can only happen if $FX=FY$. Then, given $f\cl X\to Y$ and $g\cl Y\to Z$, we have $FX=FY=FZ$ and we also require $F(g)\circ F(f)=F(f)\circ F(g)$. So $F$ sends every morphism in $\mathcal{C}$ to an endomorphism in $\mathcal{D}$, such that composites of morphisms in $\mathcal{C}$ are sent to composites of commuting endomorphisms in $\mathcal{D}$.
+
+For instance, if $G$ is an abelian group and $\mathcal{D}$ is the category obtained from $G$ as in Exercise 1.3 (b), then every functor $F\cl \mathcal{C}\to \mathcal{D}$ is both covariant and contravariant.
+\es
+
+\bx
+Show that there is a universal example for contravariant functors out of a category $\mathcal{C}$. That is, show that there is a category $\mathcal{C}^\op$ and a contravariant functor $\mathcal{C} \to \mathcal{C}^\op$ so that every other contravariant functor $\mathcal{C} \to \mathcal{D}$ has a unique factorization $\mathcal{C} \to \mathcal{C}^\op \to \mathcal{D}$, where the functor $\mathcal{C}^\op \to\mathcal{D}$ is covariant.
+\ex
+
+\bs
+Define $\mathcal{C}^\op$ by setting $\ob(\mathcal{C}^\op)=\ob(\mathcal{C})$ and $\mor_{\mathcal{C}^\op}(X,Y)=\mor_{\mathcal{C}}(Y,X)$, for all $X,Y\in\ob(\mathcal{C}^\op)$. Define a functor $(-)^\op\cl \mathcal{C}\to \mathcal{C}^\op$ to be the identity on objects and by $(f\cl X\to Y)^\op=f^\op\cl Y\to X$ on morphisms. Note that $(\mathcal{C}^\op)^\op=\mathcal{C}$.
+
+Let $F\cl \mathcal{C}\to \mathcal{D}$ be a contravariant functor and define $F'\cl\mathcal{C}^\op\to\mathcal{D}$ by $F'X=FX$ on objects and
+\bse
+F'(f^\op\cl Y\to X)=F(f\cl X\to Y)= F(f)\cl FY \to FX=F(f)\cl F'Y \to F'X
+\ese
+on morphisms, so that $F'$ is covariant. More succinctly, $F'=F\circ(-)^\op$. Then $F$ factors as $F=F'\circ(-)^\op$.
+
+Now suppose that $G\cl \mathcal{C}^\op\to\mathcal{D}$ is another covariant functor such that $F=G\circ(-)^\op$. Then $F'X=FX=G(X^\op)=GX$ for all $X\in \mathcal{C}$ and, given any morphism $f\cl X\to Y$ in $\mathcal{C}$, we have
+\bse
+F'(f^\op)=F(f)=(G\circ(-)^\op)(f)=G(f^\op),
+\ese
+so $F'=G$.
+\es
+
+\bx
+Consider the categories $\mathbf{AbGrp}$ of abelian groups (and homomorphisms) and $\mathbf{Sets}$ of sets (and functions). Since an abelian group is a set together with extra structure, we can define $F \cl \mathbf{AbGrp} \to\mathbf{Sets}$ by
+\bse
+G \longmapsto \fbox{$G$, but completely forgetting the group structure}.
+\ese
+Complete the definition of $F$ on morphisms, and show that $F$ is a functor.
+\ex
+
+\bs
+The functor $F$ acts on morphisms as
+\bse
+f \longmapsto \fbox{$f$, but completely forgetting that it is a homomorphism}.
+\ese
+We obviously have $F(\id_G)=\id_{FG}$ since the identity homomorphism is, in particular, the identity function on the underlying set of $G$. Similarly, $F(g\circ f)=F(g)\circ F(f)$ since the composite homomorphism of $f\cl G\to H$ and $g\cl H\to K$ is, in particular, the composite of the functions between the underlying sets of $G$, $H$ and $K$. 
+\es
+
+\bx
+Try to make a formal definition of `forgetful functor'.
+\ex
+
+\bs
+While there is no formal definition of the term `forgetful functor', it is frequently used to refer to functors which `forget' some structure or property in an obvious way. For instance, there are forgetful functors from $\mathbf{Grp}$, $\mathbf{Top}$, $R$-$\mathbf{Mod}$, etc.\ to $\mathbf{Sets}$, as well as from $\mathbf{AbGrp}$ to $\mathbf{Grp}$, from $R$-$\mathbf{Mod}$-$S$ to $R$-$\mathbf{Mod}$, and so on.
+
+It is often used in contrast with the term `free', so that if forgetful functors forget structure or properties, free functors add structure and properties in a canonical way, with minimal constraints. For example, we have a functor $F\cl \mathbf{Sets}\to\mathbf{Grp}$ which associates to each set $S$, the free group $F(S)$ generated by $S$; functors $I,D\cl \mathbf{Sets}\to\mathbf{Top}$ endowing sets with the trivial and discrete topology, respectively; the abelianisation functor $\mathbf{Grp}\to\mathbf{AbGrp}$ sending each group $G$ to $G/[G,G]$, the largest abelian quotient of $G$; etc.
+\es
+
+\bx
+Let $\mathcal{V}$ denote the category $\mathbf{Vect}_{\R}$ of all vector spaces over the real numbers and all linear transformations. Thus
+\bse
+\mor_{\mathcal{V}}(V,W) = \Hom_{\R}(V,W) = \{T \cl V \to W \mid T \text{ is $\R$-linear}\}.
+\ese
+\ben[label=(\alph*)]
+\item Define $F \cl \mathcal{V} \to\mathcal{V}$ by the rules
+\bse
+F(V) = \Hom_{\R}(\R, V) \qquad \text{and} \qquad F(f) \cl g 	\mapsto f \circ g.
+\ese
+Show that $F$ is a covariant functor.
+\item Define $G \cl \mathcal{V} \to\mathcal{V}$ by the rules
+\bse
+G(V) = \Hom_{\R}(V,\R) \qquad \text{and} \qquad G(f) \cl g 	\mapsto g \circ f.
+\ese
+Show that $G$ is a contravariant functor.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item First note that $F(\id_V)\cl  \Hom_{\R}(\R, V)\to  \Hom_{\R}(\R, V)$ is given by $g\mapsto \id_V\circ g=g$, so $F(\id_V)=\id_{F(V)}$. Now let $f\cl U\to V$ and $g\cl V\to W$ be $\R$-linear maps in $\mathcal{V}$ and let $h\in \Hom_{\R}(\R, U)$. 
+Then
+\bse
+[F(g)\circ F(f)] (h)=F(g)(f\circ h)=g\circ (f\circ h)
+\ese
+and
+\bse
+F(g\circ f) (h)=(g\circ f)\circ h,
+\ese
+which are equal by associativity. So $F(g\circ f) =F(g)\circ F(f)$.
+\item As above, note that $G(\id_V)\cl \Hom_{\R}(V,\R)\to \Hom_{\R}(V,\R)$ is given by $g\mapsto g\circ \id_V=g$, so $G(\id_V)=\id_{G(V)}$. Now let $f\cl U\to V$ and $g\cl V\to W$ be $\R$-linear maps in $\mathcal{V}$ and let $\Hom_{\R}(W,\R)$. Then
+\bse
+[G(f)\circ g(g)] (h)=G(f)(h\circ g)=(h\circ g)\circ f
+\ese
+and
+\bse
+G(g\circ f) (h)=h\circ (g\circ f),
+\ese
+which are equal by associativity. So $G(g\circ f) =G(f)\circ G(g)$.
+\een
+\es
+
+\addtocounter{exercise}{1}
+\bp
+Prove Proposition 1.21: Let $\mathcal{C}$ be a category, and let $A,B\in \ob(\mathcal{C})$. Prove the following statements.
 \ben[label=(\alph*)]
 \item For $f\cl X\to Y$, write $f^*\cl\mor_{\mathcal{C}}(Y,B)\to\mor_{\mathcal{C}}(X,B)$ for the function $f^*\cl g\mapsto g\circ f$. Then the rules
 \bse
@@ -269,6 +518,7 @@ G(X)=\mor_{\mathcal{C}}(A,X) \qquad \text{and} \qquad G(f)=f_*\cl G(X)\to G(Y)
 \ese
 define a covariant functor from $\mathcal{C}$ to $\mathbf{Sets}$.
 \een
+{\scshape Hint}. Simply generalize your work from Exercise 1.20.
 \ep
 
 \bs
@@ -315,6 +565,7 @@ Let $f\cl A \to B$ be a morphism in a category $\mathcal{C}$.
 \item Suppose that the induced map $f_* \cl \mor_{\mathcal{C}}(X,A)\to \mor_{\mathcal{C}}(X,B)$ is a bijection for every $X$. Show that $f$ is an equivalence.
 \item Suppose that the induced map $f^* \cl \mor_{\mathcal{C}}(B,X)\to \mor_{\mathcal{C}}(A,X)$ is a bijection for every $X$. Show that $f$ is an equivalence.
 \een
+{\scshape Hint}. Try plugging in $X=A$ and $X=B$.
 \ep
 
 \bs
@@ -336,6 +587,187 @@ As $f_*\cl \mor_{\mathcal{C}}(A,A)\to \mor_{\mathcal{C}}(A,B)$ is a bijection, w
 
 \section{Natural Transformations}
 
+\bp
+Let $\phi \cl A \to B$ be a morphism in $\mathcal{C}$.
+\ben[label=(\alph*)]
+\item Define two functors $\mathcal{C} \to \mathbf{Sets}$ by the rules $F(X) = \mor_{\mathcal{C}}(X,A)$ and $G(X) = \mor_{\mathcal{C}}(X,B)$. Show that $\Phi_X = \phi_* \cl F \to G$ is a natural transformation.
+\item Define two functors $\mathcal{C} \to \mathbf{Sets}$ by the rules $H(X) = \mor_{\mathcal{C}}(A,X)$ and $I(X) = \mor_{\mathcal{C}}(B,X)$. Show that $\Phi_X = \phi^* \cl I \to H$ is a natural transformation.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item Let $f\cl X\to Y$ be a morphism in $\mathcal{C}$. We have to show that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+F(Y) \ar[r,"F(f)"]\ar[d,"\Phi_Y"] & F(X)\ar[d,"\Phi_X"]\\
+G(Y)\ar[r,"G(f)"]& G(X)
+\end{tikzcd}
+\ese
+commutes. The morphisms $\Phi_X$ and $\Phi_Y$ are both $\phi_*$, i.e.\ post-composition with $\phi$, while $F(f)$ and $G(f)$ are both pre-composition with $f$, as in Problem 1.22. Thus the diagram reads
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\mor_{\mathcal{C}}(Y,A) \ar[d,"\phi\circ -"]\ar[r,"-\circ f"] & \mor_{\mathcal{C}}(X,A)\ar[d,"\phi\circ -"] \\
+\mor_{\mathcal{C}}(Y,B) \ar[r,"-\circ f"] & \mor_{\mathcal{C}}(X,B) 
+\end{tikzcd}
+\ese
+Let $h\in\mor_{\mathcal{C}}(Y,A)$. Chasing $h$ around the diagram, we obtain $\phi\circ(h\circ f)$ going across and down, and $(\phi \circ h)\circ f$ going down and across, which are obviously equal by associativity. So $\Phi$ is a natural transformation.
+\item Similarly to part (a), we let $f\cl X\to Y$ be a morphism in $\mathcal{C}$ and observe that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+I(X) \ar[r,"I(f)"]\ar[d,"\Phi_X"] & I(Y)\ar[d,"\Phi_Y"]\\
+H(X)\ar[r,"H(f)"]& H(Y)
+\end{tikzcd}
+\ese
+reads
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\mor_{\mathcal{C}}(B,X) \ar[d,"-\circ \phi"]\ar[r,"f\circ -"] & \mor_{\mathcal{C}}(B,Y)\ar[d,"-\circ \phi"] \\
+\mor_{\mathcal{C}}(A,X) \ar[r,"f\circ -"] & \mor_{\mathcal{C}}(A,Y) 
+\end{tikzcd}
+\ese
+and, again, commutes by associativity. 
+\een
+\es
+
+\bx
+This problem refers to the functors $F(V) = \Hom_{\R}(\R,V)$ and $G(V) = \Hom_{\R}(V,\R)$ of Exercise 1.20.
+\ben[label=(\alph*)]
+\item Show that for every vector space $V$, $V\cong F(V)$. Define a natural isomorphism $\Theta\cl F \to \id_{\mathcal{V}}$.
+\item Show that for every finite-dimensional vector space $V$, $V\cong G(V)$. Show that there is no \textbf{natural} isomorphism $\Theta \cl G \to \id$, even if you restrict your attention just to finite-dimensional vector spaces.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item Define $\Phi_V\cl V\to F(V)=\Hom_{\R}(\R,V)$ by 
+\bi{rrCl}
+\Phi_V(v)\cl & \R & \to & V\\
+& t & \mapsto &tv.
+\ei
+First, note that, for all $\lambda,t_1,t_2\in\R$, 
+\bi{rCl}
+\Phi_V(v)(\lambda t_1+t_2) & = & (\lambda t_1+t_2)v\\
+& =&\lambda\lambda t_1v+t_2v\\
+& =&\lambda\Phi_V(v)(t_1)+\Phi_V(v)(t_2),
+\ei
+so that we indeed have $\Phi_V(v)\in\Hom_{\R}(\R,V)$, for all $v\in V$. Moreover,
+\bi{rCl}
+\Phi_V(\lambda v_1+v_2)(t) & = & t(\lambda v_1+v_2)\\
+& = & \lambda tv_1+tv_2\\
+& = & \lambda\Phi_V( v_1)(t)+\Phi_V(v_2)(t)\\
+& = & (\lambda\Phi_V( v_1)+\Phi_V(v_2))(t)
+\ei
+for all $t\in\R$, so $\Phi_V(\lambda v_1+v_2)=\lambda\Phi_V( v_1)+\Phi_V(v_2)$ for all $\lambda \in \R$ and $v_1,v_2\in V$. Thus $\Phi_V$ itself is a linear transformation $V\to F(V)$.
+
+Now define $\Psi_V\cl \Hom_{\R}(\R,V)\to V$ by $\Psi_V(f)=f(1)$. We have
+\bi{rCl}
+\Psi_V(\lambda f_1+f_2) & = & (\lambda f_1+f_2)(1)\\
+& = & \lambda f_1(1)+f_2(1)\\
+& = & \lambda\Psi_V( f_1)+\Psi_V(f_2)
+\ei
+for all $\lambda \in \R$ and $f_1,f_2\in\Hom_{\R}(\R,V)$, so $\Psi_V$ is a linear transformation $F(V)\to V$. Now let $v\in V$ and $f\in \Hom_{\R}(\R,V)$. Observe that
+\bse
+\Psi_V(\Phi_V(v))=\Phi_V(v)(1)=1v=v
+\ese
+and
+\bse
+\Phi_V(\Psi_V(f))(t)=\Phi_V(f(1))(t)=tf(1)=f(t) 
+\ese
+for all $t\in \R$, so $\Phi_V(\Psi_V(f))=f$. Thus $\Phi_V$ and $\Psi_V$ are inverse linear isomorphisms, and hence $V\cong F(V)$ for all $V\in \mathcal{V}$.
+
+Now let $f\cl V\to W$ be a linear transformation and consider the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\Hom_{\R}(\R,V) \ar[r,"f\circ -"] \ar[d,"\Psi_V"]& \Hom_{\R}(\R,W)\ar[d,"\Psi_W"]\\
+V \ar[r,"f"]& W
+\end{tikzcd}
+\ese
+For any $h\in\Hom_{\R}(\R,V)$, we have 
+\bse
+f(\Psi_V(h))=f(h(1))=(f\circ h)(1)=\Psi_W(f\circ h),
+\ese
+so the diagram commutes. Hence, the linear transformations $\Psi_V$ assemble into a natural transformation $\Theta\cl F \to \id_{\mathcal{V}}$, with $\Theta_V=\Psi_V$. Since each $\Psi_V$ has an inverse $\Phi_V$, we conclude that $\Theta\cl F \to \id_{\mathcal{V}}$ is a natural isomorphism.
+\item Suppose that $V$ is finite dimensional, say $\dim V=n$. Thus $V$ admits a basis $\{e_1,\ldots,e_n\}$. Define $f^1,\ldots,f^n\in\Hom_{\R}(V,\R)$ by requiring
+\bse
+f^i(e_j)=\delta^i_j=\begin{cases}1&\text{ if }i=j\\0&\text{ if }i\neq j\end{cases}
+\ese
+and extending linearly. Let $\lambda_1,\ldots,\lambda_n\in\R$ and suppose that
+\bse
+\sum_{i=1}^n\lambda_if^i=0.
+\ese
+Applying both sides to $e_j$, with $1\leq j\leq n$, yields
+\bse
+0=\biggl(\sum_{i=1}^n\lambda_if^i\biggr)e_j=\sum_{i=1}^n\lambda_if^i(e_j)=\sum_{i=1}^n\lambda_i\delta^i_j=\lambda_j.
+\ese
+So $\lambda_j=0$ for all $1\leq j\leq n$ and hence $\{f^1,\ldots,f^n\}$ is linearly independent.
+
+Now let $h\in \Hom_{\R}(V,\R)$ and let $v=\sum_{i=1}^nv^ie_i\in V$. Then, noting that
+\bse
+f^j(v)=f^j\biggl(\sum_{i=1}^nv^ie_i\biggr)=\sum_{i=1}^nv^if^j(e_i)=\sum_{i=1}^nv^i\delta^j_i=v^j,
+\ese
+we have
+\bse
+h(v)=h\biggl(\sum_{i=1}^nv^ie_i\biggr)=\sum_{i=1}^nv^ih(e_i)=\sum_{i=1}^nf^i(v)h(e_i)=\biggl(\sum_{i=1}^nh(e_i)f^i\biggr)v,
+\ese
+so $h=\sum_{i=1}^nh(e_i)f^i$ and hence $\{f^1,\ldots,f^n\}$ is a basis of $\Hom_{\R}(V,\R)$.
+
+Thus $V\cong \R^n\cong \Hom_{\R}(V,\R)=G(V)$.
+
+Now observe that $G$ is a contravariant functor while $\id_{\mathcal{V}}$ is a covariant functor. Natural transformations are only defined between functors of the same variance, so there are no natural transformations, much less natural isomorphisms, from $G$ to $\id_{\mathcal{V}}$.
+
+There is, however, a sensible notion of a morphism $F\to G$ when $F$ and $G$ have opposite variance, called a \emph{dinatural transformation}. Given functors $F,G\cl \mathcal{C}\to\mathcal{D}$ such that $F$ is covariant and $G$ is contravariant, a dinatural transformation $\Phi\cl F\to G$ consists in a collection of morphisms $\{\Phi_X\cl F(X)\to G(X)\mid X\in \mathcal{C}\}$ in $\mathcal{D}$ such that for each morphism $f\cl X\to Y$ in $\mathcal{C}$, the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+F(X) \ar[d,"\Phi_X"]\ar[r,"F(f)"]& F(Y)\ar[d,"\Phi_Y"]\\
+G(X) & \ar[l,"G(f)"]G(Y)
+\end{tikzcd}
+\ese
+commutes in $\mathcal{D}$. A dinatural isomorphism is a dinatural transformation $\Phi$ in which each component map $\Phi_X$ is an isomorphism in $\mathcal{D}$. One can obviously reverse the direction of $F(f)$ and $G(f)$ when $F$ is contravariant and $G$ covariant.
+
+The statement that $G$ is not canonically isomorphic to $\id_{\mathcal{V}}$ amounts to saying that there is no dinatural isomorphism $G\to \id_{\mathcal{V}}$. Indeed, suppose that there is a dinatural isomorphism $\Phi\cl G\to \id_{\mathcal{V}}$. Then, for any linear transformation $f\cl V\to W$
+\een
+\es
+
+\addtocounter{exercise}{1}
+
+\bp
+Let $F,G, H, I \cl \mathcal{C} \to \mathbf{Sets}$ be the functors defined in Problem 1.25.
+\ben[label=(\alph*)]
+\item If $\Phi\cl F\cl G$ is a natural transformation, show that there is a unique map $\phi \cl A \to B$ such that $\Phi_X = \phi_*$ for every $X \in \mathcal{C}$.
+\item If $\Phi \cl I \to H$ is a natural transformation, show that there is a unique map $\phi\cl A \to B$ such that $\Phi_X = \phi^*$ for every $X \in \mathcal{C}$.
+\een
+Notice that your proof of (b) is formally very similar to your proof of (a). Can you be precise about how the two proofs are related?
+
+{\scshape Hint}. In both cases, the domain of $\phi$ is $A$, and the target is $B$.
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bp
+Let $A,B \in \mathcal{C}$, and use them to define functors $F(X) = \mor_{\mathcal{C}}(X,A)$ and $G(X) = \mor_{\mathcal{C}}(X,B)$.
+\ben[label=(\alph*)]
+\item Suppose there is a natural isomorphism $\Phi \cl F \to G$. Show that $A\cong B$.
+\item Show that (a) is false without the word `natural' --- that is, make up an example where $F(X)\cong G(X)$ for all $X$, but where, nonetheless, $A\not\cong B$.
+
+{\scshape Hint}. Your category must have at least two objects; can it have exactly two objects?
+\item Prove that $A$ and $B$ are isomorphic if the functors $\mor_{\mathcal{C}}(A,-)$ and $\mor_{\mathcal{C}}(B,-)$ are naturally equivalent.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
 \bx
 Show that an equivalence of categories need be neither injective nor surjective on objects.
 \ex
@@ -354,7 +786,7 @@ Show that an equivalence of categories need be neither injective nor surjective 
 
 \bs
 \ben[label=(\alph*)]
-\item The dual of the given statement is `$f^\op$ is a morphism with domain $Y$ and target $X$', denoted $f^\op\cl Y\to X$
+\item The dual of the given statement is `$f^\op$ is a morphism with domain $Y$ and target $X$', denoted $f^\op\cl Y\to X$.
 \item
 \een
 \es
@@ -835,6 +1267,13 @@ Show that for any $f\cl X \to Y$ in a pointed category $\mathcal{C}$ and $*\cl W
 
 
 \section{Adjoint Functors}
+
+\bx
+Let $f \cl X \to X'$ and $g \cl Y \to Y'$. Write down the diagrams which must commute in order for $\Phi$ to be a natural transformation.
+\ex
+
+\bs
+\es
 
 \begin{extra}
 Show that if $F, F' \cl \mathcal{C} \to \mathcal{D}$ are both left adjoints to $G \cl \mathcal{D}\to\mathcal{C}$, then there is a natural isomorphism $F \cong F'$. So adjoints are unique up to isomorphism.
