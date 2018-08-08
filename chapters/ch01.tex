@@ -1,3 +1,5 @@
+\chapter{Categories and Functors}
+
 \section{Diagrams}
 
 \bx
@@ -224,9 +226,13 @@ Find examples of retracts in algebra, topology, and other contexts.
 \ex
 
 \bs
-retract normal complement
-top and htop
-smooth bundle
+In the category $\mathbf{Grp}$, the trivial group $\{e\}$ is a retract of every other group as, for any group $G$, there are (unique) homomorphisms $\{e\} \to G \to \{e\}$, which compose to the identity on $\{e\}$. In general, a group $H$ is a retract of $G$ if, and only if, $H$ is (isomorphic to) a subgroup of $G$ which has a normal complement, i.e.\ a normal subgroup $K$ of $G$ such that $H\cap K=\{e\}$ and, for all $g\in G$, $g=hk$ for some $h\in H$, $k\in K$. Then $K$ is the kernel of the retraction $G\to H$.
+
+In the category $\mathbf{Top}$, any one-point space $P$ is a retract of every other space. Indeed, for any space $X$, there are (unique) maps $X\to P$ and $P\to P$, so that $P\to X\to P$ is $\id_P$ for all maps $P\to X$. Retracts of a space retain some properties of that space, such as connectedness, but the converse is often false. There are several variants of this concept in topology, for instance that of a `deformation retraction', where in addition to $A\to X\to A$ being the identity on $A$, we also require that $X\to A\to X$ be homotopic to $\id_X$. A space $A$ is a retract of $X$ in $\mathbf{hTop}$ if $A$ is a `weak retract' of $X$ in $\mathbf{Top}$, i.e.\ if $A\to X\to A$ is homotopic to $\id_A$. 
+
+In the category $\mathbf{Man}^{\infty}$ of smooth manifolds and smooth maps, if a smooth bundle $E\xrightarrow{\,\pi\,}M$ admits a global section $\sigma\cl M\to E$, then $M$ is a retract of $E$.
+
+As a final note, we observe that if $\mathcal{C}$ has a terminal object $\tau$, then $\tau$ is a retract of every object in $\mathcal{C}$, as was the case for $\{e\}\in\mathbf{Grp}$ and $P\in\mathbf{Top}$.
 \es
 
 \bp
@@ -696,7 +702,7 @@ and extending linearly. Let $\lambda_1,\ldots,\lambda_n\in\R$ and suppose that
 \bse
 \sum_{i=1}^n\lambda_if^i=0.
 \ese
-Applying both sides to $e_j$, with $1\leq j\leq n$, yields
+Applying both sides to each $e_j$, for $1\leq j\leq n$, yields
 \bse
 0=\biggl(\sum_{i=1}^n\lambda_if^i\biggr)e_j=\sum_{i=1}^n\lambda_if^i(e_j)=\sum_{i=1}^n\lambda_i\delta^i_j=\lambda_j.
 \ese
@@ -712,20 +718,35 @@ h(v)=h\biggl(\sum_{i=1}^nv^ie_i\biggr)=\sum_{i=1}^nv^ih(e_i)=\sum_{i=1}^nf^i(v)h
 \ese
 so $h=\sum_{i=1}^nh(e_i)f^i$ and hence $\{f^1,\ldots,f^n\}$ is a basis of $\Hom_{\R}(V,\R)$.
 
-Thus $V\cong \R^n\cong \Hom_{\R}(V,\R)=G(V)$.
+Thus $V\cong \R^n\cong \Hom_{\R}(V,\R)$, so $V\cong G(V)$ for all finite-dimensional $V$.
 
-Now observe that $G$ is a contravariant functor while $\id_{\mathcal{V}}$ is a covariant functor. Natural transformations are only defined between functors of the same variance, so there are no natural transformations, much less natural isomorphisms, from $G$ to $\id_{\mathcal{V}}$.
+Now observe that $G$ is a contravariant functor $\mathcal{V}\to \mathcal{V}$ while $\id_{\mathcal{V}}$ is a covariant functor $\mathcal{V}\to \mathcal{V}$. Natural transformations are only defined between functors of the same variance, so there are no natural transformations, much less natural isomorphisms, from $G$ to $\id_{\mathcal{V}}$.
 
-There is, however, a sensible notion of a morphism $F\to G$ when $F$ and $G$ have opposite variance, called a \emph{dinatural transformation}. Given functors $F,G\cl \mathcal{C}\to\mathcal{D}$ such that $F$ is covariant and $G$ is contravariant, a dinatural transformation $\Phi\cl F\to G$ consists in a collection of morphisms $\{\Phi_X\cl F(X)\to G(X)\mid X\in \mathcal{C}\}$ in $\mathcal{D}$ such that for each morphism $f\cl X\to Y$ in $\mathcal{C}$, the diagram
+There is, however, a sensible notion of a morphism $F\to G$ when $F$ and $G$ are of opposite variance, called a \emph{dinatural transformation}. Given functors $F,G\cl \mathcal{C}\to\mathcal{D}$ such that $F$ is covariant and $G$ is contravariant, a dinatural transformation $\Phi\cl F\to G$ consists in a collection of morphisms
+\bse
+\{\Phi_X\cl F(X)\to G(X)\mid X\in \mathcal{C}\}
+\ese
+in $\mathcal{D}$ such that, for each morphism $f\cl X\to Y$ in $\mathcal{C}$, the diagram
 \bse
 \begin{tikzcd}[row sep=large,column sep=large]
 F(X) \ar[d,"\Phi_X"]\ar[r,"F(f)"]& F(Y)\ar[d,"\Phi_Y"]\\
 G(X) & \ar[l,"G(f)"]G(Y)
 \end{tikzcd}
 \ese
-commutes in $\mathcal{D}$. A dinatural isomorphism is a dinatural transformation $\Phi$ in which each component map $\Phi_X$ is an isomorphism in $\mathcal{D}$. One can obviously reverse the direction of $F(f)$ and $G(f)$ when $F$ is contravariant and $G$ covariant.
+commutes in $\mathcal{D}$, i.e.\ $\Phi_X=G(f)\circ\Phi_Y\circ F(f)$. A dinatural isomorphism is a dinatural transformation $\Phi$ in which each component map $\Phi_X$ is an isomorphism in $\mathcal{D}$. One can obviously reverse the direction of $F(f)$ and $G(f)$ when $F$ is contravariant and $G$ covariant.
 
-The statement that $G$ is not canonically isomorphic to $\id_{\mathcal{V}}$ amounts to saying that there is no dinatural isomorphism $G\to \id_{\mathcal{V}}$. Indeed, suppose that there is a dinatural isomorphism $\Phi\cl G\to \id_{\mathcal{V}}$. Then, for any linear transformation $f\cl V\to W$
+The statement that $V$ is not canonically isomorphic to $\Hom_{\R}(V,\R)$ amounts to saying that there is no dinatural isomorphism $G\to \id_{\mathcal{V}}$. Indeed, suppose that there is a dinatural isomorphism $\Phi\cl G\to \id_{\mathcal{V}}$. Then, the square
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\Hom_{\R}(V,\R)  \ar[d,"\Phi_V"]& \ar[l,"-\circ f"']\Hom_{\R}(W,\R)\ar[d,"\Phi_W"]\\
+V \ar[r,"f"]& W
+\end{tikzcd}
+\ese
+commutes for any linear transformation $f\cl V\to W$. In particular, for the zero-transformation $0\cl V\to W$, we have
+\bse
+\Phi_W=0\circ\Phi_V\circ0=0,
+\ese
+so $\Phi_W$ cannot be an isomorphism (except when $W=0$). As this is true for all $W\in\mathcal{V}$, we conclude that the only dinatural transformation $G\to \id_{\mathcal{V}}$ is the zero-transformation, which is obviously not an isomorphism. Restricting to finite-dimensional vector spaces does not change the argument.
 \een
 \es
 
@@ -734,7 +755,7 @@ The statement that $G$ is not canonically isomorphic to $\id_{\mathcal{V}}$ amou
 \bp
 Let $F,G, H, I \cl \mathcal{C} \to \mathbf{Sets}$ be the functors defined in Problem 1.25.
 \ben[label=(\alph*)]
-\item If $\Phi\cl F\cl G$ is a natural transformation, show that there is a unique map $\phi \cl A \to B$ such that $\Phi_X = \phi_*$ for every $X \in \mathcal{C}$.
+\item If $\Phi\cl F\to G$ is a natural transformation, show that there is a unique map $\phi \cl A \to B$ such that $\Phi_X = \phi_*$ for every $X \in \mathcal{C}$.
 \item If $\Phi \cl I \to H$ is a natural transformation, show that there is a unique map $\phi\cl A \to B$ such that $\Phi_X = \phi^*$ for every $X \in \mathcal{C}$.
 \een
 Notice that your proof of (b) is formally very similar to your proof of (a). Can you be precise about how the two proofs are related?
@@ -791,6 +812,37 @@ Show that an equivalence of categories need be neither injective nor surjective 
 \een
 \es
 
+\begin{extrae}
+Show how the problem: `decide whether $f \cl X \to Y$ is a homeomorphism' can be written in terms of extension and/or lifting problems.
+\end{extrae}
+
+\bs
+The lifting problem for $h\cl Z\to Y$ and $f\cl X\to Y$ consists in finding a `lift' $\lambda\cl Z\to X$ such that $f\circ \lambda=h$. Let $Z=Y$ and $h=\id_Y$. Then the original lifting problem reduces to finding a map $\lambda\cl Y\to X$ such that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&& X\ar[d,"f"]\\
+Y \ar[urr,bend left=10,"\lambda"] \ar[rr,"\id_Y"] & & Y
+\end{tikzcd}
+\ese
+commutes, i.e.\ $f\circ \lambda=\id_Y$. The dual extension problem consists in finding a map $\epsilon\cl Y\to X$ such that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&& \ar[dll,bend right=10,"\epsilon"'] Y\\
+X  & & \ar[ll,"\id_X"'] X\ar[u,"f"']
+\end{tikzcd}
+\ese
+commutes, i.e.\ $\epsilon\circ f=\id_X$.
+
+Thus, $f\cl X\to Y$ is a homeomorphism if, and only if, there exists a map $g\cl Y\to X$ such that $g=\lambda=\epsilon$ solves both of the above problems.
+\es
+
+\bp
+Verify that the dual of each rule for a category is also a rule for a category, and likewise for functors and natural transformations.
+\ep
+
+\bs
+\es
+
 \section{Products and Sums}
 
 \bp
@@ -845,7 +897,9 @@ Let $\pr_X$ and $\pr_Y$ be the projections. Define
 \phi\cl & \mor_{\mathcal{C}}(Z,X\times Y) & \to & \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y) \\
 & f & \mapsto & (\pr_X\circ f,\pr_Y\circ f).
 \ei
-By the universal property of the product, for each $(f,g)\in \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y)$, there is a unique $h\in\mor_{\mathcal{C}}(Z,X\times Y)$ such that $f=\pr_X\circ h$ and $g=\pr_Y\circ h$, i.e.\ $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity.
+By the universal property of the product, for each $(f,g)\in \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y)$, there is a unique $h\in\mor_{\mathcal{C}}(Z,X\times Y)$ such that $f=\pr_X\circ h$ and $g=\pr_Y\circ h$, i.e.\ such that $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity. Then $\phi(h)=(f,g)$ if, and only if, $\pr_X\circ h=f$ and $\pr_Y\circ h=g$. 
+
+In light of this bijection, we will write $(f,g)$ for the map $h=\phi^{-1}(f,g)$. With this notation, we have $\pr_X\circ(f,g)=f$ and $\pr_Y\circ(f,g)=g$.
 \es
 
 \bx
@@ -934,6 +988,17 @@ Formulate precise definitions of the product $\mathcal{C}\times \mathcal{D}$ of 
 \ex
 
 \bs
+We set $\ob(\mathcal{C}\times \mathcal{D})=\ob(\mathcal{C})\times\ob(\mathcal{D})$ and, for any $(A,B),(A',B')\in\mathcal{C}\times \mathcal{D}$,
+\bse
+\mor_{\mathcal{C}\times \mathcal{D}}((A,B),(A',B'))=\mor_{\mathcal{C}}(A,B)\times \mor_{\mathcal{D}}(A',B').
+\ese
+That is, the objects and morphisms of $\mathcal{C}\times \mathcal{D}$ are pairs of objects and morphisms from $\mathcal{C}$ and $\mathcal{D}$. We then have $\id_{(A,B)}=(\id_A,\id_B)$ and composition is defined componentwise.
+
+In fact, for small categories $\mathcal{C}$ and $\mathcal{D}$ (i.e.\ such that $\ob(\mathcal{C})$ and $\ob(\mathcal{D})$ are sets), the product $\mathcal{C}\times \mathcal{D}$ thus defined is the categorical product (see Section 1.6) in $\mathbf{Cat}$, the category of small categories and functors.
+
+A functor $F\cl\mathcal{C}\times \mathcal{D}\to\mathcal{E}$ is called a functor of two variables, or bifunctor. A bifunctor is covariant (resp. contravariant) if, and only if, for all $A\in\mathcal{C}$ and $B\in\mathcal{D}$, the functors $F(A,-)\cl \mathcal{D}\to \mathcal{E}$ and $F(-,B)\cl \mathcal{C}\to \mathcal{E}$ are both covariant (resp. contravariant). For example, the functor $-\times -\cl \mathcal{C}\times \mathcal{C}\to\mathcal{C}$ is covariant.
+
+Additionally, we have the notion of a `mixed' bifunctor, which is a functor $F\cl\mathcal{C}\times \mathcal{D}\to\mathcal{E}$ such that $F(A,-)\cl \mathcal{D}\to \mathcal{E}$ is covariant for all $A\in\mathcal{C}$, and $F(-,B)\cl \mathcal{C}\to \mathcal{E}$ is contravariant for all $B\in\mathcal{D}$, or vice versa. Note that the functor $F(A,-)$ acts by $f\mapsto F(\id_A,f)$ on morphisms, and similarly for $F(-,B)$. An example of a functor of this kind is the hom-functor on $\mathcal{C}$, $\mor_{\mathcal{C}}(-,-) \cl \mathcal{C} \times \mathcal{C} \to \mathcal{C}$, which is contravariant in the first variable and covariant in the second.
 \es
 
 \bp
@@ -950,7 +1015,7 @@ commutes.
 \item Show that the diagram
 \bse
 \begin{tikzcd}[column sep=large,row sep=large]
-X\times Y \ar[dr,bend right=10,"\id"']\ar[r,"\Delta"] & \ar[d,"\pr_X\times\pr_Y"](X\times Y)\times(X\times Y)\\
+X\times Y \ar[dr,bend right=10,"\id"']\ar[r,"\Delta"] & \ar[d,"{(\pr_1,\pr_2)}"](X\times Y)\times(X\times Y)\\
 & X\times Y
 \end{tikzcd}
 \ese
@@ -975,44 +1040,40 @@ Y\ar[r,"\Delta"] \ar[rr,bend right=40,"\id_Y"] & Y\times Y\ar[r,"\pr_Y^1"]&Y
 \end{tikzcd}
 \ese
 By definition of the diagonal map, the top and bottom sections commute and, by definition of $f\times f$, so does the right square. We thus have
-\bi{rCl}
-\pr_Y^1\circ (f\times f)\circ \Delta & = & f\circ \pr_X^1\circ \Delta=f\circ \id_X=f\\
-\pr_Y^1\circ\Delta\circ f & = & \id_Y\circ f = f.
-\ei
+\bse
+\pr_Y^1\circ (f\times f)\circ \Delta  =  f\circ \pr_X^1\circ \Delta=f\circ \id_X=f
+\ese
+and
+\bse
+\pr_Y^1\circ\Delta\circ f  =  \id_Y\circ f = f.
+\ese
 By replacing $\pr_X^1$ and $\pr_Y^1$ with $\pr_X^2$ and $\pr_Y^2$, respectively, in the above diagram, we also obtain $\pr_Y^2\circ (f\times f)\circ \Delta =f$ and $\pr_Y^2\circ\Delta\circ f = f$. So both $(f\times f)\circ \Delta$ and $\Delta\circ f$ make the first diagram commute, and thus
 \bse
 (f\times f)\circ \Delta = h = \Delta\circ f.
 \ese
-\item For clarity, let us state the domains and targets of the projection maps explicitly:
-\bi{rClcrCl}
-\pr_X\cl && X\times Y \to X &\qquad \quad& \pr_{X\times Y}^1 \cl && (X\times Y)\times (X\times Y)\to X\times Y\\
-\pr_Y\cl && X\times Y \to Y &\qquad \quad& \pr_{X\times Y}^2 \cl && (X\times Y)\times (X\times Y)\to X\times Y
+\item First note that $(\pr_1,\pr_2)$ is the preimage under the bijection $\phi$ of Exercise 1.34 of the two composites
+\bi{C}
+\pr_1 = (X\times Y)\times(X\times Y) \xrightarrow{\ \pr^1_{X\times Y} \ } X\times Y \xrightarrow{\ \pr_X \ }X\\
+\pr_2 = (X\times Y)\times(X\times Y) \xrightarrow{\ \pr^2_{X\times Y} \ } X\times Y \xrightarrow{\ \pr_Y \ }Y.
+ \ei
+By the universal property of products, there is a unique map $h$ making the following diagram commute
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&X\times Y\ar[dl,"\pr_1"']\ar[d,dashed,"h"]\ar[dr,"\pr_2"]&\\
+X & \ar[l,"\pr_1"]X\times Y \ar[r,"\pr_2"']& Y
+\end{tikzcd}
+\ese
+Observe that we have
+\bi{rCl}
+\pr_X\circ(\pr_1,\pr_2)\circ\Delta & = & \pr_1\circ\Delta\\
+& = & (\pr_X\circ\pr^1_{X\times Y})\circ \Delta\\
+& = & \pr_X\circ\pr^1_{X\times Y}\circ(\id,\id) \\
+& = & \pr_X\circ \id\\
+& = & \pr_X
 \ei
-Consider the following diagram.
+and, similarly, $\pr_Y\circ(\pr_1,\pr_2)\circ\Delta=\pr_Y$. Therefore, as both $(\pr_1,\pr_2)\circ\Delta$ and, trivially, $\id$ make the above diagram commute, we must have
 \bse
-\begin{tikzcd}[column sep=large,row sep=large]
-X\times Y \ar[rr,bend left=30,"\id"] \ar[r,"\Delta"] & \ar[d,"\pr_X\times\pr_Y"](X\times Y)\times(X\times Y)\ar[r,"\pr_{X\times Y}^1"]&X\times Y\ar[d,"\pr_X"]\\
-& X\times Y\ar[r,"\pr_X"] & X
-\end{tikzcd}
-\ese
-The top section commutes by definition of $\Delta$, and the square commutes by definition of $\pr_X\times\pr_Y$. We thus have
-\bse
-\pr_X\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_X\circ\pr_{X\times Y}^1\circ\Delta=\pr_X\circ\id=\pr_X.
-\ese
-By replacing $\pr_X$ and $\pr_{X\times Y}^1$ in the above diagram with $\pr_Y$ and $\pr_{X\times Y}^2$, respectively, we also obtain
-\bse
-\pr_Y\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_Y.
-\ese
-Thus both $(\pr_X\times\pr_Y)\circ \Delta$ and (trivially) $\id$ make the diagram
-\bse
-\begin{tikzcd}[column sep=large,row sep=large]
-&X\times Y\ar[dl,"\pr_X"']\ar[d,dashed]\ar[dr,"\pr_Y"]&\\
-X & X\times Y \ar[l,"\pr_X"]\ar[r,"\pr_Y"']& Y
-\end{tikzcd}
-\ese
-commute. But there is only one such map and hence
-\bse
-(\pr_X\times\pr_Y)\circ \Delta=\id.
+(\pr_1,\pr_2)\circ\Delta = h = \id.
 \ese
 \een
 \es
@@ -1070,10 +1131,12 @@ commute, i.e.\ such that $t\circ \inj_X=f$ and $t\circ \inj_Y=g$.
 
 \item Define
 \bi{rrCl}
-\phi\cl & \mor_{\mathcal{C}}(X\sqcup Y,B) & \to & \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B) \\
+\psi\cl & \mor_{\mathcal{C}}(X\sqcup Y,B) & \to & \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B) \\
 & f & \mapsto & ( f\circ \inj_X,f\circ \inj_Y).
 \ei
-By the universal property of the coproduct, for each $(f,g)\in \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B)$, there is a unique $h\in\mor_{\mathcal{C}}(X\sqcup Y,B)$ such that $f= h\circ \inj_X$ and $g=h\circ \inj_Y$, i.e.\ such that $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity.
+By the universal property of the coproduct, for each $(f,g)\in \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B)$, there is a unique $h\in\mor_{\mathcal{C}}(X\sqcup Y,B)$ such that $f= h\circ \inj_X$ and $g=h\circ \inj_Y$, i.e.\ such that $\psi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity. Then $\psi(h)=(f,g)$ if, and only if, $h\circ\inj_X=f$ and $h\circ\inj_Y=g$. 
+
+Using the notation $(f,g)$ for the map $h=\psi^{-1}(f,g)$, we have $(f,g)\circ\inj_X=f$ and $(f,g)\circ\inj_Y=g$.
 \item Given $f\cl A\to X$ and $g\cl B\to Y$, we can form the morphisms
 \bse
 \inj_X\circ f\cl A\to X\sqcup Y\qquad \text{and}\qquad \inj_Y\circ g\cl B\to X\sqcup Y.
@@ -1225,14 +1288,16 @@ Let $\mathcal{C}$ be a pointed category in which products and coproducts exist f
 \item Give categorical definitions for the `axis' maps $\ax_X\cl X\to X\times Y$ and $\ax_Y\cl Y\to X\times Y$.
 
 {\scshape Note}. The change of notation is due to $\inj_X$ and $\inj_Y$ already being used for the canonical morphisms into the coproduct.
-\item In a pointed category, there is a particularly nice morphism $w\cl X_1\lor X_2\to X_1\times X_2$. Define it in terms of category theory, and check that the diagram
+\item In a pointed category, there is a particularly nice morphism $w\cl A\lor B\to A\times B$. Define it in terms of category theory, and check that the diagram
 \bse
 \begin{tikzcd}[column sep=large,row sep=large]
-X_1\lor X_2 \ar[r,"f\lor g"] \ar[d,"w"']& Y_1 \lor Y_2 \ar[d,"w"]\\
-X_1\times X_2 \ar[r,"f\times g"]& Y_1\times Y_2
+A\lor B \ar[r,"f\lor g"] \ar[d,"w"']& X \lor Y \ar[d,"w"]\\
+A\times B \ar[r,"f\times g"]& X\times Y
 \end{tikzcd}
 \ese
-is commutative for any $f\cl X_1\to Y_1$ and $g\cl X_2\to Y_2$. Why is it necessary for the category to be pointed before you can define $w$?
+is commutative for any $f\cl A\to X$ and $g\cl B\to Y$. Why is it necessary for the category to be pointed before you can define $w$?
+
+{\scshape Note}. Here the change of notation is simply to avoid subscripts within subscripts.
 \item State (and prove?) the dual statements.
 \een
 \ep
@@ -1244,7 +1309,97 @@ is commutative for any $f\cl X_1\to Y_1$ and $g\cl X_2\to Y_2$. Why is it necess
 \mor_{\mathcal{C}}(X,X\times Y)  \cong \mor_{\mathcal{C}}(X,X) \times \mor_{\mathcal{C}}(X, Y) .
 \ese
 Since $\mathcal{C}$ is pointed, $\mor_{\mathcal{C}}(X, Y)$ is non-empty for all $X,Y\in\mathcal{C}$ as any two objects are connected by the zero map $*$. We can thus define $\ax_X\cl X\to X\times Y$ to be the morphism corresponding to $(\id_X,*)$ under the bijection. Similarly, we define $\ax_Y=(*,\id_Y)$.
-\item By the bijection $\mor_{\mathcal{C}}(X_1\lor X_2,X_1\times X_2) \cong\mor_{\mathcal{C}}(X_1,X_1\times X_2) \times \mor_{\mathcal{C}}(X_2,X_1\times X_2)$, there is a unique $w\cl X_1\lor X_2\to X_1\times X_2$ corresponding to the pair $(\ax_{X_1}.\ax_{X_2})$.
+\item By the bijection
+\bse
+\mor_{\mathcal{C}}(A\lor B,A\times B) \cong\mor_{\mathcal{C}}(A,A\times B) \times \mor_{\mathcal{C}}(B,A\times B),
+\ese
+there is a unique morphism
+\bse
+w\cl A\lor B\to A\times B
+\ese
+corresponding to the pair $(\ax_{A},\ax_{B})$. Note that we have
+\bi{rCl}
+\pr_{A}\circ w\circ\inj_{A} & = & \pr_{A}\circ (\ax_{A},\ax_{B})\circ\inj_{A}\\
+& = & \pr_{A}\circ \ax_{A}\\
+& = & \pr_{A}\circ(\id_{A},*)\\
+& = & \id_{A}
+\ei
+and, similarly,
+\bi{rCl}
+\pr_{A}\circ w\circ\inj_{B} & = & *\\
+\pr_{B}\circ w\circ\inj_{A} & = & *\\
+\pr_{B}\circ w\circ\inj_{B} & = & \id_{B}.
+\ei
+Thus, every section in the following diagram, except the middle square, commutes.
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\ar[ddd,bend right=70,"\id_{A}"'] A \ar[d,"\inj_{A}"']\ar[r,"f"] & X\ar[d,"\inj_{X}"]\ar[ddd,bend left=70,"\id_{X}"]\\
+A\lor B \ar[r,"f\lor g"] \ar[d,"w"']& X \lor Y \ar[d,"w"]\\
+A\times B \ar[d,"\pr_{A}"']\ar[r,"f\times g"]& X\times Y\ar[d,"\pr_{X}"]\\
+A\ar[r,"f"] & X
+\end{tikzcd}
+\ese
+There are similar diagrams in which one or both of the top and bottom maps is replaced by $g\cl B\to Y$, with the appropriate projections and/or injections. Using the commutativity of these diagrams (minus the middle squares), we have
+\bse
+\pr_X\circ w \circ (f\lor g) \circ \inj_A = \pr_X\circ w \circ\inj_X\circ f=\id_X\circ f=f
+\ese
+and
+\bse
+\pr_X\circ (f\times g) \circ w \circ  \inj_A =  f\circ \pr_A\circ w \circ\inj_A=f\circ \id_A=f.
+\ese
+Similarly, we have
+\bse
+\pr_X\circ w \circ (f\lor g) \circ \inj_B  = * = \pr_X\circ (f\times g) \circ w \circ  \inj_B
+\ese
+together with the corresponding results
+\bi{rCcCl}
+\pr_Y\circ w \circ (f\lor g) \circ \inj_B  & = & g & = & \pr_Y\circ (f\times g) \circ w \circ  \inj_B\\
+\pr_Y\circ w \circ (f\lor g) \circ \inj_A  & = & * & = & \pr_Y\circ (f\times g) \circ w \circ  \inj_A.
+\ei
+By the universal property of coproducts, there are unique maps $r\cl A\lor B\to X$ and $s\cl A\lor B\to Y$ making the diagrams
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[dr,"f"']\ar[r,"\inj_A"]& A\lor B \ar[d,dashed,"s"]&\ar[l,"\inj_B"'] B\ar[dl,"*"]\\
+& X &
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[row sep=large,column sep=large]
+A \ar[dr,"*"']\ar[r,"\inj_A"]& A\lor B \ar[d,dashed,"r"]&\ar[l,"\inj_B"'] B\ar[dl,"g"]\\
+& Y &
+\end{tikzcd}
+\ese
+commute. Since both $\pr_X\circ w \circ (f\lor g)$ and $\pr_X\circ (f\times g) \circ w$ make the left diagram commute, and both $\pr_Y\circ w \circ (f\lor g)$ and $\pr_Y\circ (f\times g) \circ w$ make the right diagram commute, we must have
+\bse
+\pr_X\circ w \circ (f\lor g)=s=\pr_X\circ (f\times g) \circ w
+\ese
+and
+\bse
+\pr_Y\circ w \circ (f\lor g)=r=\pr_Y\circ (f\times g) \circ w.
+\ese
+Then, by the universal property of products, there is a unique map $h\cl A\lor B\to X\times Y$ making the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&A\lor B\ar[dl,"s"']\ar[d,dashed,"h"]\ar[dr,"r"]&\\
+X & \ar[l,"\pr_Y"]X\times Y \ar[r,"\pr_X"']& Y
+\end{tikzcd}
+\ese
+commute. Since, as we have just shown, both $w \circ (f\lor g)$ and $(f\times g) \circ w$ make the diagram commute, we must indeed have
+\bse
+w \circ (f\lor g)=h=(f\times g) \circ w.
+\ese
+
+{\scshape Note}. Of course, we could equally well have invoked the universal property of products first to deduce that
+\bse
+w \circ (f\lor g)\circ \inj_A=(f\times g) \circ w\circ \inj_A
+\ese
+and
+\bse
+w \circ (f\lor g)\circ \inj_B=(f\times g) \circ w\circ \inj_B,
+\ese
+and then used the universal property of coproducts to conclude the proof.
+
+The reason why we need $\mathcal{C}$ to be pointed before we can define $w$ is that, under the bijection of Exercise 1.34, the map $\ax_X\cl X\to Y$ must correspond to a pair of maps, one $x\to X$ and the other $X\to Y$. But, in general, there is no reason why there should be a morphism $X\to Y$ between any two objects $X$ and $Y$.
+
 \item Under the bijection $\mor_{\mathcal{C}}(X\lor Y,Z) \cong\mor_{\mathcal{C}}(X,Z) \times \mor_{\mathcal{C}}(Y, Z)$, setting $Z=X$ and $Z=Y$, we define the `collapse' maps $\co_X\cl X\lor Y\to X$ and $\co_Y\cl X\lor Y\to Y$ by $\co_X=(\id_X,*)$ and $\co_Y=(*,\id_Y)$, respectively.
 \een
 \es
@@ -1275,9 +1430,9 @@ Let $f \cl X \to X'$ and $g \cl Y \to Y'$. Write down the diagrams which must co
 \bs
 \es
 
-\begin{extra}
+\begin{extrap}
 Show that if $F, F' \cl \mathcal{C} \to \mathcal{D}$ are both left adjoints to $G \cl \mathcal{D}\to\mathcal{C}$, then there is a natural isomorphism $F \cong F'$. So adjoints are unique up to isomorphism.
-\end{extra}
+\end{extrap}
 
 \bs
 For $A\in \mathcal{C}$ and $B\in\mathcal{D}$, denote by $\Phi_{A,B}\cl\mor_{\mathcal{D}}(FA,B)\to\mor_{\mathcal{C}}(A,GB)$ and $\Psi_{A,B}\cl\mor_{\mathcal{D}}(F'A,B)\to\mor_{\mathcal{C}}(A,GB)$ the natural bijections corresponding to the adjunctions $F\dashv G$ and $F'\dashv G$, respectively.

@@ -22,14 +22,59 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
-\fancyhead[LE]{\nouppercase{{\slshape\leftmark}}}
-\fancyhead[RE]{\thepage}
-\fancyhead[RO]{\nouppercase{{\slshape\rightmark}}}
-\fancyhead[LO]{\thepage}
+\fancyhead[LO]{\nouppercase{{\slshape\leftmark}}}
+\fancyhead[RO]{\thepage}
+\fancyhead[RE]{\nouppercase{{\slshape\rightmark}}}
+\fancyhead[LE]{\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
 \setlength{\headheight}{15pt}
 \fancyfoot{}
 %\cfoot{\nouppercase{\textbf{\textsc{\textsf{\thepage}}}}}
+
+\usepackage{titlesec}
+%\titleformat{hcommandi}[hshapei]{hformati}{hlabeli}{hsepi}{hbefore-codei}[hafter-codei]
+%\renewcommand\thepart{\arabic{part}}
+\titleformat{\part}[display]{\normalfont}{\hrule height 0.5pt\vfill\Large\itshape\partname\ \thepart}{25pt}{\bfseries\Huge}[\vfill]
+\titlespacing*{\part}{0pt}{-35pt}{0pt}%[270pt]
+\titleformat{\chapter}[display]
+% {\normalfont}{\vspace{-2.875cm}\titlerule[0.5pt] \flushright \vspace{-13pt} \rule{100pt}{7pt}\\ \Large\itshape\chaptertitlename\ \thechapter}{50pt}{\bfseries\Huge}
+{\normalfont}{\vspace{-3cm} \leavevmode\leaders\hrule height 0.5pt\hfill \raisebox{-6.5pt}{\rule{100pt}{7pt}} \flushright \Large\itshape\chaptertitlename\ \thechapter}{50pt}{\bfseries\Huge}
+\titlespacing*{\chapter} {0pt}{35pt}{40pt}
+
+
+% \usepackage{tocloft}
+% \renewcommand{\cftdot}{ }
+% \renewcommand{\cftpartfont}{\bfseries Part }
+% \renewcommand{\cftpartaftersnum}{.}
+% \renewcommand{\cftchapfont}{Chapter }
+% \renewcommand{\cftchapaftersnum}{.}
+% \renewcommand{\cftsecfont}{\S }
+% \renewcommand{\cftsecaftersnum}{.}
+
+% \usepackage{erewhon,cabin}
+% \usepackage{titletoc}
+
+%     \titlecontents{thepart}
+%     [5.5em] %5.3
+%     {\bigskip}
+%     {\bfseries\contentslabel[Part~\thecontentslabel.]{5.5em}}%\thecontentslabel
+%     {\hspace*{-5.5em}}% unnumbered chapters
+%     {\hfill\contentspage}[\smallskip]%
+    
+%     \titlecontents{chapter}
+%     [5.5em] %5.3
+%     {\medskip}
+%     {\contentslabel[\chaptername~\thecontentslabel.]{5.5em}}%\thecontentslabel
+%     {\hspace*{-5.5em}}% unnumbered chapters
+%     {\hfill\contentspage}[\smallskip]%
+% %
+%     \titlecontents{section}
+%     [5.5em] % i
+%     {\smallskip}
+%     {\S\thecontentslabel. }%\thecontentslabel
+%     {}
+%     {\hfill\contentspage}%]
+
 
 \usepackage[colorlinks=true,linkcolor=blue]{hyperref}
 
@@ -43,7 +88,8 @@
 \def\bp{\begin{problem}}
 \def\ep{\end{problem}}
 
-\newtheorem{extra}{Extra Problem}
+\newtheorem{extrap}{Extra Problem}
+\newtheorem{extrae}[extrap]{Extra Exercise}
 
 \theoremstyle{remark}
 \newtheorem*{solution}{Solution}
@@ -61,11 +107,16 @@
 \maketitle
 \tableofcontents
 
-\chapter{Categories and Functors}
-\input{chapters/ch1}
+\part{The Language of Categories}
+\input{chapters/ch01}
+\input{chapters/ch02}
 
-\chapter{Limits and Colimits}
-\input{chapters/ch2}
+\part{Semi-Formal Homotopy Theory}
+\input{chapters/ch03}
+\input{chapters/ch04}
+
+\part{Four Topological Inputs}
+\input{chapters/ch12}
 
 \appendix
 \chapter{Some Algebra}

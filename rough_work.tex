@@ -1,0 +1,125 @@
+For clarity, let us state the domains and targets of the projection maps explicitly:
+\bi{rClcrCl}
+\pr_X\cl && X\times Y \to X &\qquad \quad& \pr_{X\times Y}^1 \cl && (X\times Y)\times (X\times Y)\to X\times Y\\
+\pr_Y\cl && X\times Y \to Y &\qquad \quad& \pr_{X\times Y}^2 \cl && (X\times Y)\times (X\times Y)\to X\times Y
+\ei
+Consider the following diagram.
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+X\times Y \ar[rr,bend left=30,"\id"] \ar[r,"\Delta"] & \ar[d,"\pr_X\times\pr_Y"](X\times Y)\times(X\times Y)\ar[r,"\pr_{X\times Y}^1"]&X\times Y\ar[d,"\pr_X"]\\
+& X\times Y\ar[r,"\pr_X"] & X
+\end{tikzcd}
+\ese
+The top section commutes by definition of $\Delta$, and the square commutes by definition of $\pr_X\times\pr_Y$. We thus have
+\bse
+\pr_X\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_X\circ\pr_{X\times Y}^1\circ\Delta=\pr_X\circ\id=\pr_X.
+\ese
+By replacing $\pr_X$ and $\pr_{X\times Y}^1$ in the above diagram with $\pr_Y$ and $\pr_{X\times Y}^2$, respectively, we also obtain
+\bse
+\pr_Y\circ(\pr_X\times\pr_Y)\circ \Delta=\pr_Y.
+\ese
+Thus both $(\pr_X\times\pr_Y)\circ \Delta$ and (trivially) $\id$ make the diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+&X\times Y\ar[dl,"\pr_X"']\ar[d,dashed]\ar[dr,"\pr_Y"]&\\
+X & X\times Y \ar[l,"\pr_X"]\ar[r,"\pr_Y"']& Y
+\end{tikzcd}
+\ese
+commute. But there is only one such map and hence
+\bse
+(\pr_X\times\pr_Y)\circ \Delta=\id.
+\ese
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   \documentclass[12pt]{book}
+    \usepackage[utf8]{inputenc}
+    \usepackage{fourier, erewhon, cabin}
+    %\usepackage{newtxtext}
+    \usepackage[english]{babel}
+    \usepackage[showframe]{geometry}
+    \usepackage{titletoc}
+    \usepackage{lipsum} \addto\captionsenglish{ \renewcommand*\contentsname{\centerline{Table of contents}}}
+
+    \titlecontents{chapter}
+    [5.5em] %5.3
+    {\bigskip}
+    {\contentslabel[\bfseries\textsc{\chaptername}~\thecontentslabel]{5.5em}\textbf}%\thecontentslabel
+    {\hspace*{-5.5em}\textbf}% unnumbered chapters
+    {\titlerule*[1pc]{.}\contentspage}[\smallskip]%
+%
+ \titlecontents{section}
+ [5.5em] % i
+ {\smallskip}
+ {\thecontentslabel\enspace}%\thecontentslabel
+ {\hspace*{-5.5em}}
+ {\titlerule*[1pc]{.}\contentspage}%]
+
+ \titlecontents{subsection}
+ [7.12em] %
+ {\smallskip}
+ {\thecontentslabel\enspace}%\thecontentslabel
+ {\hspace*{7.12em}}
+ {\titlerule*[1pc]{.}\contentspage}
+
+    \begin{document}
+
+    \tableofcontents
+    \newpage
+
+    \chapter*{Preface}
+    \addcontentsline{toc}{chapter}{Preface}
+    \chapter{Looking-Glass House}
+\section{A First section}
+\section{Another section}
+\subsection{A subsection}
+    \lipsum[1]
+    \chapter{The Garden of Live Flowers}
+    \lipsum[2-5]
+    \chapter{Looking-Glass Insects}
+    \lipsum[6]
+    \chapter{Tweedledum and Tweedledee}
+
+    \end{document} 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
