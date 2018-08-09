@@ -14,9 +14,191 @@ H\cl (I,\vn)\longrightarrow (\map_{(2)}((X,A),(Y,B)),\map_{\circ}(X,B))
 such that $H(0)=f$ and $H(1)=g$.
 \es
 
+\bp
+Let $X$ be a topological space, and let $x, y \in X$. Say that $x \sim y$ if $x$ and $y$ are in the same path component of $X$ (i.e., if there is a path $\alpha \cl I \to X$ with $\alpha(0) = x$ and $\alpha(1) = y$).
+\ben[label=(\alph*)]
+\item Show that $\sim$ is an equivalence relation.
+\item Conclude that homotopy is an equivalence relation in $\mathcal{T}_{\circ}$ and in $\mathcal{T}_*$.
+\een
+\ep
 
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
 
+\bx
+The set $[X, Y ]$ is a pointed set---what is the basepoint?
+\ex
 
+\bs
+\es
+
+\bp
+Let $f \cl X \to Y$ and $g \cl Y \to Z$ be two maps in $\mathcal{T}_*$.
+\ben[label=(\alph*)]
+\item Show that if $x \sim x' \in X$, then $f(x) \sim f(x')$ in $Y$.
+\item Define $\pi_0(f)$ to make $\pi_0$ a covariant functor from $\mathcal{T}_*$ to the category $\mathbf{Sets}_*$ of pointed sets.
+\item Show that if $f \simeq g$ in $\mathcal{T}$, then $\pi_0(f) = \pi_0(g)$.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\item 
+\een
+\es
+
+\bx
+Show that if $F$ respects homotopy and $G$ is a homotopy functor, then $G \circ F$ is a homotopy functor.
+\ex
+
+\bs
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that the functors $- \times Z$, $ - \rtimes -$, $-\wedge Z$ and $\map_*(- ,- )$ respect homotopy in $\mathcal{T}_*$. 
+\item Show that the functors $-\times Z$, $Z\rtimes -$ and $\map_{\circ}(-,-)$ respect homotopy in $\mathcal{T}_{\circ}$. 
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Interpret the homotopy set $[ - , - ]$ in terms of $\pi_0$.
+\item  Is $[ - , - ]$ functorial? Is it a homotopy functor? Keep in mind that there are two variables.
+\een 
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bx
+Interpret $\pi_0$ in terms of $[ - , - ]$.
+\ex
+
+\bs
+\es
+
+\bp
+Show that the definitions of free and pointed homotopy in terms of cylinders are equivalent to those given in Section 4.1.1.
+\ep
+
+\bs
+\es
+
+\bp
+Using the definition of this section, show that
+\ben[label=(\alph*)]
+\item homotopy is an equivalence relation and 
+\item if $f \simeq \bar{f}$ and $g \simeq \bar{g}$, then $g \circ f\simeq \bar{g}\circ \bar{f}$ in both the pointed and unpointed contexts.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bx
+Show that if $X$ is path-connected, then any two paths are freely homotopic. If the paths are pointed, then they are pointed homotopic.
+\ex
+
+\bs
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Suppose there are path homotopies $\alpha_1 \simeq \alpha_2$ and $\beta_1 \simeq \beta_2$. Show that $\alpha_1 * \beta_1 \simeq \alpha_2 * \beta_2$, assuming the concatenation is defined.
+\item Show that $\alpha * \overleftarrow{\alpha}\simeq *$ is path homotopic to the constant path at $\alpha(0)$.
+
+{\scshape Hint}. For (b), consider the path which follows $\alpha$ from time $0$ to time $2t$, then sits still until time $2-2t$, after which it follows $\overleftarrow{\alpha}$ until time $1$.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bp
+Let $p \cl I \to I$ be any path from $0$ to $1$.
+\ben[label=(\alph*)]
+\item Show that $p$ is path homotopic to $\id_I$.
+\item Show that $\alpha \circ p$ is path homotopic to $\alpha$. 
+\een
+{\scshape Hint}. Look ahead to Section 4.2.1.
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that the paths $(\alpha * \beta) * \gamma$ and $\alpha * (\beta * \gamma)$ are path homotopic.
+\item Let $\alpha$ be a path in $X$ from $x$ to $y$, and let $\boxed{x}$ and $\boxed{y}$ be the constant paths at $x$ and at $y$, respectively. Show that there are path homotopies $\alpha * \boxed{y} \simeq \alpha \simeq \boxed{x} * \alpha$.
+\een
+{\scshape Hint}. The paths in question are reparametrisations of each other.
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\bx
+Show that the paths $(\alpha * \beta) * \gamma$ and $\alpha * (\beta * \gamma)$ are equal if and only if all three paths are constant.
+\ex
+
+\bs
+\es
+
+\bp
+Define reparametrisation of homotopies, and show that there is always a homotopy-of-homotopies from $H$ to any reparametrisation of $H$.
+\ep
+
+\bs
+\es
+
+\bp
+Let $H \cl f \simeq g$ be a homotopy.
+\ben[label=(\alph*)]
+\item Show that $H * \boxed{g} \simeq H \simeq \boxed{f} * H$.
+\item Show that there is a homotopy-of-homotopies $H * \overleftarrow{H}\simeq\boxed{f}$.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
 
 
 

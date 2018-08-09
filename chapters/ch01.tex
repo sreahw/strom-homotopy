@@ -1212,7 +1212,7 @@ Instead, a terminal object of $\mathbf{Sets}$ is any singleton $\{x\}$ as, given
 
 Similarly, any one-point space $P$ with its unique topology $\{\vn,P\}$ is such that the unique map $Y\to P$ for any topological space $Y$ is continuous. So $(P,\{\vn,P\})$ is a terminal object of $\mathbf{Top}$.
 
-\item The trivial group $\{e\}$ in $\mathbf{Grp}$, which is unique up to unique group isomorphism, is the zero object of $\mathbf{Grp}$, i.e.\ it is both initial and terminal.    
+\item The trivial group $\{e\}$ in $\mathbf{Grp}$, which is unique up to unique group isomorphism, is a zero object of $\mathbf{Grp}$, i.e.\ it is both initial and terminal.    
 Indeed, given any other group $G$, there is a unique homomorphism $G\to \{e\}$ (the unique set function $G\to \{e\}$) and a unique homomorphism $\{e\} \to G$, i.e.\ the function mapping $e$ to the identity element of $G$.
 \een
 \es
@@ -1330,7 +1330,7 @@ and, similarly,
 \pr_{B}\circ w\circ\inj_{A} & = & *\\
 \pr_{B}\circ w\circ\inj_{B} & = & \id_{B}.
 \ei
-Thus, every section in the following diagram, except the middle square, commutes.
+Thus, we know that every section in the following diagram commutes, except possibly the middle square.
 \bse
 \begin{tikzcd}[row sep=large,column sep=large]
 \ar[ddd,bend right=70,"\id_{A}"'] A \ar[d,"\inj_{A}"']\ar[r,"f"] & X\ar[d,"\inj_{X}"]\ar[ddd,bend left=70,"\id_{X}"]\\
@@ -1398,7 +1398,7 @@ w \circ (f\lor g)\circ \inj_B=(f\times g) \circ w\circ \inj_B,
 \ese
 and then used the universal property of coproducts to conclude the proof.
 
-The reason why we need $\mathcal{C}$ to be pointed before we can define $w$ is that, under the bijection of Exercise 1.34, the map $\ax_X\cl X\to Y$ must correspond to a pair of maps, one $x\to X$ and the other $X\to Y$. But, in general, there is no reason why there should be a morphism $X\to Y$ between any two objects $X$ and $Y$.
+The reason why we need $\mathcal{C}$ to be pointed before we can define $w$ is that, under the bijection of Exercise 1.34, the map $\ax_X\cl X\to X\times Y$ must correspond to a pair of maps, one $X\to X$ and the other $X\to Y$. But, in general, there is no reason why there should be a morphism $X\to Y$ between any two distinct objects $X$ and $Y$.
 
 \item Under the bijection $\mor_{\mathcal{C}}(X\lor Y,Z) \cong\mor_{\mathcal{C}}(X,Z) \times \mor_{\mathcal{C}}(Y, Z)$, setting $Z=X$ and $Z=Y$, we define the `collapse' maps $\co_X\cl X\lor Y\to X$ and $\co_Y\cl X\lor Y\to Y$ by $\co_X=(\id_X,*)$ and $\co_Y=(*,\id_Y)$, respectively.
 \een
@@ -1419,7 +1419,230 @@ Show that for any $f\cl X \to Y$ in a pointed category $\mathcal{C}$ and $*\cl W
 
 \es
 
+\bx
+\ben[label=(\alph*)]
+\item Show that the trivial group $\{1\}$ is simultaneously initial and terminal in the category $G$ of groups and homomorphisms. Show that the vector space $0$ is simultaneously initial and terminal in the category of vector spaces (over $\R$, if you like) and linear transformations.
+\item Show that in the category $\mathbf{AbGrp}$ of abelian groups and homomorphisms, the map $w \cl G \lor G \to G \times H$ is an isomorphism for any $G$ and $H$.
+Also show that the analogous statement is true in the category of vector spaces and linear transformations.
+\een
+\ex
 
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that, in any category $\mathcal{C}$, there is a natural bijection between the morphism set $\mor_{\mathcal{C}}(X_1 \sqcup X_2, Y_1 \times Y_2)$ and the set $M$ of all matrices
+\bse
+\begin{bmatrix}f_{11}& f_{12}\\
+f_{21} & f_{22}\end{bmatrix}
+\ese
+with $f_{ij} \in \mor_{\mathcal{C}}(X_j, Y_i)$.
+\item Now suppose that $\mathcal{C}$ is a pointed category in which the canonical map $w\cl X\lor Y \to X\times Y$ is an isomorphism for each pair of objects $X, Y \in \mathcal{C}$. Show that composition
+\bse
+\rule{-1cm}{0cm}
+\begin{tikzcd}[row sep=large,column sep=large]
+\mor_{\mathcal{C}}(Y_1 \sqcup Y_2, Z_1 \times Z_2) \times \mor_{\mathcal{C}}(X_1 \sqcup X_2, Y_1 \times Y_2) \ar[d,"\cong"] \ar[r] & \mor_{\mathcal{C}}(X_1 \sqcup X_2, Z_1 \times Z_2)\\
+\mor_{\mathcal{C}}(Y_1 \times Y_2, Z_1 \times Z_2) \times \mor_{\mathcal{C}}(X_1 \sqcup X_2, Y_1 \times Y_2) \ar[ur,bend right=10]&
+\end{tikzcd}
+\ese
+corresponds to matrix multiplication in $M$.
+\item Show that linear transformations $\R^2 \to \R^2$ are in one-to-one correspondence with $2 \times 2$ matrices with real entries.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\section{Group and Cogroup Objects}
+
+\bx
+Are group objects domain-type or target-type gadgets? Suppose $G$ is a group object in $\mathcal{C}$. What conditions must you impose on a functor $F \cl \mathcal{C} \to \mathcal{D}$ in order to conclude that $F(G) \in \mathcal{D}$ is also a group object?
+\ex
+
+\bs
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Check that, in the category of pointed sets, a group object is just an ordinary group.
+\item Show that a group $G \in \mathbf{Grp}$ is a group object if, and only if, $G$ is abelian.
+\item Write $\GL_n(\R)$ to denote the set of all $n \times n$ invertible matrices. It is a subset of $\R^{n^2}$, so we can give it the subspace topology. Show that matrix multiplication makes $\GL_n(\R)$ into a group object in the category of pointed topological spaces.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\bx
+You know that in the category of pointed sets and their maps, the inverse map $\nu$ for a group object $G$ is uniquely determined by its multiplication $\mu$. Prove that this is true for group objects in any category.
+\ex
+
+\bs
+\es
+
+\bp
+Let $G$ be a group object in a pointed category $\mathcal{C}$.
+\ben[label=(\alph*)]
+\item Show that the composite map $M$ in the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+\mor_{\mathcal{C}}(X,G) \times \mor_{\mathcal{C}}(X,G) \ar[r,"M"] \ar[d,"\cong"']& \mor_{\mathcal{C}}(X,G)\\
+\mor_{\mathcal{C}}(X,G \times G)\ar[ru,bend right=10,"\mu_*"'] &
+\end{tikzcd}
+\ese
+makes $\mor_{\mathcal{C}}(X,G)$ into a group object in the category of pointed sets (i.e., $\mor_{\mathcal{C}}(X,G)$ is a group with multiplication $M$).
+\item Draw a diagram that shows all the maps involved in the definition of the product of $\alpha,\beta\in\mor_{\mathcal{C}}(X,G)$ and how they fit together. (In other words, write down explicitly what $\alpha\cdot\beta$ is.)
+\item Let $f \cl X \to Y$ be a morphism in $\mathcal{C}$. Show that $f_*\cl \mor_{\mathcal{C}}(Y,G) \to \mor_{\mathcal{C}}(X,G)$ is a group homomorphism.
+
+{\scshape Hint}. Use Problem 1.37 and part (b).
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\addtocounter{exercise}{1}
+\bx
+Let $G$ be a group object in a category $\mathcal{C}$. Work out the product $\pr_1\cdot \pr_2\in \mor_{\mathcal{C}}(G \times G,G)$. You should be able to express it as a specific map you already know.
+\ex
+
+\bs
+\es
+
+\bp
+Write down the definition of a cogroup object. What is a cogroup object in the category of groups and homomorphisms? What about abelian groups and homomorphisms? What is a cogroup object in the category of pointed sets? What if you replace `cogroup' with `comonoid'?
+\ep
+
+\bs
+\es
+
+\addtocounter{exercise}{1}
+\bp
+Prove Theorem 1.58: If $C$ is a cogroup object in a pointed category $\mathcal{C}$, then the covariant functor $G(Y) = \mor_{\mathcal{C}}(C,Y)$ takes its values in the category of groups and homomorphisms.
+\ep
+
+\bs
+\es
+
+\bp
+Suppose $C$ is a cogroup object and $G$ is a group object. Then $\mor_{\mathcal{C}}(C,G)$ is a group because $C$ is a cogroup object---we'll write $\alpha\mathbin{\spadesuit} \beta$ for this product; and $\mor_{\mathcal{C}}(C,G)$ is a group because $G$ is a group object---we'll write $\alpha\mathbin{\heartsuit}\beta$ for this product. Show that the products $\mathbin{\spadesuit}$ and $\mathbin{\heartsuit}$ are the same. That is, show that for any $f, g \in\mor_{\mathcal{C}}(C,G)$, $f\mathbin{\spadesuit} g=f\mathbin{\heartsuit} g$.
+
+{\scshape Hint}. Write down the compositions which define $f\mathbin{\spadesuit} g$ and $f\mathbin{\heartsuit} g$ in a single commutative diagram. Use Problem 1.46.
+\ep
+
+\bs
+\es
+
+\section{Homomorphisms}
+
+\bx
+Show that when $\mathcal{C}$ is the category of pointed sets, a homomorphism of group objects is just the same as a homomorphism of groups.
+\ex
+
+\bs
+\es
+
+\bx
+Show that if $f \cl G \to H$ is a homomorphism of group objects in $\mathcal{C}$, then $f$ preserves inverses, in the sense that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+G \ar[r,"f"] \ar[d,"\nu_G"] & H \ar[d,"\nu_H"] \\
+G\ar[r,"f"] & H
+\end{tikzcd}
+\ese
+is commutative.
+\ex
+
+\bs
+\es
+
+\addtocounter{exercise}{1}
+
+\bp
+Prove Theorem 1.63: If $f \cl G \to H$ is a homomorphism of group objects in the pointed category $\mathcal{C}$, then the induced map
+\bse
+f_* \cl \mor_{\mathcal{C}}(X,G) \longrightarrow \mor_{\mathcal{C}}(X,H)
+\ese
+is a homomorphism of groups for every $X \in\mathcal{C}$.
+
+Is the converse true?
+\ep
+
+\bs
+\es
+
+\bp
+Define homomorphisms of cogroup objects, and prove that they induce group homomorphisms on mapping sets.
+\ep
+
+\bs
+\es
+
+\section{Abelian Groups and Cogroups}
+
+\bp
+Write down a categorical description of the twist map $T\cl X\sqcup Y\to X\sqcup Y$. Also define the twist map $T \cl X \times Y \to Y \times X$ for products. Show that both twist maps are equivalences.
+\ep
+
+\bs
+\es
+
+\bp
+Show that $C$ is a cocommutative cogroup if, and only if, $\mor_{\mathcal{C}}(C,Y)$ is an abelian group for every $Y$.
+\ep
+
+\bs
+\es
+
+\bp
+Dualise this discussion: define a commutative group object, and verify that $\mor_{\mathcal{C}}(X,G)$ is abelian if, and only if, $G$ is such an object.
+\ep
+
+\bs
+\es
+
+\bp
+\ben[label=(\alph*)]
+\item Show that $\mu_{G\times H}$ and $\nu_{G\times H}$ make $G \times H$ into a group object in $\mathcal{C}$.
+\item Show that $\inj_1 \cl G \to G\times H$ and $\inj_2 \cl H \to G \times H$ are homomorphisms.
+\item Show that $\pr_1 \cl G\times H \to G$ and $\pr_2 \cl G\times H \to H$ are homomorphisms.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\item
+\een
+\es
+
+\bp
+Show that a group object is commutative if, and only if, the multiplication $\mu\cl G \times G \to G$ is a homomorphism. What is the dual statement?
+\ep
+
+\bs
+\es
 
 \section{Adjoint Functors}
 
@@ -1430,75 +1653,151 @@ Let $f \cl X \to X'$ and $g \cl Y \to Y'$. Write down the diagrams which must co
 \bs
 \es
 
+\bp
+Let $L$ and $R$ be adjoint.
+\ben[label=(\alph*)]
+\item Show that if one of the squares
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+LA \ar[r,"\alpha"]\ar[d,"Lf"']& X\ar[d,"g"]\\
+LB\ar[r,"\beta"] & Y
+\end{tikzcd}
+\qquad \text{ and } \qquad
+\begin{tikzcd}[row sep=large,column sep=huge]
+A \ar[r,"\widehat\alpha"]\ar[d,"f"']& RX\ar[d,"Rg"]\\
+B\ar[r,"\widehat\beta"] & RY
+\end{tikzcd}
+\ese
+commutes, then so does the other one.
+\item Let $F,G$ be functors. Show that $\Phi \cl LF \to G$ is a natural transformation if, and only if, $\widehat\Phi\cl F \to RG$ is a natural transformation.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bx
+If $X$ is a set, then we can form the free abelian group $F(X) = \bigoplus_{x\in X} \Z$. On the other hand, if $G$ is an abelian group, then we can forget the group structure of $G$ and just remember the underlying set $S(G)$.
+\ben[label=(\alph*)]
+\item Show that the functors $F \cl \mathbf{Sets} \to \mathbf{Grp}$ and $S \cl \mathbf{Grp} \to \mathbf{Sets}$ are adjoint to one another. Which is the left adjoint and which is the right adjoint?
+\item Use the same scheme to express other `free objects' that you know about in terms of adjoints.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item
+\item
+\een
+\es
+
+\bp
+Show that there is a commutative diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+\mor_{\mathcal{C}}(X, Y ) \ar[d,equal] \ar[r,"L"] & \mor_{\mathcal{C}}(L(X), L(Y ))\ar[d,"\Phi","\cong"']\\
+\mor_{\mathcal{C}}(X, Y )\ar[r,"\sigma_*"]& \mor_{\mathcal{C}}(X,RL(Y ))
+\end{tikzcd}
+\ese
+where $\sigma\cl Y\to RL(Y)$ is $\Phi_{LY,LY}(\id_{LY})$.
+\ep
+
+\bs
+\es
+
+\bx
+Problem 1.74 shows that the maps $L$ and $\sigma_*$ are equivalent maps. In Section 1.2 we defined what equivalence means in categorical terms---what category are we working in here?
+\ex
+
+\bs
+\es
+
+\bp
+Dualize the previous problem.
+\ep
+
+\bs
+\es
+
+\bp
+Let $L \cl \mathcal{C} \to \mathcal{D}$ and $R \cl\mathcal{D} \to \mathcal{C}$ be a pair of adjoint functors. Show that there are natural maps $X \to RLX$ and $LRX \to X$ and that $RX$ is naturally a retract of $RLRX$.
+\ep
+
+\bs
+\es
+
 \begin{extrap}
-Show that if $F, F' \cl \mathcal{C} \to \mathcal{D}$ are both left adjoints to $G \cl \mathcal{D}\to\mathcal{C}$, then there is a natural isomorphism $F \cong F'$. So adjoints are unique up to isomorphism.
+Show that if $L, L' \cl \mathcal{C} \to \mathcal{D}$ are both left adjoints to $R \cl \mathcal{D}\to\mathcal{C}$, then there is a natural isomorphism $L \to L'$. So adjoints are unique up to isomorphism.
 \end{extrap}
 
 \bs
-For $A\in \mathcal{C}$ and $B\in\mathcal{D}$, denote by $\Phi_{A,B}\cl\mor_{\mathcal{D}}(FA,B)\to\mor_{\mathcal{C}}(A,GB)$ and $\Psi_{A,B}\cl\mor_{\mathcal{D}}(F'A,B)\to\mor_{\mathcal{C}}(A,GB)$ the natural bijections corresponding to the adjunctions $F\dashv G$ and $F'\dashv G$, respectively.
+For $A\in \mathcal{C}$ and $B\in\mathcal{D}$, denote by $\Phi_{A,B}\cl\mor_{\mathcal{D}}(LA,B)\to\mor_{\mathcal{C}}(A,RB)$ and $\Psi_{A,B}\cl\mor_{\mathcal{D}}(L'A,B)\to\mor_{\mathcal{C}}(A,RB)$ the natural bijections corresponding to the adjunctions $L\dashv R$ and $L'\dashv R$, respectively.
 
-For each $A\in \mathcal{C}$, define $\xi_A=(\Psi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA}))$, i.e.\ $\xi_A$ is the image of $\id_{FA}$ under the composite
+For each $A\in \mathcal{C}$, define $\xi_A=(\Psi_{A,LA})^{-1}(\Phi_{A,LA}(\id_{LA}))$, i.e.\ $\xi_A$ is the image of $\id_{LA}$ under the composite
 \bse
-\mor_{\mathcal{D}}(FA,FA)\xrightarrow{\ \Phi_{A,FA} \ }\mor_{\mathcal{C}}(A,GFA)\xrightarrow{\ (\Psi_{A,FA})^{-1}\ }\mor_{\mathcal{D}}(F'A,FA).
+\mor_{\mathcal{D}}(LA,LA)\xrightarrow{\ \Phi_{A,LA} \ }\mor_{\mathcal{C}}(A,RLA)\xrightarrow{\ (\Psi_{A,LA})^{-1}\ }\mor_{\mathcal{D}}(L'A,LA).
 \ese
-Then $\xi\cl F'\to F$ is a natural isomorphism. To see this, let $f\cl A\to B$ be a morphism in $\mathcal{C}$. We seek to show that the diagram
+Then $\xi\cl L'\to L$ is a natural isomorphism. To see this, let $f\cl A\to B$ be a morphism in $\mathcal{C}$. We seek to show that the diagram
 \bse
 \begin{tikzcd}[row sep=large,column sep=large]
-F'A \ar[r,"\xi_A"]\ar[d,"F'f"] & FA\ar[d,"Ff"]\\
-F'B\ar[r,"\xi_B"]&FB
+L'A \ar[r,"\xi_A"]\ar[d,"L'f"] & LA\ar[d,"Lf"]\\
+L'B\ar[r,"\xi_B"]&LB
 \end{tikzcd}
 \ese
 commutes. Consider the following diagram:
 \bse
 \begin{tikzcd}[row sep=huge,column sep=4.5em]
-\mor_{\mathcal{D}}(FA,FA) \ar[r,"\Phi_{A,FA}"]\ar[d,"Ff\circ-"]& \mor_{\mathcal{C}}(A,GFA)\ar[r,"(\Psi_{A,FA})^{-1}"] \ar[d,"GFf\circ-"]& \mor_{\mathcal{D}}(F'A,FA)\ar[d,"Ff\circ-"]\\
-\mor_{\mathcal{D}}(FA,FB) \ar[r,"\Phi_{A,FB}"]& \mor_{\mathcal{C}}(A,GFB)\ar[r,"(\Psi_{A,FB})^{-1}"] & \mor_{\mathcal{D}}(F'A,FB)
+\mor_{\mathcal{D}}(LA,LA) \ar[r,"\Phi_{A,LA}"]\ar[d,"Lf\circ-"]& \mor_{\mathcal{C}}(A,RLA)\ar[r,"(\Psi_{A,LA})^{-1}"] \ar[d,"RLf\circ-"]& \mor_{\mathcal{D}}(L'A,LA)\ar[d,"Lf\circ-"]\\
+\mor_{\mathcal{D}}(LA,LB) \ar[r,"\Phi_{A,LB}"]& \mor_{\mathcal{C}}(A,RLB)\ar[r,"(\Psi_{A,LB})^{-1}"] & \mor_{\mathcal{D}}(L'A,LB)
 \end{tikzcd}
 \ese
-The internal squares commute by the assumption that we have adjunctions $F\dashv G$ and $F'\dashv G$. Hence, so does the outer rectangle. Following $\id_{FA}$ around the diagram, we obtain
+The internal squares commute by the assumption that we have adjunctions $L\dashv R$ and $L'\dashv R$. Hence, so does the outer rectangle. Following $\id_{LA}$ around the diagram, we obtain
 \bi{rCl}
-Ff\circ\xi_A & = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff\circ\id_{FA}))\\
-& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff\circ F(\id_{A})))\\
-& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(F(f\circ\id_{A})))\\
-& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(F(f))).
+Lf\circ\xi_A & = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(Lf\circ\id_{LA}))\\
+& = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(Lf\circ L(\id_{A})))\\
+& = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(L(f\circ\id_{A})))\\
+& = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(L(f))).
 \ei
 Similarly, by considering the diagram
 \bse
 \begin{tikzcd}[row sep=huge,column sep=4.5em]
-\mor_{\mathcal{D}}(FB,FB) \ar[r,"\Phi_{B,FB}"]\ar[d,"-\circ Ff"]& \mor_{\mathcal{C}}(B,GFB)\ar[r,"(\Psi_{B,FB})^{-1}"] \ar[d,"-\circ f"]& \mor_{\mathcal{D}}(F'B,FB)\ar[d,"-\circ F'f"]\\
-\mor_{\mathcal{D}}(FA,FB) \ar[r,"\Phi_{A,FB}"]& \mor_{\mathcal{C}}(A,GFB)\ar[r,"(\Psi_{A,FB})^{-1}"] & \mor_{\mathcal{D}}(F'A,FB)
+\mor_{\mathcal{D}}(LB,LB) \ar[r,"\Phi_{B,LB}"]\ar[d,"-\circ Lf"]& \mor_{\mathcal{C}}(B,RLB)\ar[r,"(\Psi_{B,LB})^{-1}"] \ar[d,"-\circ f"]& \mor_{\mathcal{D}}(L'B,LB)\ar[d,"-\circ L'f"]\\
+\mor_{\mathcal{D}}(LA,LB) \ar[r,"\Phi_{A,LB}"]& \mor_{\mathcal{C}}(A,RLB)\ar[r,"(\Psi_{A,LB})^{-1}"] & \mor_{\mathcal{D}}(L'A,LB)
 \end{tikzcd}
 \ese
 we find
 \bi{rCl}
-\xi_B\circ F'f & = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(\id_{FB}\circ Ff))\\
-& = & (\Psi_{A,FB})^{-1}(\Phi_{A,FB}(Ff)).
+\xi_B\circ L'f & = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(\id_{LB}\circ Lf))\\
+& = & (\Psi_{A,LB})^{-1}(\Phi_{A,LB}(Lf)).
 \ei
-So $Ff\circ\xi_A=\xi_B\circ F'f$, i.e.\ $\xi$ is a natural transformation.
+So $Lf\circ\xi_A=\xi_B\circ L'f$, i.e.\ $\xi$ is a natural transformation.
 
-Finally, for each $A\in \mathcal{C}$, define $\lambda_A=(\Phi_{A,F'A})^{-1}(\Psi_{A,F'A}(\id_{F'A}))$, i.e.\ $\lambda_A$ is the image of $\id_{F'A}$ under the composite
+Finally, for each $A\in \mathcal{C}$, define $\lambda_A=(\Phi_{A,L'A})^{-1}(\Psi_{A,L'A}(\id_{L'A}))$, i.e.\ $\lambda_A$ is the image of $\id_{L'A}$ under the composite
 \bse
-\mor_{\mathcal{D}}(F'A,F'A)\xrightarrow{\ \Psi_{A,F'A} \ }\mor_{\mathcal{C}}(A,GF'A)\xrightarrow{\ (\Phi_{A,F'A})^{-1}\ }\mor_{\mathcal{D}}(FA,F'A).
+\mor_{\mathcal{D}}(L'A,L'A)\xrightarrow{\ \Psi_{A,L'A} \ }\mor_{\mathcal{C}}(A,RL'A)\xrightarrow{\ (\Phi_{A,L'A})^{-1}\ }\mor_{\mathcal{D}}(LA,L'A).
 \ese
 By the naturality of the bijections $\Phi$ and $\Psi$, the diagram
 \bse
 \begin{tikzcd}[row sep=huge,column sep=4.5em]
-\mor_{\mathcal{D}}(F'A,F'A) \ar[r,"\Psi_{A,F'A}"]\ar[d,"\xi_A\circ-"]& \mor_{\mathcal{C}}(A,GF'A)\ar[r,"(\Phi_{A,F'A})^{-1}"] \ar[d," G\xi_A\circ-"]& \mor_{\mathcal{D}}(FA,F'A)\ar[d,"\xi_A\circ-"]\\
-\mor_{\mathcal{D}}(F'A,FA) \ar[r,"\Psi_{A,FA}"]& \mor_{\mathcal{C}}(A,GFA)\ar[r,"(\Phi_{A,FA})^{-1}"] & \mor_{\mathcal{D}}(FA,FA)
+\mor_{\mathcal{D}}(L'A,L'A) \ar[r,"\Psi_{A,L'A}"]\ar[d,"\xi_A\circ-"]& \mor_{\mathcal{C}}(A,RL'A)\ar[r,"(\Phi_{A,L'A})^{-1}"] \ar[d," R\xi_A\circ-"]& \mor_{\mathcal{D}}(LA,L'A)\ar[d,"\xi_A\circ-"]\\
+\mor_{\mathcal{D}}(L'A,LA) \ar[r,"\Psi_{A,LA}"]& \mor_{\mathcal{C}}(A,RLA)\ar[r,"(\Phi_{A,LA})^{-1}"] & \mor_{\mathcal{D}}(LA,LA)
 \end{tikzcd}
 \ese
 
-commutes. Chasing $\id_{F'A}$ around the diagram, we obtain
+commutes. Chasing $\id_{L'A}$ around the diagram, we obtain
 \bi{rCl}
-\xi_A\circ\lambda_A & = & (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\xi_A\circ \id_{F'A}))\\
-& = & (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\xi_A))\\
-& = &  (\Phi_{A,FA})^{-1}(\Psi_{A,FA}(\Psi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA})))\\
-& = &  (\Phi_{A,FA})^{-1}(\Phi_{A,FA}(\id_{FA}))\\
-& = &\id_{FA}
+\xi_A\circ\lambda_A & = & (\Phi_{A,LA})^{-1}(\Psi_{A,LA}(\xi_A\circ \id_{L'A}))\\
+& = & (\Phi_{A,LA})^{-1}(\Psi_{A,LA}(\xi_A))\\
+& = &  (\Phi_{A,LA})^{-1}(\Psi_{A,LA}(\Psi_{A,LA})^{-1}(\Phi_{A,LA}(\id_{LA})))\\
+& = &  (\Phi_{A,LA})^{-1}(\Phi_{A,LA}(\id_{LA}))\\
+& = &\id_{LA}
 \ei
-and, similarly, $\lambda_A\circ\xi_A=\id_{F'A}$ for each $A\in \mathcal{C}$. So $\xi_A$ is an isomorphism for each $A\in\mathcal{C}$, and thus $\xi\cl F'\to F$ is a natural isomorphism with inverse $\lambda$.
+and, similarly, $\lambda_A\circ\xi_A=\id_{L'A}$ for each $A\in \mathcal{C}$. So $\xi_A$ is an isomorphism for each $A\in\mathcal{C}$, and thus $\xi\cl L'\to L$ is a natural isomorphism with inverse $\lambda$.
 \es
-
 
 
 
