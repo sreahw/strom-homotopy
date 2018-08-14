@@ -29,9 +29,55 @@ is commutative without using any diagrams at all.
 
 \bs
 \ben[label=(\alph*)]
-\item
-\item
-\item
+\item This statement appears to be incorrect\footnote{See \url{https://math.stackexchange.com/q/1033209} for further details.}.
+\item The first isomorphism theorem can be restated as follows. Every group homomorphism $\varphi\cl G\to H$ can be factored as
+\bse
+\begin{tikzcd}[column sep=large]
+G \ar[dr,bend right=30,"q"']\ar[rrr,"\varphi"] &&& H\\
+& G/\ker(\varphi) \ar[r,"\widetilde\varphi"] & \im(\varphi) \ar[ur,bend right=30,hook,"i"'] &
+\end{tikzcd}
+\ese
+where $q$ is the quotient homomorphism, $\widetilde \varphi$ is an isomorphism, and $i$ is the inclusion homomorphism. Looking ahead at Section 1.5, we can further restate this as a collection of lifting and extension problems only. Indeed, here we are looking for an extension $\epsilon$
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+&\ar[dl,bend right=10,"\epsilon"']G/\ker(\varphi)\\
+H & \ar[l,"\varphi"]G\ar[u,"q"']
+\end{tikzcd}
+\ese
+such that there is a lifting $\lambda$
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+&\im(\varphi)\ar[d,hook,"i"]\\
+\ar[ur,bend left=10,"\lambda"] G/\ker(\varphi) \ar[r,"\epsilon"']& H.
+\end{tikzcd}
+\ese
+The condition that $\lambda$ be an isomorphism can, in turn, be expressed in terms of an extension and a lifting problem as in the footnote exercise in Section 1.5.
+
+The second isomorphism theorem states that... Putting all the homomorphisms in one diagram, we have
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+G/N \ar[rrr,bend left=30,"\cong"]& \ar[l,"q"']G\ar[r,"q"] & G/H \ar[r,"q"]& {\displaystyle\frac{G/H}{N/H}}\\
+& N \ar[ul,"*"]\ar[u,hook]\ar[r,"q"]& N/H\ar[u,hook] \ar[ur,"*"']&\\
+& H \ar[u,hook]\ar[ur,"*"']&&
+\end{tikzcd}
+\ese
+where the $q$'s are quotient homomorphisms, the hooked arrows are inclusions of subgroups, and $*$ indicates a trivial homomorphism.
+\item By associativity, it suffices to only consider composites of up to two morphisms.
+\begin{table}[h!]
+\def\arraystretch{1.25}
+\centering
+\begin{tabular}{c||c}
+\ Cube face\ \ & Condition\\
+\hline
+\hline
+Top & $f_{24}\circ f_{12}=f_{34}\circ f_{13}$ \\
+Back & $h_{2}\circ f_{12}=g_{12}\circ h_{1}$\\
+Left & $h_{3}\circ f_{13}=g_{13}\circ h_{1}$\\
+Right & $h_{4}\circ f_{24}=g_{24}\circ h_{2}$\\
+Front & $h_{4}\circ f_{34}=g_{34}\circ h_{3}$\\
+Bottom & $g_{24}\circ g_{12}=g_{34}\circ g_{13}$
+\end{tabular}
+\end{table}
 \een
 \es
 
@@ -60,9 +106,11 @@ As a special case, if $\F$ is a field, then $\F$-$\mathbf{Mod}$ is the category 
 The composite $B\circ A\cl n\to p$ of $A\cl n\to m$ and $B\cl m\to p$ is the product matrix $BA\in\Mat_{p\times n}(R)$ and the identity $\id_n\cl n\to n$ is just $I_n\in \Mat_{n\times n}(R)$. That these make $\mathbf{Mat}(R)$ into a category follows at once from the properties of matrix multiplication.
 
 This is one of few examples in which a category is named after its morphisms rather than its objects.
-\item The category $\mathbf{hTop}$, whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. This is an example of a \emph{quotient category}.
+\item The category $\mathbf{hTop}$, whose objects are topological spaces and whose morphisms are homotopy classes of continuous maps. The identity $\id_X$ in $\mathbf{hTop}$ is just $[\id_X]$, with $\id_X$ in $\mathbf{Top}$, and composition is defined by $[g]\circ [f]=[g\circ f]$. This is an example of a \emph{quotient category}.
 
-In general, given a category $\mathcal{C}$, an \emph{equivalence relation} $\sim$ on $\mathcal{C}$ consists in an equivalence relation $\sim_{X,Y}$ on $\mor_{\mathcal{C}}(X,Y)$ for each pair of objects $X$ and $Y$ which respects composition. That is, given $f_1,f_2\in\mor_{\mathcal{C}}(X,Y)$ and $g_1,g_2\in\mor_{\mathcal{C}}(Y,Z)$ such that $f_1\sim_{X,Y}f_2$ and $g_1\sim_{Y,Z}g_2$, we require that $g_1\circ f_1\sim_{X,Z}g_2\circ f_2$. We can then define $\mathcal{C}/{\sim}$ by setting $\ob(\mathcal{C}/{\sim})=\ob(\mathcal{C})$ and $\mor_{\mathcal{C}/{\sim}}(X,Y)=\mor_{\mathcal{C}}(X,Y)/{\sim_{X,Y}}$. 
+In general, given a category $\mathcal{C}$, a \emph{congruence relation} $\sim$ on $\mathcal{C}$ consists in an equivalence relation $\sim_{X,Y}$ on $\mor_{\mathcal{C}}(X,Y)$ for each pair of objects $X$ and $Y$ which respects composition. That is, given $f_1,f_2\in\mor_{\mathcal{C}}(X,Y)$ and $g_1,g_2\in\mor_{\mathcal{C}}(Y,Z)$ such that $f_1\sim_{X,Y}f_2$ and $g_1\sim_{Y,Z}g_2$, we require that $g_1\circ f_1\sim_{X,Z}g_2\circ f_2$. We can then define $\mathcal{C}/{\sim}$ by setting $\ob(\mathcal{C}/{\sim})=\ob(\mathcal{C})$ and $\mor_{\mathcal{C}/{\sim}}(X,Y)=\mor_{\mathcal{C}}(X,Y)/{\sim_{X,Y}}$. 
+
+One can check that the homotopy relation $\simeq$ is a congruence relation on $\mathbf{Top}$ and that $\mathbf{hTop}=\mathbf{Top}/{\simeq}$.
 \een
 \item Given a group $G$, define a category $\mathcal{G}$ by setting $\ob(\mathcal{G})=\{*\}$. Then $\mathcal{G}$ has a single morphism set and we can declare $\mor_{\mathcal{G}}(*,*)=G$ and define composition of morphisms in $\mor_{\mathcal{G}}(*,*)$ to be the binary operation of $G$. The associativity and identity axioms of $G$ imply that $\mathcal{G}$ is a category. 
 
@@ -156,13 +204,13 @@ The situation is completely analogous with $\mathbf{Mod}$-$R$, $R$-$\mathbf{Mod}
 m=\tr(I_m)=\tr(AB)=\tr(BA)=\tr(I_n)=n,
 \ese
 so every equivalence in $\mathbf{Mat}(R)$ with $R$ commutative must be an \emph{automorphism}, i.e.\ an invertible morphism with the same domain and target.
-\item The equivalences in $\mathbf{Top}$ are continuous bijections whose inverses are also continuous, i.e.\ homeomorphisms. Note that, unlike the algebraic categories considered above, a continuous bijection in not necessarily a homeomorphism.
+\item The equivalences in $\mathbf{Top}$ are continuous bijections whose inverses are also continuous, i.e.\ homeomorphisms. Note that, unlike the algebraic categories considered above, a continuous bijection is not necessarily a homeomorphism.
 
 The equivalences in $\mathbf{hTop}$ are (homotopy classes of) homotopy equivalences, i.e.\ $[f]\cl X\to Y$ is an equivalence in $\mathbf{hTop}$ if there exists $g\cl Y \to X$ in $\mathbf{Top}$ such that $g\circ f$ is homotopic to $\id_X$ and $f\circ g$ is homotopic to $\id_Y$.
 \een
-The equivalences in a monoid $M$ seen as a category (Exercise 1.3 (b)) are simply the invertible elements of $M$, while in a groupoid every morphism is (by definition) an equivalence.
+The equivalences in a monoid $M$ seen as a category, as in Exercise 1.3 (b), are simply the invertible elements of $M$, while in a groupoid every morphism is (by definition) an equivalence.
 
-Finally, the category described in Exercise 1.3 (c) is an example of a \emph{skeletal category}, i.e.\ a category in which the only equivalences are the identity morphisms. Indeed, if $\omega\cl [0,d]\to X$ with $d>0$, it is clear that there exists no path $\gamma\cl [0,d']$ such that $\omega * \gamma$ or $\gamma * \omega$ is the identity, as this would require $d+d'=0$.
+Finally, the category with objects $\N$ and morphisms given by the divisibility relation, that with objects $\R$ and morphisms given by the less-than-or-equal relation, and that described in Exercise 1.3 (c) are all examples of \emph{skeletal categories}, i.e.\ categories in which the only equivalences are the identity morphisms. Indeed, if $n,m>0$, then $n\mid m$ and $m\mid n$ if, and only if, $n=m$; clearly $x\leq y$ and $y\leq x$ if, and only if, $x=y$ in $\R$; and finally, given $\omega\cl [0,d]\to X$ with $d>0$, it is clear that there exists no path $\gamma\cl [0,d']$ such that $\omega * \gamma$ or $\gamma * \omega$ is the identity, as this would require $d+d'=0$.
 \een
 \es
 
@@ -329,7 +377,7 @@ from the category $\mathbf{Top}$ of topological spaces and continuous functions 
 Suppose, for the sake of contradiction, that such an $r\cl D^2\to S^1$ exists. Then $r\circ i=\id_{S^1}$, so $F(r)\circ F(i)=F(r\circ i)=F(\id_{S^1})=\id_{\Z}$. Thus we have the following commutative diagram in $\mathbf{Grp}$.
 \bse
 \begin{tikzcd}[column sep=large]
-\Z \ar[rr,bend left=40,"\id_{Z}"]\ar[r,"F(i)"']&0\ar[r,"F(r)"']&\Z
+\Z \ar[rr,bend left=40,"\id_{\Z}"]\ar[r,"F(i)"']&0\ar[r,"F(r)"']&\Z
 \end{tikzcd}
 \ese
 However, since $0$ is a zero object (see Exercise 1.43) in $\mathbf{Grp}$, the homomorphisms $F(i)$ and $F(r)$ are both trivial and hence $F(r)\circ F(i)$ cannot be the identity.
@@ -808,11 +856,12 @@ Show that an equivalence of categories need be neither injective nor surjective 
 \bs
 \ben[label=(\alph*)]
 \item The dual of the given statement is `$f^\op$ is a morphism with domain $Y$ and target $X$', denoted $f^\op\cl Y\to X$.
-\item
+\item Parts (a) and (b) of Exercise 1.20 and Problems 1.22, 1.24, 1.25 and 1.28 are all dual to one another.
 \een
 \es
 
 \begin{extrae}
+\label{extr:liftext}
 Show how the problem: `decide whether $f \cl X \to Y$ is a homeomorphism' can be written in terms of extension and/or lifting problems.
 \end{extrae}
 
@@ -900,6 +949,16 @@ Let $\pr_X$ and $\pr_Y$ be the projections. Define
 By the universal property of the product, for each $(f,g)\in \mor_{\mathcal{C}}(Z,X) \times \mor_{\mathcal{C}}(Z, Y)$, there is a unique $h\in\mor_{\mathcal{C}}(Z,X\times Y)$ such that $f=\pr_X\circ h$ and $g=\pr_Y\circ h$, i.e.\ such that $\phi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity. Then $\phi(h)=(f,g)$ if, and only if, $\pr_X\circ h=f$ and $\pr_Y\circ h=g$. 
 
 In light of this bijection, we will write $(f,g)$ for the map $h=\phi^{-1}(f,g)$. With this notation, we have $\pr_X\circ(f,g)=f$ and $\pr_Y\circ(f,g)=g$.
+
+Note that, given a map $k\cl W\to Z$, we have
+\bse
+\pr_X\circ(f,g)\circ k=f\circ k \qquad \text{ and } \qquad \pr_Y\circ(f,g)\circ k=g\circ k,
+\ese
+so the map $(f,g)\circ k\cl W\to X\times Y$ corresponds to the pair $(f\circ k,g\circ k)$, and hence, since the correspondence is bijective,
+\bse
+(f,g)\circ k=(f\circ k,g\circ k).
+\ese
+However, there is no corresponding result for post-composition since, in the hypothetical expression $l\circ (f,g)=(l\circ f,l\circ g)$, the map $l$ should be a map $X\times Y \to V$, $X\to V$ and $Y\to V$ all at once.
 \es
 
 \bx
@@ -926,7 +985,7 @@ satisfying the respective universal properties. We seek to show that the object 
 (\pr_X,\pr_Y\circ\pr_{Y\times Z})\cl && X\times(Y\times Z) \longrightarrow X\times Y\\ 
 \pr_Z\circ\pr_{Y\times Z} \cl &&  X\times(Y\times Z) \longrightarrow Z
 \ei
-is a product of $X\times Y$ and $Z$. Then it will follow that $(X\times Y)\times Z$ exists and, by the universal property, $X\times (Y\times Z)\cong (X\times Y)\times Z$.
+is a product of $X\times Y$ and $Z$. Then it will follow that $(X\times Y)\times Z$ exists and, by Exercise 1.33, $X\times (Y\times Z)\cong (X\times Y)\times Z$.
 
 Let $f\cl A\to X\times Y$ and $g\cl A\to Z$ be two morphisms. Then we have morphisms
 \bi{rCl}
@@ -955,8 +1014,8 @@ and
 \ei
 That is, $h$ makes the diagram
 \bse
-\begin{tikzcd}[column sep=large,row sep=large]
-&& A \ar[dll,"f"']\ar[d,"h"]\ar[drr,"g"]&&\\
+\begin{tikzcd}[column sep=large,row sep=huge]
+&& A \ar[dll,"f"'] \ar[d,"h"] \ar[drr,"g"] &&\\
 X\times Y && X\times (Y\times Z) \ar[ll,"{(\pr_X,\pr_Y\circ\pr_{Y\times Z})}"] \ar[rr,"\pr_Z\circ\pr_{Y\times Z}"'] && Z
 \end{tikzcd}
 \ese
@@ -973,13 +1032,22 @@ An entirely analogous argument shows that if $(X\times Y)\times Z$ exists, then 
 \bse
 f\circ\pr_A\cl A\times B\to X\qquad \text{and}\qquad g\circ \pr_B\cl A\times B\to Y.
 \ese
-Then we can define $f\times g:=(f\circ\pr_A,g\circ\pr_B)$. Explicitly, $f\times g$ is the unique morphism making the following diagram commute.
+Then we can define $f\times g=(f\circ\pr_A,g\circ\pr_B)$. Explicitly, $f\times g$ is the unique morphism making the following diagram commute.
 \bse
 \begin{tikzcd}[column sep=large,row sep=large]
 A \ar[d,"f"] & \ar[l,"\pr_A"'] A\times B \ar[d,dashed,"f\times g"] \ar[r,"\pr_B"]& B\ar[d,"g"]\\
 X & \ar[l,"\pr_X"]X\times Y \ar[r,"\pr_Y"']& Y
 \end{tikzcd}
 \ese
+Note that this construction behaves well with respect to identities, in that $\id_A\times\id_A=\id_{A\times A}$, and with respect to composition. Indeed, given $h\cl X\to Z$ and $k\cl Y\to W$, the commutative diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+A \ar[dd,bend right=60,"h\circ f"']\ar[d,"f"] & \ar[l,"\pr_A"'] A\times B \ar[d,dashed,"f\times g"] \ar[r,"\pr_B"]& B\ar[d,"g"]\ar[dd,bend left=60,"k\circ g"]\\
+X \ar[d,"h"]& \ar[l,"\pr_X"]X\times Y \ar[d,dashed,"h\times k"] \ar[r,"\pr_Y"']& \ar[d,"k"]Y\\
+Z & \ar[l,"\pr_Z"]Z\times W \ar[r,"\pr_W"']& W
+\end{tikzcd}
+\ese
+shows that $(h\times k)\circ(f\times g)=(h\circ f)\times(k\circ g)$.
 \een
 \es
 
@@ -1051,7 +1119,7 @@ By replacing $\pr_X^1$ and $\pr_Y^1$ with $\pr_X^2$ and $\pr_Y^2$, respectively,
 \bse
 (f\times f)\circ \Delta = h = \Delta\circ f.
 \ese
-\item First note that $(\pr_1,\pr_2)$ is the preimage under the bijection $\phi$ of Exercise 1.34 of the two composites
+\item First note that $(\pr_1,\pr_2)$ is the preimage under the bijection $\phi$ of Exercise 1.34 of the pair of composites
 \bi{C}
 \pr_1 = (X\times Y)\times(X\times Y) \xrightarrow{\ \pr^1_{X\times Y} \ } X\times Y \xrightarrow{\ \pr_X \ }X\\
 \pr_2 = (X\times Y)\times(X\times Y) \xrightarrow{\ \pr^2_{X\times Y} \ } X\times Y \xrightarrow{\ \pr_Y \ }Y.
@@ -1059,8 +1127,8 @@ By replacing $\pr_X^1$ and $\pr_Y^1$ with $\pr_X^2$ and $\pr_Y^2$, respectively,
 By the universal property of products, there is a unique map $h$ making the following diagram commute
 \bse
 \begin{tikzcd}[row sep=large,column sep=large]
-&X\times Y\ar[dl,"\pr_1"']\ar[d,dashed,"h"]\ar[dr,"\pr_2"]&\\
-X & \ar[l,"\pr_1"]X\times Y \ar[r,"\pr_2"']& Y
+&X\times Y\ar[dl,"\pr_X"']\ar[d,dashed,"h"]\ar[dr,"\pr_Y"]&\\
+X & \ar[l,"\pr_X"]X\times Y \ar[r,"\pr_Y"']& Y
 \end{tikzcd}
 \ese
 Observe that we have
@@ -1083,6 +1151,22 @@ Explain how to view the diagonal map as a natural transformation.
 \ex
 
 \bs
+Consider the assignment $\Sq\cl \mathcal{C}\to \mathcal{C}$ given by $\Sq(X)=X\times X$ on objects and $\Sq(f)=f\times f$ on morphisms. Then, by Exercise 1.35 (b), we have
+\bse
+\Sq(\id_X)=\id_X\times \id_X=\id_{X\times X}=\id_{\Sq(X)}
+\ese
+and
+\bse
+\Sq(g\circ f)=(g\circ f)\times (g\circ f)=(g\times g)\circ (f\times f)=\Sq(g)\circ \Sq(f),
+\ese
+so $\Sq$ is a covariant functor $\mathcal{C}\to\mathcal{C}$. The diagonal maps $\Delta_X\cl X\to X\times X$ can be assembled into a natural transformation $\Delta\cl \id_{\mathcal{C}}\to \Sq$. The naturality square
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+X \ar[r,"\Delta_X"]\ar[d,"f"] & \Sq(X) \ar[d,"{\Sq(f)}"]\\
+Y \ar[r,"\Delta_Y"] & \Sq(Y)
+\end{tikzcd}
+\ese
+is the same square as in Problem 1.37 (a).
 \es
 
 \bx
@@ -1097,7 +1181,18 @@ X \times Y = \{(x, y) \mid x \in X, y \in Y \}.
 
 \bs
 \ben[label=(\alph*)]
-\item
+\item Let $\pr_X$ and $\pr_Y$ be the standard projection maps, i.e.\ $(x,y)\mapsto x$ and $(x,y)\mapsto y$, respectively. Let $f\cl Z\to X$ and $g\cl Z\to Y$ be arbitrary maps and define $h\cl Z\to X\times Y$ by $h(z)=(f(z),g(z))$. Then $\pr_X\circ h=f$ and $\pr_Y\circ h=g$, so $h$ makes the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+&Z\ar[dl,"f"']\ar[d,"h"]\ar[dr,"g"]&\\
+X & \ar[l,"\pr_X"]X\times Y \ar[r,"\pr_Y"']& Y
+\end{tikzcd}
+\ese
+commute. To see that it is the unique such, suppose that $h'\cl z\to X\times Y$ also makes the diagram commute. Let $z\in Z$ and let $h'(z)=(x,y)\in X\times Y$. Then
+\bse
+x=\pr_X(h'(z))=(\pr_X\circ h')(z)=f(z)
+\ese
+and, similarly, $y=g(z)$. Therefore $h'=h$.
 \item
 \een
 \es
@@ -1137,6 +1232,16 @@ commute, i.e.\ such that $t\circ \inj_X=f$ and $t\circ \inj_Y=g$.
 By the universal property of the coproduct, for each $(f,g)\in \mor_{\mathcal{C}}(X,B) \times \mor_{\mathcal{C}}(Y, B)$, there is a unique $h\in\mor_{\mathcal{C}}(X\sqcup Y,B)$ such that $f= h\circ \inj_X$ and $g=h\circ \inj_Y$, i.e.\ such that $\psi(h)=(f,g)$. Existence amounts to surjectivity, and uniqueness implies injectivity. Then $\psi(h)=(f,g)$ if, and only if, $h\circ\inj_X=f$ and $h\circ\inj_Y=g$. 
 
 Using the notation $(f,g)$ for the map $h=\psi^{-1}(f,g)$, we have $(f,g)\circ\inj_X=f$ and $(f,g)\circ\inj_Y=g$.
+
+Note that, given a map $k\cl B\to C$, we have
+\bse
+k\circ(f,g)\circ \inj_X=k\circ f \qquad \text{ and } \qquad k\circ(f,g)\circ \inj_Y=k\circ g,
+\ese
+so the map $k\circ (f,g)\cl  X\sqcup Y\to C$ corresponds to the pair $(k\circ f,k\circ g)$, and hence, since the correspondence is bijective,
+\bse
+k\circ(f,g)=(k\circ f,k\circ g).
+\ese
+However, there is no corresponding result for pre-composition since, in the hypothetical expression $(f,g)\circ l=(f\circ l,g\circ l)$, the map $l$ should be a map $D\to X\sqcup Y$, $D\to X$ and $D\to Y$ all at once.
 \item Given $f\cl A\to X$ and $g\cl B\to Y$, we can form the morphisms
 \bse
 \inj_X\circ f\cl A\to X\sqcup Y\qquad \text{and}\qquad \inj_Y\circ g\cl B\to X\sqcup Y.
@@ -1148,8 +1253,16 @@ A  \ar[r,"\inj_A"]\ar[d,"f"] &  A\sqcup B \ar[d,dashed,"f\sqcup g"] & \ar[l,"\in
 X \ar[r,"\inj_X"] & X\sqcup Y & Y\ar[l,"\inj_Y"']
 \end{tikzcd}
 \ese
-\item
-\item
+\item Note that the construction in part (c) behaves well with respect to identities, in that $\id_A\sqcup\id_A=\id_{A\sqcup A}$, and with respect to composition. Indeed, given $h\cl X\to Z$ and $k\cl Y\to W$, the commutative diagram
+\bse
+\begin{tikzcd}[column sep=large,row sep=large]
+A \ar[dd,bend right=60,"h\circ f"']\ar[d,"f"] \ar[r,"\inj_A"] & A\sqcup B \ar[d,dashed,"f\sqcup g"] & \ar[l,"\inj_B"'] B\ar[d,"g"]\ar[dd,bend left=60,"k\circ g"]\\
+X \ar[r,"\inj_X"'] \ar[d,"h"]& X\sqcup Y \ar[d,dashed,"h\sqcup k"] & \ar[l,"\inj_Y"]\ar[d,"k"]Y\\
+Z \ar[r,"\inj_Z"'] & Z\sqcup W&  \ar[l,"\inj_W"]W
+\end{tikzcd}
+\ese
+shows that $(h\sqcup k)\circ(f\sqcup g)=(h\circ f)\sqcup(k\circ g)$. We thus have a covariant functor of two variables $\sqcup\cl \mathcal{C}\times \mathcal{C}\to \mathcal{C}$. 
+\item Similarly to diagonal map, the folding map $\nabla\cl X\sqcup X\to X$ is defined as $\nabla=(\id_X,\id_X)$, under the bijection in part (b). By definition, then, $\nabla\circ\inj_X=\id_X$.
 \een
 \es
 
@@ -1416,7 +1529,15 @@ Show that for any $f\cl X \to Y$ in a pointed category $\mathcal{C}$ and $*\cl W
 \ep
 
 \bs
-
+The morphism $f\circ *$ factors as $W\xrightarrow{*\, } 0 \xrightarrow{*\, } X\xrightarrow{f\, } Y$. Since there is a unique morphism $0\to Y$, namely $*$, we have $0 \xrightarrow{*\, } X\xrightarrow{f\, } Y=0 \xrightarrow{*\, }Y$. Therefore,
+\bse
+f\circ * = W\xrightarrow{*\, } 0 \xrightarrow{*\, } X\xrightarrow{f\, } Y=W\xrightarrow{*\, } 0 \xrightarrow{*\, }  Y = *.
+\ese
+Similarly, for the composite $*\circ f=*\cl X\to Z$, we have
+\bse
+*\circ f = X\xrightarrow{f\, } Y\xrightarrow{*\, } 0 \xrightarrow{*\, } Z=X\xrightarrow{*\, } 0 \xrightarrow{*\, }  Z = *.
+\ese
+For any $X\in\mathcal{C}$, the sets $\mor_{\mathcal{C}}(X,Y)$ and $\mor_{\mathcal{C}}(A,X)$ have basepoints $*\cl X\to Y$ and $*\cl A\to Y$, respectively and, for any morphism $f\cl X\to B$ in $\mathcal{C}$, the induced morphisms $f^*\cl\mor_{\mathcal{C}}(B,Y)\to \mor_{\mathcal{C}}(X,Y)$ and $f_*\cl\mor_{\mathcal{C}}(A,X)\to\mor_{\mathcal{C}}(X,B)$ are given by pre- and post-composition with $f$, respectively. As we have just shown, both of there preserve $*$, so they are pointed.
 \es
 
 \bx

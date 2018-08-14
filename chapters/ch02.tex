@@ -48,7 +48,81 @@ Consider the group $G = \Z/2$ as a category with one object and two morphisms. I
 \bs
 \es
 
+\bx
+\ben[label=(\alph*)]
+\item Let $\mathcal{I}$ be a small category and let $F,G \in \mathcal{C}^{\mathcal{I}}$. Express the collection of all natural transformations from $F$ to $G$ as a subset of some set. It follows that this collection is a set.
+\item Conclude that if $\mathcal{I}$ is small, then $\mathcal{C}^{\mathcal{I}}$ is actually a category.
+\item Find an example of a `large' category $\mathcal{I}$ and $F,G \in \mathcal{C}^{\mathcal{I}}$ so that the collection of natural transformations $F \to G$ is not a set.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\item 
+\een
+\es
+
 \section{Limits and Colimits}
+
+\bx
+Let $\mathcal{U}$ be the category whose objects are objects $Q \in \mathcal{C}$ together with maps $Q \to X$ and $Q \to Z$ making the diagram 
+\bse
+\begin{tikzcd}%[row sep=large,column sep=large]
+Q \ar[rrrd,bend left=30] \ar[dddr,bend right=30] &&&\\
+&&& X \ar[dd]\\
+&&&\\
+&Z\ar[rr] && Y
+\end{tikzcd}
+\ese
+commute; the morphisms are maps $f \cl Q \to R$ such that the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+X \ar[d,equal] & \ar[l]\ar[r] Q\ar[d,"f"] & Z\ar[d,equal] \\
+X \ar[dr,bend right=20]&\ar[l]\ar[r] R & Z\ar[dl,bend left=20]\\
+& Y &
+\end{tikzcd}
+\ese
+commutes. Show that $P$ (with the maps to $X$ and $Z$) is a limit for the diagram $X \to Y \leftarrow Z$ if, and only if, it is a terminal object in $\mathcal{U}$.
+\ex
+
+\bs
+\es
+
+\bx
+Consider the diagram category $\mathcal{I}$ with two objects $\bullet$ and $\star$, with only identity morphisms. Let $\mathcal{C}$ denote the category of real vector spaces and linear transformations, and let $F(\bullet) = 0$ and $F(\star) = \R$.
+\ben[label=(\alph*)]
+\item Show that the limit of $F \cl\mathcal{I} \to \mathcal{C}$ is $\R$; what is the natural transformation $\Delta_{\R} \to F$?
+\item Let $V$ be any nontrivial vector space. Show that there are uncountably many natural transformations $T \cl \Delta_V \to \Delta_{\R}$ making the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+& \Delta_{\R}\ar[d]\\
+\Delta_V \ar[ur,dashed,bend left=10,"T"]\ar[r] & F
+\end{tikzcd}
+\ese
+commutative.
+\item Show that exactly one of these is of the form $\Delta_f$ for some linear transformation $f \cl V \to \R$.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\item 
+\een
+\es
+
+\bp
+Let $P$ be a limit for the diagram $F \cl\mathcal{I} \to \mathcal{C}$ (so we are given a natural transformation $L \cl \Delta_P \to F$). Show that there is an isomorphism
+\bse
+\mor_{\mathcal{C}}(Q, P)\xrightarrow{\ \cong \ }\mor_{\mathcal{C}^{\mathcal{I}}}(\Delta_Q, F).
+\ese
+\ep
+
+\bs
+\es
 
 \bx
 Suppose that the empty diagram $\vn$ has a limit. Show that it is a terminal object in $\mathcal{C}$. Find a way to view a product as the limit of a diagram.
@@ -60,7 +134,7 @@ Suppose that the empty diagram $\vn$ has a limit. Show that it is a terminal obj
 \bx
 \ben[label=(\alph*)]
 \item Construct an example of a category and a diagram which has no limit.
-\item A discrete category is one in which the only morphisms are identities. What is the limit of a diagram whose shape is discrete?
+\item A \textbf{discrete category} is one in which the only morphisms are identities. What is the limit of a diagram whose shape is discrete?
 \een
 \ex
 
@@ -108,9 +182,57 @@ What is the colimit of a diagram whose shape is discrete?
 \bs
 \es
 
-
-
 \section{Naturality of Limits and Colimits}
+
+\bp
+Explain how a natural transformation of diagrams induces a map between the limits of those diagrams.
+\ep
+
+\bs
+\es
+
+\bp
+Let $\mathcal{C}$ be a category in which every diagram with shape $\mathcal{I}$ has a colimit. For each $F \in \mathcal{C}^{\mathcal{I}}$, choose, once and for all, a colimit for $F$, and call it $\colim F$.\footnote{We consider the object $\colim F$ as coming with structure maps to the diagram $F$.}
+\ben[label=(\alph*)]
+\item Show that the assignment $F\to \colim F$ defines a functor $\mathcal{C}^{\mathcal{I}} \to \mathcal{C}$.
+\item Show that the functors $\mathcal{C}^{\mathcal{I}} \to \mathcal{C}$ and $\mathcal{C} \to \mathcal{C}^{\mathcal{I}}$ given by \bse
+F\longmapsto \colim F \qquad \text{ and } \qquad X \longmapsto \Delta_X
+\ese
+are adjoint to one another. Which is the right adjoint and which is the left adjoint?
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
+\addtocounter{exercise}{1}
+
+\bx
+Formulate the dual of Theorem 2.17. Do you need to prove it? Explain.
+\ex
+
+\bs
+\es
+
+\addtocounter{exercise}{1}
+\bp
+Prove Theorem 2.19: Let $L \cl \mathcal{C} \to \mathcal{D}$ and $R \cl \mathcal{D} \to \mathcal{C}$ be an adjoint pair of functors.
+\ben[label=(\alph*)]
+\item Suppose that every diagram in $\mathcal{C}^{\mathcal{I}}$ has a colimit. Then for every $F \in \mathcal{C}^{\mathcal{I}}$, $L(\colim F)$ is a colimit for $L \circ F \in \mathcal{D}^{\mathcal{I}}$.
+\item Suppose that every diagram in $\mathcal{D}^{\mathcal{I}}$ has a limit. Then for every $F \in \mathcal{D}^{\mathcal{I}}$, $R(\lim F)$ is a limit for $R \circ F \in \mathcal{C}^{\mathcal{I}}$.
+\een
+\ep
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
 
 \section{Special Kinds of Limits and Colimits}
 
@@ -172,6 +294,34 @@ commute. Thus, $(Z,p,q)$ is a product of $X$ and $Y$.
 \end{itemize}
 \es
 
+\bp
+Show that in the category of sets and functions
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+\ar[d,"\pr_B"']\{(a, b) \mid f(a) = g(b)\} \ar[r,"\pr_A"] & A\ar[d,"f"]\\
+B\ar[r,"g"] & C
+\end{tikzcd}
+\ese
+is a pullback square. What is the pullback of $A \to * \leftarrow B$?
+\ep
+
+\bs
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item Consider the category whose objects are the integers $1, 2, 3, \ldots$ and with arrows given by divisibility. Give number-theoretical descriptions of pullbacks in this category.
+\item Repeat (a) but using the category whose objects are real numbers and whose morphisms correspond to inequalities $x \leq y$.
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\een
+\es
+
 \bx
 Determine the pullback of the diagram
 \bse
@@ -189,7 +339,7 @@ Consider the subgroup $\ker (f)$ of $A$ and let $i\cl \ker (f)\hookrightarrow A$
 Q \ar[rrrd,bend left=30,"h"] \ar[dddr,bend right=30] \ar[dr,shift left,"j"]\ar[dr,shift right,"j'"']&&&\\
 & \ker (f) \ar[rr,hook,"i"]\ar[dd] && A\ar[dd,"f"]\\
 &&&\\
-& \{1\} \ar[rr] && B
+& \{1\} \ar[rr] && B.
 \end{tikzcd}
 \ese
 Let $h\cl Q\to A$ be such that the outer diagram commutes, i.e.\ $f(h(q))=1$ for all $q\in Q$. Then $h(q)\in\ker(f)$ for all $q\in Q$, so $h$ factors through the inclusion of the kernel, i.e.\ $h=ij$, with $j\cl Q\to \ker (f)$. 
@@ -199,6 +349,29 @@ Finally, suppose that $j'\cl Q\to \ker(f)$ is another homomorphism making the tr
 j'(q)=i(j'(q))=h(q)=i(j(q))=j(q)
 \ese
 for all $q\in Q$, so $j=j'$. Thus $\ker(f)$ is the pullback of $\{1\}\to B \xleftarrow{\ f}A$.
+\es
+
+\bx
+\ben[label=(\alph*)]
+\item What is the shape category for the equalizer?
+\item If products exist in our category, then we can form the diagram
+\bse
+\begin{tikzcd}[row sep=large,column sep=huge]
+Q\ar[r]\ar[d,"q"'] & Y\ar[d,"\Delta"]\\
+X\ar[r,"{(f,g)}"] & Y\times Y.
+\end{tikzcd}
+\ese
+Show that this is a pullback square if, and only if, $Q$ (with given map $q \cl Q \to X$) is an equalizer for $f$ and $g$.
+\item Show that if pullbacks always exist in $\mathcal{C}$, then so do equalizers. Is the converse true?
+\een
+\ex
+
+\bs
+\ben[label=(\alph*)]
+\item 
+\item 
+\item 
+\een
 \es
 
 \bp

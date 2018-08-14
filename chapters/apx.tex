@@ -139,12 +139,12 @@ What can you say about $f \cl A \to B$ in the following situations?
 \bp
 Prove Lemma A.16:
 \ben[label=(\alph*)]
-\item If the sequences $A \to B\xrightarrow{f\ } C \to 0$ and $0 \to C\xrightarrow{g\ } D \to E$ are exact, then the sequence
+\item If the sequences $A \to B\xrightarrow{f\, } C \to 0$ and $0 \to C\xrightarrow{g\, } D \to E$ are exact, then the sequence
 \bse
-A \longrightarrow B \xrightarrow{g\circ f\ } D \longrightarrow E
+A \longrightarrow B \xrightarrow{g\circ f\, } D \longrightarrow E
 \ese
 is also exact.
-\item If $A \xrightarrow{f\ }B\to C\to D \xrightarrow{g\ }E$ is exact, then there is a short exact sequence
+\item If $A \xrightarrow{f\, }B\to C\to D \xrightarrow{g\, }E$ is exact, then there is a short exact sequence
 \bse
 0 \longrightarrow \coker(f) \longrightarrow  C \longrightarrow\ker(g) \longrightarrow 0.
 \ese
@@ -164,7 +164,7 @@ b\in \ker(g\circ f) & \ \Leftrightarrow\ & g(f(b))=0 \\
 \ei
 so we have exactness at $B$.
 
-Now let $d\in D$ and suppose that $d\in\ker(D\to E)=\im(g)$. Then there exists $c\in C$ such that $g(c)=d$. Since $C=\im(f)$, there exists $b\in B$ such that $f(b)=c$. Thus $d=g(f(b))$, so $d\in \im(g\circ f)$. Conversely, if $d\in\im(g\circ f)$, then $d\in\im(g)=\ker(D\to E)$. Therefore, $A \to B \xrightarrow{g\circ f\ } D \to E$ is exact.
+Now let $d\in D$ and suppose that $d\in\ker(D\to E)=\im(g)$. Then there exists $c\in C$ such that $g(c)=d$. Since $C=\im(f)$, there exists $b\in B$ such that $f(b)=c$. Thus $d=g(f(b))$, so $d\in \im(g\circ f)$. Conversely, if $d\in\im(g\circ f)$, then $d\in\im(g)=\ker(D\to E)$. Therefore, $A \to B \xrightarrow{g\circ f\, } D \to E$ is exact.
 \item Let us denote the maps in the two sequences as $i\cl B\to C$, $j\cl C\to D$, $k\cl \coker(f)\to C$ and $l\cl C\to \ker(g)$, with $k$ and $l$ induced by $i$ and $j$, respectively. That is, $k(b+\im(f))=i(b)$ for all $b\in B$ and, as $\ker(g)=\im(j)$, we in fact have $j(c)=l(c)$ for all $c\in C$.
 
 Let $b\in B$. Then
@@ -203,6 +203,7 @@ given by projection and inclusion.
 \ep
 
 \bs
+This is commonly known as the `splitting lemma'.
 \ben[label=(\arabic*)]
 \item 
 \item 
@@ -268,7 +269,7 @@ Show that $\im(d) \subseteq \ker(d)$.
 \ep
 
 \bs
-Let $a\in \im(d)$. Then $a=db$ for some $b$, so $da=d(db)=0$, i.e.\ $a\in \ker(d)$.
+Let $a\in A^*$ and suppose that $a\in \im(d)$. Then $a=db$ for some $b\in A^*$, and thus $da=d(db)=0$, i.e.\ $a\in \ker(d)$.
 \es
 
 \bp
@@ -279,16 +280,54 @@ Let $a\in \im(d)$. Then $a=db$ for some $b$, so $da=d(db)=0$, i.e.\ $a\in \ker(d
 \ep
 
 \bs
+We will not distinguish between a chain complex and the graded module it gives rise, unless we need to keep track of the grading explicitly.
 \ben[label=(\alph*)]
-\item 
-\item 
+\item We clearly have an identity map $\id_{A^*}\cl A^*\to A^*$ for each complex $A^*$ and, given chain maps $f\cl A^*\to B^*$, $g\cl B^*\to C^*$, we have
+\bse
+g\circ f \circ d_A=g\circ d_B\circ f=d_C\circ g\circ f.
+\ese
+Thus $g\circ f\cl A^*\to C^*$ is indeed a chain map. The identity and composition laws are inherited from the category of modules.
+\item The algebraic modules of $A$ can be assembled into a graded $R$-module, so that we obtain an assignment $H^*\cl A\mapsto H^*(A)$. To define the action of $H^*$ on morphisms, let $f\cl A\to B$ be a chain map and set
+\bi{rrCl}
+H^*(f)\cl & H^*(A) & \to & H^*(B)\\
+& [a] & \mapsto & [f(a)].
+\ei
+To see that this is well-defined, let $a\in \ker(d_A)$. Then
+\bse
+d_B(f(a))=f(d_Aa)=f(0)=0,
+\ese
+so $f(a)\in\ker(d_B)$. Now suppose that $[a]=[a']\in H^*(A)$. Then $a-a'\in\im(d_A)$, i.e.\ $a'=a+d_Aa''$ for some $a''\in A$, hence
+\bse
+f(a')=f(a+d_Aa'')=f(a)+f(d_A(a''))=f(a)+d_B(f(a''))
+\ese
+and thus $f(a)-f(a')\in\im(d_B)$, i.e.\ $[f(a)]=[f(a')]$, so $H^*(f)$ is well-defined. Finally, since $f$ is a graded $R$-module homomorphism, we have
+\bi{rCl}
+H^*(f)(r[a]+[a']) & = & H^*(f)([ra+a']) \\
+& = & [f(ra+a')] \\
+& = & [rf(a)+f(a')] \\
+& = & r[f(a)]+[f(a')]\\
+& = & rH^*(f)([a])+H^*(f)([a'])
+\ei
+for all $r\in R$ and $[a],[a']\in H^*(A)$, so is $H^*(f)$ an $R$-module homomorphism. To see that it is a graded $R$-module homomorphism (i.e.\ a chain map), we have to show that it `commutes' with the differentials. Note that the differentials in homology are induced by the chain map differentials, and we will not distinguish between them notationally. We thus have
+\bse
+d_B(H^*(f)([a]))=d_B[f(a)]=[d_B(f(a))]=[f(d_Aa)]=H^*(f)(d_A[a]).
+\ese
+To show that these assignments are functorial, first note that
+\bse
+H^*(\id_A)([a])=[\id_A(a)]=[a]
+\ese
+for all $[A]\in H^*(A)$, so $H^*(\id_A)=\id_{H^*(A)}$ and, given chain maps $f\cl A\to B$ and $g\cl B\to C$, we have
+\bse
+(H^*(g)\circ H^*(f))([a])=[g(f(a))]=H^*(g\circ f)([a]),
+\ese
+so $H^*$ is indeed a functor.
 \een
 \es
 
 \addtocounter{exercise}{1}
 
 \bp
-Theorem A.27: If $0 \to A \xrightarrow{ i\ }B\xrightarrow{ j\ } C \to 0$ is a short exact sequence of chain complexes, then there is a long exact sequence
+Theorem A.27: If $0 \to A \xrightarrow{ i\, }B\xrightarrow{ j\, } C \to 0$ is a short exact sequence of chain complexes, then there is a long exact sequence
 \bse
 \cdots \to H^n(A)  \xrightarrow{ \ i^*\ }H^n(B)  \xrightarrow{ \ j^*\ } H^n(C)  \xrightarrow{ \ \partial\ } H^{n+1}(A) \to \cdots .
 \ese
@@ -300,7 +339,23 @@ Theorem A.27: If $0 \to A \xrightarrow{ i\ }B\xrightarrow{ j\ } C \to 0$ is a sh
 
 \bs
 \ben[label=(\alph*)]
-\item 
+\item First note that the maps $i$ and $j$ need not be invertible in general. However, $j$ is surjective by exactness. Thus, for each $c\in C$, there is some $b\in B$ such that $j(b)=c$. Also by exactness, $i$ is injective. So, if we can show that $d_Bb$ is in the image of $i$, then there is a unique $a\in A$ such that $i(a)=d_Bb$. This is the meaning of the proposed expression for $\partial$. 
+
+In this proof, it will be helpful to keep track of the grading explicitly, so we will switch to chain complex notation. Consider the following diagram.
+\bse
+\begin{tikzcd}[row sep=large,column sep=large]
+0 \ar[r]& A^n \ar[d,"d_A^n"]\ar[r,"i^n"]& B^n \ar[d,"d_B^n"]\ar[r,"j^n"] & C^n \ar[d,"d_C^n"]\ar[r]& 0\\
+0 \ar[r]& A^{n+1}\ar[d,"d_A^{n+1}"]\ar[r,"i^{n+1}"]& B^{n+1}\ar[r,"j^{n+1}"] \ar[d,"d_B^{n+1}"]& C^{n+1}\ar[d,"d_C^{n+1}"] \ar[r]& 0\\
+0 \ar[r]& A^{n+2}\ar[r,"i^{n+2}"]& B^{n+2}\ar[r,"j^{n+2}"] & C^{n+2} \ar[r]& 0
+\end{tikzcd}
+\ese
+Let $[c]\in H^n(C)$. Then $c\in \ker(d_C^n)\subseteq C^n$. By exactness at $C^n$, $j^n$ is surjective, so there exists $b\in B^n$ such that $j^n(b)=c$. Since $c\in \ker(d_C^n)$, we have 
+\bse
+j^{n+1}(d_B^nb)=d_C^n(j^n(b))=d_C^nc=0.
+\ese
+By exactness at $B^{n+1}$, there exists $a\in A^{n+1}$ such that such that $i^{n+1}(a)=d_B^nb$. Before we can define $\partial([c])=[a]$ we need to check that $a\in \ker(d_A^{n+1})$. To that end, we note that $d_B^{n+1}(d_B^nb)=0$ since $B$ is a chain complex, so $i^{n+2}(d_A^{n+1}a)=0$. Then, by exactness at $A^{n+2}$, the map $i^{n+2}$ is injective, so $d_A^{n+1}a=0$, as we wanted to show.
+
+To see that $\partial$ is well-defined, suppose that there is some other $b'\in B^n$ such that $j^n(b')=c$. Then $j^n(b-b')=j^n(b)-j^n(b')=0$. By exactness at $B^n$, there exists some $a'\in A^n$ such that $i^n(a')=b-b'$. 
 \item 
 \een
 \es
